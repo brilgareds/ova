@@ -1,0 +1,204 @@
+* {
+  box-sizing: border-box;
+  font-family: system-ui;
+}
+
+:root {
+  --primary-color: #ea00a5;
+  --secondary-color: #3d3ac5;
+  --secondary-dark-color: #2522e2;
+  --label-big-color: #00345b;
+  --label-big-font-size: 1.3rem;
+  --title-primary-font-size: 1.9rem;
+  --title-secondary-font-size: 1.9rem;
+  --button-font-size: 1.2rem;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+}
+
+body {
+  position: relative;
+}
+
+:not(input):not(button *) {
+  cursor: context-menu;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  transition: all ease-in .5s;
+}
+
+header {
+  height: 4rem;
+}
+
+.primaryColor {
+  color: var(--primary-color) !important;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(.95);
+}
+
+.mainContainer {
+  margin: 0 4rem;
+  transition: all ease-in .5s;
+  position: relative;
+  border-radius: 1.1rem;
+  box-shadow: 1px 1px 1px 1px #dedede;
+  padding: 1.5rem 2.5rem 3rem 2.5rem;
+  min-height: 10rem;
+  min-height: 80vh;
+  background: rgb(255 255 255 / 90%);
+  overflow-y: hidden;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.strong-font {
+  cursor: inherit;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.mainBackground {
+  position: relative;
+  position: fixed;
+  background: url(/assets/images/background.png);
+  filter: brightness(0.95);
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.backFullScreenContainer {
+  position: absolute;
+  right: 2rem;
+  bottom: 1rem;
+  height: 65px;
+  width: 65px;
+}
+
+.backFullScreenIcon {
+  width: 100%;
+  height: 100%;
+  background: url(/assets/images/backFullScreen.png) no-repeat;
+  background-size: contain;
+}
+
+.backFullScreenIcon:hover {
+  cursor: pointer;
+}
+
+.backFullScreenIcon:active {
+  transform: scale(.95);
+}
+
+.mainContainer__secondaryBackground {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 85%;
+  width: 27%;
+}
+
+.mainContainer__mainTitle {
+  font-size: 1.9rem;
+  color: var(--secondary-color);
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 1rem;
+  min-height: 4rem;
+}
+
+.mainContainer__mainTitle2 {
+  font-size: 1.9rem;
+  color: var(--secondary-color);
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 1rem;
+  min-height: 4rem;
+}
+
+.highlightText {
+  font-weight: 600;
+}
+
+.containerWithCustomScroll {
+  overflow-y: scroll;
+}
+
+/* width */
+.containerWithCustomScroll::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+.containerWithCustomScroll::-webkit-scrollbar-track {
+  background: #e4e5ea;
+  border-radius: 10px;
+}
+ 
+/* Handle */
+.containerWithCustomScroll::-webkit-scrollbar-thumb {
+  background: var(--secondary-color);
+  border-radius: 10px;
+}
+
+.containerWithCustomScroll::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-dark-color);
+}
+
+.footer {
+  height: 4rem;
+}
+
+@media (max-width: 1200px) {
+  .mainContainer {
+    margin: 0 2rem !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .mainContainer__secondaryBackground {
+    display: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .mainContainer {
+    margin: 0 2rem !important;
+  }
+
+  button {
+    width: 100% !important;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+  }
+}
+
+@media (max-width: 394px) {
+  .mainContainer {
+    margin: 0 1rem !important;
+  }
+}

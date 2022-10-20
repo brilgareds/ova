@@ -1,0 +1,17 @@
+.glosaryAlphabetContainer {
+  display: inline-flex;
+  flex-wrap: wrap;
+  background: #e5e5eb;
+}
+
+.glosaryAlphabetContainer__letter {
+  width: initial !important;
+  border: 0;
+  padding: 2px 5px;
+  background: initial;
+}
+
+.withoutHeight {
+  height: 0;
+  display: inline-block;
+}

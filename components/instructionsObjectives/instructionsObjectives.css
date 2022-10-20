@@ -1,0 +1,57 @@
+.ovaObjectives {
+  display: flex;
+  height: 100%;
+  padding-right: 4rem;
+}
+
+.ovaObjectives__imageContainer {
+  min-width: 70px;
+  height: 70px;
+  margin-right: 20px;
+}
+
+.ovaObjectives__image {
+  width: 100%;
+  height: 100%;
+}
+
+.ovaObjectives__description {
+  font-size: 1.1rem;
+  margin-top: 0;
+}
+
+.ovaObjectives__descriptionTitle {
+  font-weight: 600;
+}
+
+.ovaObjectives__separator {
+  height: max-content;
+  line-height: 1.9rem;
+  margin-right: 0.4rem;
+}
+
+.ovaObjectives__objectiveContainer {
+  display: flex;
+}
+
+.objetiveImageContainer {
+  width: 14px;
+  min-width: 14px;
+  height: 19px;
+  min-height: 19px;
+  padding-top: 3px;
+}
+
+.objetiveImage {
+  margin-left: -0.4rem;
+  width: 100%;
+  height: 100%;
+}
+
+.ovaObjectives__objectivesContainer{
+  padding-left: 0;
+}
+
+.objectiveDescription {
+  margin-top: 0;
+}

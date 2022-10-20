@@ -1,0 +1,64 @@
+.inputGroup__labelContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  margin-right: 2rem;
+  width: 5.8rem;
+  white-space: nowrap;
+}
+
+.inputGroupContainer {
+  width: 100%;
+}
+
+.userRegistrationFormContainer {
+  display: flex;
+  justify-content: end;
+  padding-top: 3rem;
+  width: 50%;
+}
+
+.userRegistrationForm {
+  width: min(43rem, 100%);
+}
+
+.userRegistrationForm__inputGroup {
+  display: flex;
+  margin-bottom: 1.5rem
+}
+
+.inputGroup__label {
+  width: 100%;
+  text-align: left;
+  color: var(--label-big-color);
+  font-size: var(--label-big-font-size);
+  font-weight: bolder;
+}
+
+.inputGroup__input{
+  width: 100%;
+  border: 0 #dedede;
+  background: #e5e5eb;
+  border-radius: 1.3rem;
+  line-height: 2.6rem;
+  padding-left: 2rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.userRegistrationForm__buttonsContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.userRegistrationForm__button {
+  transition: all ease-in .5s;
+  background: var(--secondary-color);
+  font-size: var(--button-font-size);
+  color: white;
+  width: 9.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 1rem
+}

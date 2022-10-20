@@ -1,0 +1,182 @@
+
+.decisionMaking2 {
+  display: flex;
+}
+
+.decisionMaking2__titlesContainer {
+  padding-bottom: 0.5rem;
+}
+
+.decisionMaking2__description {
+  margin-top: 0;
+}
+
+.decisionMaking2__titles {
+  margin-top: 0;
+  margin-bottom: 1.3rem;
+  line-height: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.decisionMaking2__iconSection {
+  margin-right: 2rem;
+}
+
+.decisionMaking2__iconContainer {
+  height: 70px;
+  width: 70px;
+}
+
+.decisionMaking2__mainSection {
+  margin-right: 4rem;
+}
+
+.decisionMaking2__icon {
+  background: url(/assets/images/decisionMakingIcon.png) no-repeat;
+  background-size: contain;
+  height: 100%;
+  width: 100%;
+}
+
+.decisionMaking2__optionsContainer {
+  padding-top: 1rem;
+}
+
+.decisionMaking2__optionContainer {
+  display: flex;
+  position: relative;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.decisionMaking2__optionContainer:not(:last-child) {
+  border-bottom: 1px solid;
+}
+
+.decisionMaking2__optionLetterContainer {
+  margin-right: 0.7rem;
+}
+
+.decisionMaking2__optionTextContainer {
+  overflow: hidden;
+  height: 1.7rem;
+  padding-top: 0.1rem;
+}
+
+.decisionMaking2__radioButtonsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #c9e5e4;
+  margin-top: 3rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  border-radius: 2rem;
+}
+
+.decisionMaking2__radioButtonIcon {
+  width: 100%;
+  height: 100%;
+  background: url(/assets/images/radioButton-default.png) no-repeat;
+  background-size: contain;
+}
+
+.decisionMaking2__radioButtonIcon:hover {
+  cursor: pointer;
+}
+
+.decisionMaking2__radioButtonIcon--active {
+  background: url(/assets/images/radioButton-active.png) no-repeat;
+  background-size: contain;
+}
+
+.decisionMaking2__radioButtonIconContainer {
+  height: 30px;
+  width: 30px;
+}
+
+.decisionMaking2__radioButtonContainer {
+  display: inline-flex;
+  align-items: center;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.decisionMaking2__radioButtonText {
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.decisionMaking2__radioButtonText:hover {
+  cursor: pointer;
+}
+
+.decisionMaking2__optionTextContainer--active {
+  height: auto;
+  padding-right: 3rem;
+}
+
+.decisionMaking2__optionDetail {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s ease-in-out;
+}
+
+.decisionMaking2__optionDetail--active {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s, opacity 0.5s ease-in;
+}
+
+.decisionMaking2__optionIcon {
+  transition: transform 0.2s ease-in-out;
+  transform: rotateX(180deg);
+}
+
+.decisionMaking2__optionIcon:hover {
+  cursor: pointer;
+}
+
+.decisionMaking2__optionIcon--active {
+  transform: rotateX(0deg);
+}
+
+.decisionMaking2__optionIconContainer {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  right: 0;
+}
+
+.decisionMaking2__optionIcon {
+  width: 100%;
+  height: 100%;
+  background: url(/assets/images/openDetail.png) no-repeat;
+  background-size: contain;
+}
+
+.buttonsSections--decisionMaking2 {
+  margin-top: 4rem;
+}
+
+.decisionMaking2__titles {
+  font-weight: 600;
+}
+
+.decisionMaking2__secundarySection {
+  width: calc(470px + 2rem);
+  min-width: calc(470px + 2rem);
+  padding-left: 2rem;
+}
+
+.decisionMaking2__mainPictureContainer {
+  height: 400px;
+}
+
+.decisionMaking2__mainPicture {
+  background: url(/assets/images/decisionMaking.png) no-repeat;
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+}

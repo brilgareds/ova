@@ -1,0 +1,100 @@
+.tabsContainer {
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.tabsContainer__button {
+  width: inherit;
+  background: #e5e5eb;
+  margin: 0;
+  padding: 1rem 0;
+  border: 0;
+  border-top: 0.4rem solid #0000;
+  font-size: 1.1rem;
+}
+
+.tabsContainer__button:hover {
+  transform: initial;
+}
+
+.tabsContainer__button--active {
+  background: #ffffff00;
+  color: #ea00a5;
+  font-weight: 700;
+  border-top: 0.4rem solid #ea00a5;
+  font-size: 1.2rem;
+}
+
+.tabsContainer__button:not(.tabsContainer__button--active) + .tabsContainer__button:not(.tabsContainer__button--active):not(:first-child) > span {
+  border-left: 1px solid #5c5c5c;
+  display: block;
+}
+
+.tabsContainer__button--active > .tabsContainer__button > span {
+  border: 0 !important;
+}
+
+.generalInstructions {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.generalInstructions__infoContainer {
+  margin-top: 0.8rem;
+  height: calc(400px + 0.8rem);
+  width: min(calc(100% - calc(470px + 2rem)), 100%);
+  min-width: min(calc(100% - calc(470px + 2rem)), 100%);
+}
+
+.generalInstructions__imageContainer {
+  width: min(470px, 100%);
+  margin-top: 0.8rem;
+  height: 400px;
+}
+
+.generalInstructions__sectionImageContainer {
+  width: min(calc(470px + 2rem), 100%);
+  display: flex;
+  justify-content: center;
+  padding-left: 2rem;
+}
+
+.generalInstructions__image {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.7rem;
+}
+
+.mainInstructionsContainer {
+  height: calc(100% - 4rem - 60px);
+  padding-top: 2rem;
+}
+
+.glosaryAlphabetContainer__letter.glosaryAlphabetContainer__letter--active {
+  background: white;
+  color: #ea00a5;
+  font-weight: 600;
+  border-bottom: 2px solid;
+}
+
+.challengeAlert__detail.challengeAlert__detail--instructions {
+  margin-top: 0;
+}
+
+.challengeAlert__descriptionContainer.challengeAlert__descriptionContainer--instructions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 0.4rem;
+}
+
+.extraSection {
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 1080px) {
+  .generalInstructions__infoContainer, .generalInstructions__sectionImageContainer {
+    width: 100%;
+  }
+}
