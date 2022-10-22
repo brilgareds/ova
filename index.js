@@ -17,6 +17,7 @@ const initializeOtherPages = async () => {
   const promisesArray = [
     getGoodAnswerModal(),
     getBadAnswerModal(),
+    getAnswersCompletedHtml(),
     getOvaPresentationHtml(),
     getUserRegisterHtml(),
     getInstructionsHtml(),
@@ -29,6 +30,7 @@ const initializeOtherPages = async () => {
     getDecisionMakingHtml(),
     getDecisionMaking2Html(),
     getOvaContext2(),
+    getResultsHtml(),
   ];
 
   await Promise.all(promisesArray);
