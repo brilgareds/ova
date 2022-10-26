@@ -5,6 +5,7 @@ let instruccionsMainContainer;
 let buttonThematic;
 let buttonInstruction;
 let buttonNext;
+let buttonPrevious;
 
 const getInstructionsHtml = async () => {
   const url = '/components/presentation/instructions/instructions.html';
@@ -45,12 +46,14 @@ const initializeOvaInstructionsEvents = () => {
   buttonInstruction?.addEventListener('click', initializeInstructions);
   buttonGlosary?.addEventListener('click', initializeGlosary);
   buttonNext?.addEventListener('click', loadOvaContext2Html);
+  buttonPrevious?.addEventListener('click', loadOvaPresentation);
 };
 
 const initializeOvaInstructionsValues = () => {
   tabs = document.querySelectorAll('.tabsContainer__button');
   buttonNext = document.querySelector('.instructions__nextButton');
   buttonGlosary = document.querySelector('.tabsContainer__buttonGlosary');
+  buttonPrevious = document.querySelector('.instructions__previousButton');
   buttonThematic = document.querySelector('.tabsContainer__buttonThematic');
   buttonObjectives = document.querySelector('.tabsContainer__buttonObjectives');
   buttonInstruction = document.querySelector('.tabsContainer__buttonInstruction');
@@ -62,6 +65,7 @@ const resetExtraSection = () => { document.querySelector('.extraSection').innerH
 const showOvaInstructionsInMainContainer = () => {
   mainContainer.setAttribute('class', 'mainContainer');
   mainContainer.innerHTML = instructionsHtml;
+  animateMainContainer();
 };
 
 const loadInstructionsHtml = () => {

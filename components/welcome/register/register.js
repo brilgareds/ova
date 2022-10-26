@@ -26,6 +26,7 @@ const validateUserRegisterForm = (e) => {
 const loadRegisterUser = () => {
   mainContainer.setAttribute('class','mainContainer');
   mainContainer.innerHTML = userRegisterHtml;
+  animateMainContainer();
   formRegisterUser = document.querySelector('.userRegistrationForm');
   formRegisterUser?.addEventListener('submit', (e) => { validateUserRegisterForm(e); });
 };

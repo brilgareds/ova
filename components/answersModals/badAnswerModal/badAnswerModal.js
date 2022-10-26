@@ -9,7 +9,7 @@ const getBadAnswerModal = async () => {
 };
 
 const initializeBadAnswerModalEvents = () => {
-  modalBackButton?.addEventListener('click', closeModal);
+  modalBackButton?.addEventListener('click', modalButtonContinueClick);
   modalRestartButton?.addEventListener('click', restartOva);
 };
 

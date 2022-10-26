@@ -49,7 +49,27 @@ button:active {
   transform: scale(.95);
 }
 
+.hidden {
+  display: none;
+}
+
+.bg-white {
+  background: white;
+}
+
+.customModalStarPictureContainer {
+  margin-right: 5px;
+  width: 59px;
+  height: max-content;
+}
+
+.customModalStarPicture {
+  width: 100%;
+  height: 100%;
+}
+
 .mainContainer {
+  opacity: 1;
   margin: 0 4rem;
   transition: all ease-in .5s;
   position: relative;
@@ -58,8 +78,36 @@ button:active {
   padding: 1.5rem 2.5rem 3rem 2.5rem;
   min-height: 10rem;
   min-height: 80vh;
+  min-height: max-content;
   background: rgb(255 255 255 / 90%);
   overflow-y: hidden;
+}
+
+.imageFullScreen {
+  width: 100%;
+  height: max-content;
+}
+
+@keyframes opacity-animation1 {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes opacity-animation2 {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.opacity1 {
+  opacity: 1;
+  animation-name: opacity-animation1;
+  animation-duration: 0.3s;
+}
+
+.opacity2 {
+  opacity: 1;
+  animation-name: opacity-animation2;
+  animation-duration: 0.3s;
 }
 
 .noselect {
@@ -92,7 +140,7 @@ button:active {
 .backFullScreenContainer {
   position: absolute;
   right: 2rem;
-  bottom: 1rem;
+  bottom: 2rem;
   height: 65px;
   width: 65px;
 }
@@ -109,6 +157,21 @@ button:active {
 }
 
 .backFullScreenIcon:active {
+  transform: scale(.95);
+}
+
+.fullScreenIcon {
+  width: 100%;
+  height: 100%;
+  background: url(/assets/images/fullScreen.png) no-repeat;
+  background-size: contain;
+}
+
+.fullScreenIcon:hover {
+  cursor: pointer;
+}
+
+.fullScreenIcon:active {
   transform: scale(.95);
 }
 

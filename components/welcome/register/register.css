@@ -54,7 +54,6 @@
 }
 
 .userRegistrationForm__button {
-  transition: all ease-in .5s;
   background: var(--secondary-color);
   font-size: var(--button-font-size);
   color: white;

@@ -13,10 +13,7 @@ const initializeAnswersCompletedConstants = () => {
 };
 
 const initializeAnswersCompletedEvents = () => {
-  answersCompletedButton?.addEventListener('click', () => {
-    closeModal();
-    loadDecisionMaking2Html();
-  });
+  answersCompletedButton?.addEventListener('click', closeModalAndLoadDecisionMaking);
 };
 
 const loadAnswersCompleted = () => {

@@ -1,5 +1,6 @@
 let ovaContext2Html;
 let ovaContext2PreviousButton;
+let ovaContext2PreviousButtonText;
 let ovaContext2NextButton;
 let ovaContext2NextButtonText;
 let ovaContext2MainTitleContainer;
@@ -51,7 +52,7 @@ const initializeOvaContext2Buttons = () => {
   const previousButtonText = config.general?.previousButton?.text || '';
   const nextButtonText = config.general?.nextButton?.text || '';
 
-  ovaContext2PreviousButton.innerHTML = previousButtonText;
+  ovaContext2PreviousButtonText.innerHTML = previousButtonText;
   ovaContext2NextButtonText.innerHTML = nextButtonText;
 };
 
@@ -64,7 +65,8 @@ const initializeOvaContext2Data = () => {
 
 const initializeOvaContext2Constants = () => {
   fullScreenIcon = document.querySelector('.fullScreenIcon');
-  ovaContext2PreviousButton = document.querySelector('.previousButton__text');
+  ovaContext2PreviousButton = document.querySelector('.ovaPresentation__previousButton');
+  ovaContext2PreviousButtonText = document.querySelector('.previousButton__text');
   ovaContext2NextButton = document.querySelector('.ovaContext2NextButton');
   ovaContext2NextButtonText = document.querySelector('.nextButton__text');
   ovaContext2MainTitleContainer = document.querySelector('.mainContainer__mainTitleContainer');
@@ -79,8 +81,12 @@ const hidePictureFullScreen = () => {
 
 const showPictureFullScreen = (e) => {
   htmlBeforeFullScreen = mainContainer.innerHTML;
-  mainContainer.innerHTML = `<div class="backFullScreenContainer"><div class="backFullScreenIcon"></div></div>`;
-  mainContainer.style.background = 'url(/assets/images/background7.png)';
+  mainContainer.innerHTML = `
+    <img class="imageFullScreen" src="/assets/images/background7.png" >
+    <div class="backFullScreenContainer"><div class="backFullScreenIcon"></div></div>
+  `;
+  mainContainer.style = 'padding: 0; background: transparent; box-shadow: none;';
+  animateMainContainer();
 
   backFullScreenIcon = document.querySelector('.backFullScreenIcon');
   backFullScreenIcon?.addEventListener('click', hidePictureFullScreen);
@@ -89,10 +95,12 @@ const showPictureFullScreen = (e) => {
 const initializeOvaContext2Events = () => {
   fullScreenIcon?.addEventListener('click', showPictureFullScreen);
   ovaContext2NextButton?.addEventListener('click', loadDecisionMaking2Html);
+  ovaContext2PreviousButton?.addEventListener('click', loadInstructionsHtml);
 };
 
 const showOvaContext2InMainContainer = () => {
   mainContainer.innerHTML = ovaContext2Html;
+  animateMainContainer();
 };
 
 const loadOvaContext2Html = async () => {

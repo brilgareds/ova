@@ -1,0 +1,248 @@
+.results__pdf {
+  width: 80%;
+  margin: 0 auto;
+  padding-bottom: 4rem;
+}
+
+.pdf__titleContainer, .pdf__userDataAndSessionDataContainer, .pdf__ovaResumeContainer {
+  width: 100%;
+}
+
+.pdf__ovaResumeContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pdf__titleContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.userData__label {
+  font-weight: 600;
+}
+
+.pdf__title {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.userData__labels, .userData__values {
+  display: inline-block;
+  line-height: 2rem;
+}
+
+.userData__labels {
+  margin-right: 1rem;
+}
+
+.pdf__generalSesionData {
+  background-color: #e5e5eb;
+  border-radius: 10px;
+  padding: 1rem 2rem;
+  text-align: center;
+}
+
+.pdf__userDataAndSessionDataContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.generalSesionData__sessionDataContainer {
+  margin-bottom: 1.3rem;
+}
+
+.generalSesionData__courseIdValue {
+  font-weight: 700;
+  color: #3aa2e5;
+  font-size: 1.1rem;
+}
+
+.generalSesionData__courseIdLabel {
+  font-weight: 600;
+  color: #00345b;
+}
+
+.dataPartContainer__value {
+  color: #000;
+  background: white;
+  padding: 0 4px;
+  border-radius: 5px;
+}
+
+.dataPartContainer__valueContainer {
+  display: grid;
+  grid-gap: 2px;
+}
+
+.dataPartContainer__valueContainer--2 {
+  grid-template-columns: repeat(2, max-content);
+}
+
+.dataPartContainer__valueContainer--4 {
+  grid-template-columns: repeat(4, max-content);
+}
+
+.generalSesionData__dataPartContainer {
+  display: inline-block;
+  text-align: center;
+}
+
+.dataPartContainer__labelContainer {
+  margin: 0 auto;
+  width: max-content;
+}
+
+.generalSesionData__dayMonthYearLabelContainer {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  grid-gap: 8px;
+}
+
+.generalSesionData__startDateLabel {
+  font-weight: 600;
+}
+
+.generalSesionData__sesionTimeLabel {
+  font-weight: 600;
+}
+
+.dataPartContainer__label {
+  font-size: 0.7rem;
+}
+
+.generalSesionData__sesionTimeValue {
+  color: #ea00a5;
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+.pdf__userDataAndSessionData {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  grid-gap: 4rem;
+  margin-bottom: 3rem;
+}
+
+.pointsEarnedAndTotalPointsContainer {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.pointsEarnedAndTotalPoints {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.userTotalPointsContainer {
+  margin-top: 2rem;
+}
+
+
+.pdf__ovaResume {
+  position: relative;
+  border: 6px solid #3d3ac5;
+  border-radius: 10px;
+  padding: 1rem 2rem;
+}
+
+.pdf__medalContainer {
+  position: absolute;
+  top: -29px;
+  left: -4.4rem;
+  height: 212px;
+  width: max-content;
+}
+
+.pdf__medal {
+  width: 100%;
+  height: 100%;
+}
+
+.userTotalPointsContainer__label {
+  color: #3d3ac5;
+  font-size: 1.9rem;
+  font-weight: 700;
+}
+
+.userTotalPointsContainer__labelContainer, .userTotalPointsContainer__valueContainer {
+  text-align: center;
+}
+
+.userTotalPointsContainer__value {
+  font-size: 4rem;
+  font-weight: 600;
+}
+
+.userTotalStars {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.userAttempts__labelText, .userGoodAnswers__labelText, .userBadAnswers__labelText {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.userAttempts__valueText, .userGoodAnswers__valueText, .userBadAnswers__valueText {
+  font-size: 4rem;
+  font-weight: 600;
+}
+
+.userGoodAnswers__valueContainer, .userBadAnswers__valueContainer {
+  width: 100%;
+}
+
+.userAttempts__valueContainer, .userGoodAnswers__valueContainer, .userBadAnswers__valueContainer {
+  text-align: center;
+}
+
+.labelIconContainer {
+  width: 100%;
+  height: 100%;
+}
+
+.ovaResume__valuesRelatedToParticipation {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ovaResume__barContainer {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.ovaResume__bar {
+  border-radius: 5px;
+  background: #3d3ac5;
+  height: 100%;
+  width: 5px;
+}
+
+.userGoodAnswers__labelContainer, .userBadAnswers__labelContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.userGoodAnswers__labelIconContainer, .userBadAnswers__labelIconContainer {
+  display: flex;
+  align-items: center;
+  width: 1.2rem;
+  height: max-content;
+  margin-right: 2px;
+}
+
+.ovaResume__userAttempts, .ovaResume__userGoodAnswers, .ovaResume__userBadAnswers {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}

@@ -2,6 +2,7 @@ let ovaPresentationHtml;
 let ovaPresentationMainTitleContainer;
 let ovaPresentationNextButton;
 let ovaPresentationNextButtonText;
+let ovaPresentationPreviousButton;
 let ovaPresentationPreviousButtonText;
 let generalPresentationDescripcionTitle;
 let generalPresentationDescripcionDetail;
@@ -17,6 +18,12 @@ const getOvaPresentationHtml = async () => {
 
 const ovaPresentationNextButtonClick = () => {
   loadInstructionsHtml();
+
+  return true;
+};
+
+const ovaPresentationPreviousButtonClick = () => {
+  loadWelcome();
 
   return true;
 };
@@ -101,10 +108,12 @@ const initializeOvaPresentationData = () => {
 const showOvaPresentationInMainContainer = () => {
   mainContainer.setAttribute('class','mainContainer');
   mainContainer.innerHTML = ovaPresentationHtml;
+  animateMainContainer();
 };
 
 const initializeOvaPresentationConstants = () => {
   ovaPresentationNextButton = document.querySelector('.ovaPresentation__nextButton');
+  ovaPresentationPreviousButton = document.querySelector('.ovaPresentation__previousButton');
   ovaPresentationNextButtonText = document.querySelector('.nextButton__text');
   ovaPresentationPreviousButtonText = document.querySelector('.previousButton__text');
   ovaPresentationMainTitleContainer = document.querySelector('.mainContainer__mainTitleContainer');
@@ -115,7 +124,8 @@ const initializeOvaPresentationConstants = () => {
 };
 
 const initializeOvaPresentationEvents = () => {
-  ovaPresentationNextButton?.addEventListener('click', () => { ovaPresentationNextButtonClick(); })
+  ovaPresentationNextButton?.addEventListener('click', ovaPresentationNextButtonClick);
+  ovaPresentationPreviousButton?.addEventListener('click', ovaPresentationPreviousButtonClick);
 };
 
 const loadOvaPresentation = () => {

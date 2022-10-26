@@ -35,11 +35,11 @@
 }
 
 .objetiveImageContainer {
-  width: 14px;
-  min-width: 14px;
-  height: 19px;
-  min-height: 19px;
-  padding-top: 3px;
+  width: 13px;
+  min-width: 13px;
+  height: max-content;
+  min-height: max-content;
+  padding-top: 1px;
 }
 
 .objetiveImage {

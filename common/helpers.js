@@ -57,6 +57,28 @@ const formatStrongFont = (text) => {
   return newText;
 };
 
+const pdfConfig = {
+  margin: 1,
+  filename: 'documento.pdf',
+  image: {
+      type: 'jpeg',
+      quality: 0.98
+  },
+  html2canvas: {
+      scale: 3, // A mayor escala, mejores gráficos, pero más peso
+      letterRendering: true,
+  }
+};
+
+const downloadHtmlLikePdf = async ({ html }) => {
+
+  return html2pdf()
+    .set(pdfConfig)
+    .from(html)
+    .save('Ova results.pdf')
+    .catch(err => console.error(err));
+};
+
 const formatText = (text) => {
   if (!text) return text;
 

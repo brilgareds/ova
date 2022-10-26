@@ -1,5 +1,5 @@
 let goodAnswerHtml;
-let goodAnswerStarsContainer;
+let goodAnswerStarsSection;
 let goodAnswerButtonContinue;
 
 const getGoodAnswerModal = async () => {
@@ -10,28 +10,18 @@ const getGoodAnswerModal = async () => {
 };
 
 const initializeGoodAnswerModalEvents = () => {
-  goodAnswerButtonContinue?.addEventListener('click', () => {
-    closeModal();
-    const completed = ovaWasCompleted();
-    if (completed) return loadAnswersCompleted();
-
-    loadDecisionMaking2Html();
-  });
+  goodAnswerButtonContinue?.addEventListener('click', modalButtonContinueClick);
 };
 
 const initializeGoodAnswerModal = () => {
-  goodAnswerStarsContainer = document.querySelector('.customModalStartsPictureContainer');
+  goodAnswerStarsSection = document.querySelector('.customModalStarsPictureContainer');
   goodAnswerButtonContinue = document.querySelector('.buttonsSection__button--continue');
 };
 
 const initializeGoodAnswerModalData = () => {
-  const userData = getUserData();
-  const totalDecisionMaking = config.decisionMaking?.length;
-  const decisionMakingFinished = userData.decisionMaking?.length;
+  const starsHtml = getStarsHtml();
 
-  goodAnswerStarsContainer.innerHTML = `
-    <img alt="incorrectAnswerPicture" src="/assets/images/stars_${decisionMakingFinished}-${totalDecisionMaking}.png" class="customModalPicture" />
-  `;
+  goodAnswerStarsSection.innerHTML = starsHtml;
 };
 
 const loadGoodAnswerModal = () => {

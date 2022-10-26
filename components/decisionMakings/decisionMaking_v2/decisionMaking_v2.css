@@ -166,7 +166,7 @@
 
 .decisionMaking2__secundarySection {
   width: calc(470px + 2rem);
-  min-width: calc(470px + 2rem);
+  min-width: min(calc(470px + 2rem), 100%);
   padding-left: 2rem;
 }
 

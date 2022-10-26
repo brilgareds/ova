@@ -26,11 +26,13 @@
 
 .generalPresentationImageContainer {
   position: relative;
+  overflow: hidden;
   margin-top: 0.8rem;
   height: 400px;
   width: min(calc(470px + 2rem), 100%);
   min-width: min(calc(470px + 2rem), 100%);
   padding-left: 2rem;
+  border-radius: 0.7rem;
 }
 
 .generalPresentationDescripcion {
@@ -60,8 +62,8 @@
 
 .challengeAlert__imageContainer {
   margin-top: 0.5rem;
-  height: 65px;
   width: 65px;
+  height: max-content;
 }
 
 .challengeAlert__title {
@@ -92,7 +94,7 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  transition: all ease-in .5s;
+  /* transition: all ease-in .5s; */
   background: var(--secondary-color);
   font-size: 1.2rem;
   color: white;
@@ -140,14 +142,22 @@
 }
 
 .generalPresentationImage {
-  width: 100%;
+  float: right;
+  width: max-content;
   height: 100%;
-  border-radius: 0.7rem;
 }
 
 @media (max-width: 1080px) {
-  .challengeAlert, .buttonsSections {
+  .generalPresentationDescripcionContainer, .challengeAlert, .buttonsSections {
     width: 100%;
+  }
+
+  .generalPresentationImageContainer {
+    width: 80%;
+  }
+
+  .generalPresentation {
+    justify-content: center;
   }
 
   .buttonsSections {

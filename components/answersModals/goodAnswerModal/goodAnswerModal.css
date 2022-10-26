@@ -1,0 +1,16 @@
+.customModal__starsSection {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+.customModalStarsPictureContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background: #2e2580;
+  border: 9px solid #4627a9;
+  border-radius: 4rem;
+}
