@@ -10,224 +10,212 @@
   <link rel="stylesheet" href="/components/results/pdf/pdf.css">
   <link rel="stylesheet" href="/components/results/results.css">
 </head>
-<body>
-  <section class="results__pdf">
-    <div class="pdf__titleContainer">
-      <div class="pdf__title">
-        <span class="pdf__title primaryColor">REPORTE</span>
-      </div>
-    </div>
+<body style="padding: 0; margin: 0; border: 0; width: 100%; min-height: 100vh;">
+  <section class="results__pdfPage">
 
-    <div class="pdf__userDataAndSessionDataContainer">
-      <div class="pdf__userDataAndSessionData">
-        <div class="pdf__userData">
-          <div class="userData__labels">
-            <div class="userData__labelContainer">
-              <span class="userData__label">Nombre:</span>
-            </div>
+    <div class="results__pdfPageBackground"></div>
 
-            <div class="userData__labelContainer">
-              <span class="userData__label">Institución:</span>
-            </div>
-
-            <div class="userData__labelContainer">
-              <span class="userData__label">Situación:</span>
-            </div>
-
-            <div class="userData__labelContainer">
-              <span class="userData__label">Curso:</span>
-            </div>
-
-            <div class="userData__labelContainer">
-              <span class="userData__label">Unidad:</span>
-            </div>
-          </div>
-
-          <div class="userData__values">
-            <div class="userData__valueContainer">
-              <span class="userData__value">Jose Luis Aponte Rengifo</span>
-            </div>
-
-            <div class="userData__valueContainer">
-              <span class="userData__value">Cloudlabs</span>
-            </div>
-
-            <div class="userData__valueContainer">
-              <span class="userData__value">Lorem Ipsum Lorem ipsum</span>
-            </div>
-
-            <div class="userData__valueContainer">
-              <span class="userData__value">Lorem Ipsum Lorem ipsum</span>
-            </div>
-
-            <div class="userData__valueContainer">
-              <span class="userData__value">Lorem Ipsum Lorem ipsum</span>
-            </div>
-          </div>
+    <div class="results__pdf">
+      <div class="pdf__titleContainer">
+        <div class="pdf__title">
+          <span class="pdf__title primaryColor">REPORTE</span>
         </div>
+      </div>
 
-        <div class="pdf__generalSesionData">
-          <div class="generalSesionData__sessionDataContainer">
-            <div class="generalSesionData__courseIdLabelContainer">
-              <span class="generalSesionData__courseIdLabel">
-                ID Curso
-              </span>
-            </div>
-
-            <div class="generalSesionData__courseIdValueContainer">
-              <span class="generalSesionData__courseIdValue">
-                000010
-              </span>
-            </div>
-          </div>
-
-          <div class="generalSesionData__sessionDataContainer">
-            <div class="generalSesionData__startDateLabelContainer">
-              <span class="generalSesionData__startDateLabel">
-                Fecha Inicio
-              </span>
-            </div>
-
-            <div class="generalSesionData__dayMonthYearLabelContainer">
-              <div class="generalSesionData__dataPartContainer">
-                <div class="dataPartContainer__labelContainer">
-                  <span class="dataPartContainer__label">
-                    Día
-                  </span>
-                </div>
-
-                <div class="dataPartContainer__valueContainer dataPartContainer__valueContainer--2">
-                  <span class="dataPartContainer__value">0</span>
-                  <span class="dataPartContainer__value">0</span>
-                </div>
+      <div class="pdf__userDataAndSessionDataContainer">
+        <div class="pdf__userDataAndSessionData">
+          <div class="pdf__userData">
+            <div class="userData__labels">
+              <div class="userData__labelContainer">
+                <span class="userData__label">Nombre:</span>
               </div>
 
-              <div class="generalSesionData__dataPartContainer">
-                <div class="dataPartContainer__labelContainer">
-                  <span class="dataPartContainer__label">
-                    Mes
-                  </span>
-                </div>
-
-                <div class="dataPartContainer__valueContainer dataPartContainer__valueContainer--2">
-                  <span class="dataPartContainer__value">0</span>
-                  <span class="dataPartContainer__value">0</span>
-                </div>
+              <div class="userData__labelContainer">
+                <span class="userData__label">Institución:</span>
               </div>
 
-              <div class="generalSesionData__dataPartContainer">
-                <div class="dataPartContainer__labelContainer">
-                  <span class="dataPartContainer__label">
-                    Año
-                  </span>
-                </div>
+              <div class="userData__labelContainer">
+                <span class="userData__label">Situación:</span>
+              </div>
 
-                <div class="dataPartContainer__valueContainer dataPartContainer__valueContainer--4">
-                  <span class="dataPartContainer__value">0</span>
-                  <span class="dataPartContainer__value">0</span>
-                  <span class="dataPartContainer__value">0</span>
-                  <span class="dataPartContainer__value">0</span>
-                </div>
+              <div class="userData__labelContainer">
+                <span class="userData__label">Curso:</span>
+              </div>
+
+              <div class="userData__labelContainer">
+                <span class="userData__label">Unidad:</span>
+              </div>
+            </div>
+
+            <div class="userData__values">
+              <div class="userData__valueContainer">
+                <span class="userData__value userData__value--name"></span>
+              </div>
+
+              <div class="userData__valueContainer">
+                <span class="userData__value userData__value--institution"></span>
+              </div>
+
+              <div class="userData__valueContainer">
+                <span class="userData__value userData__value--situation"></span>
+              </div>
+
+              <div class="userData__valueContainer">
+                <span class="userData__value userData__value--course"></span>
+              </div>
+
+              <div class="userData__valueContainer">
+                <span class="userData__value userData__value--unit"></span>
               </div>
             </div>
           </div>
 
-          <div class="generalSesionData__sessionDataContainer">
-            <div class="generalSesionData__sesionTime">
-              <div class="generalSesionData__sesionTimeLabelContainer">
-                <span class="generalSesionData__sesionTimeLabel">Tiempo de sesión</span>
+          <div class="pdf__generalSesionData">
+            <div class="generalSesionData__sessionDataContainer">
+              <div class="generalSesionData__courseIdLabelContainer">
+                <span class="generalSesionData__courseIdLabel">
+                  ID Curso
+                </span>
               </div>
 
-              <div class="generalSesionData__sesionTimeValueContainer">
-                <span class="generalSesionData__sesionTimeValue">00:00:00</span>
+              <div class="generalSesionData__courseIdValueContainer">
+                <span class="generalSesionData__courseIdValue"></span>
+              </div>
+            </div>
+
+            <div class="generalSesionData__sessionDataContainer">
+              <div class="generalSesionData__startDateLabelContainer">
+                <span class="generalSesionData__startDateLabel">
+                  Fecha Inicio
+                </span>
+              </div>
+
+              <div class="generalSesionData__dayMonthYearLabelContainer">
+                <div class="generalSesionData__dataPartContainer">
+                  <div class="dataPartContainer__labelContainer">
+                    <span class="dataPartContainer__label">
+                      Día
+                    </span>
+                  </div>
+
+                  <div class="dataPartContainer__valueContainer dataPartContainer__valueContainer--2 startedDayContainer"></div>
+                </div>
+
+                <div class="generalSesionData__dataPartContainer">
+                  <div class="dataPartContainer__labelContainer">
+                    <span class="dataPartContainer__label">
+                      Mes
+                    </span>
+                  </div>
+
+                  <div class="dataPartContainer__valueContainer dataPartContainer__valueContainer--2 startedMonthContainer"></div>
+                </div>
+
+                <div class="generalSesionData__dataPartContainer">
+                  <div class="dataPartContainer__labelContainer">
+                    <span class="dataPartContainer__label">
+                      Año
+                    </span>
+                  </div>
+
+                  <div class="dataPartContainer__valueContainer dataPartContainer__valueContainer--4 startedYearContainer"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="generalSesionData__sessionDataContainer">
+              <div class="generalSesionData__sesionTime">
+                <div class="generalSesionData__sesionTimeLabelContainer">
+                  <span class="generalSesionData__sesionTimeLabel">Tiempo de sesión</span>
+                </div>
+
+                <div class="generalSesionData__sesionTimeValueContainer">
+                  <span class="generalSesionData__sesionTimeValue"></span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="pdf__ovaResumeContainer">
-      <div class="pdf__ovaResume">
-        <div class="pdf__medalContainer">
-          <img src="/assets/images/medal.png" class="pdf__medal" >
-        </div>
-
-        <div class="ovaResume__valuesRelatedToParticipation">
-          <div class="ovaResume__userAttempts">
-            <div class="userAttempts__labelContainer">
-              <span class="userAttempts__labelText">Intentos</span>
-            </div>
-
-            <div class="userAttempts__valueContainer">
-              <span class="userAttempts__valueText">5</span>
-            </div>
+      <div class="pdf__ovaResumeContainer">
+        <div class="pdf__ovaResume">
+          <div class="pdf__medalContainer">
+            <img src="/assets/images/medal.png" class="pdf__medal" >
           </div>
 
-          <div class="ovaResume__barContainer">
-            <div class="ovaResume__bar"></div>
-          </div>
-
-          <div class="ovaResume__userGoodAnswers">
-            <div class="userGoodAnswers__labelContainer">
-              <div class="userGoodAnswers__labelIconContainer">
-                <img class="labelIconContainer" src="/assets/images/ok.png" ></img>
+          <div class="ovaResume__valuesRelatedToParticipation">
+            <div class="ovaResume__userAttempts">
+              <div class="userAttempts__labelContainer">
+                <span class="userAttempts__labelText">Intentos</span>
               </div>
 
-              <div class="userGoodAnswers__labelTextContainer">
-                <span class="userGoodAnswers__labelText">Aciertos</span>
+              <div class="userAttempts__valueContainer">
+                <span class="userAttempts__valueText"></span>
               </div>
             </div>
 
-            <div class="userGoodAnswers__valueContainer">
-              <span class="userGoodAnswers__valueText">4</span>
+            <div class="ovaResume__barContainer">
+              <div class="ovaResume__bar"></div>
             </div>
-          </div>
 
-          <div class="ovaResume__userBadAnswers">
-            <div class="userBadAnswers__labelContainer">
-              <div class="userBadAnswers__labelIconContainer">
-                <img class="labelIconContainer" src="/assets/images/bad.png"  />
+            <div class="ovaResume__userGoodAnswers">
+              <div class="userGoodAnswers__labelContainer">
+                <div class="userGoodAnswers__labelIconContainer">
+                  <img class="labelIconContainer" src="/assets/images/ok.png" ></img>
+                </div>
+
+                <div class="userGoodAnswers__labelTextContainer">
+                  <span class="userGoodAnswers__labelText">Aciertos</span>
+                </div>
               </div>
-  
-              <div class="userBadAnswers__labelTextContainer">
-                <span class="userBadAnswers__labelText">Fallos</span>
+
+              <div class="userGoodAnswers__valueContainer">
+                <span class="userGoodAnswers__valueText"></span>
               </div>
             </div>
-  
-            <div class="userBadAnswers__valueContainer">
-              <span class="userBadAnswers__valueText">1</span>
+
+            <div class="ovaResume__userBadAnswers">
+              <div class="userBadAnswers__labelContainer">
+                <div class="userBadAnswers__labelIconContainer">
+                  <img class="labelIconContainer" src="/assets/images/bad.png"  />
+                </div>
+    
+                <div class="userBadAnswers__labelTextContainer">
+                  <span class="userBadAnswers__labelText">Fallos</span>
+                </div>
+              </div>
+    
+              <div class="userBadAnswers__valueContainer">
+                <span class="userBadAnswers__valueText"></span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="userTotalPointsContainer">
-          <div class="userTotalPointsContainer__labelContainer">
-            <span class="userTotalPointsContainer__label">Puntaje</span>
+          <div class="userTotalPointsContainer">
+            <div class="userTotalPointsContainer__labelContainer">
+              <span class="userTotalPointsContainer__label">Puntaje</span>
+            </div>
+
+            <div class="userTotalPointsContainer__valueContainer">
+              <span class="userTotalPointsContainer__value"></span>
+            </div>
           </div>
 
-          <div class="userTotalPointsContainer__valueContainer">
-            <span class="userTotalPointsContainer__value">4</span>
+          <div class="userTotalStarsContainer">
+            <div class="userTotalStars"></div>
+          </div>
+
+          <div class="pointsEarnedAndTotalPointsContainer">
+            <span class="pointsEarnedAndTotalPoints"></span>
           </div>
         </div>
 
-        <div class="userTotalStarsContainer">
-          <div class="userTotalStars"></div>
-        </div>
-
-        <div class="pointsEarnedAndTotalPointsContainer">
-          <span class="pointsEarnedAndTotalPoints">98/100</span>
-        </div>
+        <div style="page-break-after:always; clear:both"></div>
       </div>
-    </div>
+    </section>
+  </div>
 
-    <div style="page-break-after:always; clear:both"></div>
-
-    <div class="allQuestionsContainer">
-      <div class="questionContainer">
-        This is other text!
-      </div>
-    </div>
-  </section>
+  <section class="results__pdfPage results__pdfPage--questions"></section>
 </body>
 </html>

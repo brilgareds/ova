@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>OVA Template</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="viewport" content="width=device-width">
+</head>
+<body>
+
+  <div class="reportsContainer"></div>
+
+  <script src="/common/helpers.js"></script>
+  <script src="/common/fetch.js"></script>
+  <script src="/libraries/html2pdf.bundle.min.js"></script>
+
+  <script>
+    let reportHtml;
+    const startsContainer = '<div class="userTotalStars">';
+    const totalPointsContainer = '<span class="userTotalPointsContainer__value">';
+    const pointsEarnedAndTotalPointsContainer = '<span class="pointsEarnedAndTotalPoints">';
+    const goodAnswersContainer = `<span class="userGoodAnswers__valueText">`;
+    const badAnswersContainer = `<span class="userBadAnswers__valueText">`;
+    const attemptsContainer = `<span class="userAttempts__valueText">`;
+    const questionsContainer = `<section class="results__pdfPage results__pdfPage--questions">`;
+    const newPageHtml = `<div style="page-break-after:always; clear:both"></div>`;
+    const userNameContainer = `<span class="userData__value userData__value--name">`;
+    const userInstitutionContainer = `<span class="userData__value userData__value--institution">`;
+    const userSituationContainer = `<span class="userData__value userData__value--situation">`;
+    const userCourseContainer = `<span class="userData__value userData__value--course">`;
+    const userCourseIdContainer = `<span class="generalSesionData__courseIdValue">`;
+    const userUnitContainer = `<span class="userData__value userData__value--unit">`;
+    const startedDayContainer = `<div class="dataPartContainer__valueContainer dataPartContainer__valueContainer--2 startedDayContainer">`;
+    const startedMonthContainer = `<div class="dataPartContainer__valueContainer dataPartContainer__valueContainer--2 startedMonthContainer">`;
+    const startedYearContainer = `<div class="dataPartContainer__valueContainer dataPartContainer__valueContainer--4 startedYearContainer">`;
+    const totalSesionTimeContainer = `<span class="generalSesionData__sesionTimeValue">`;
+
+    const getAnswersRequired = ({ current }) => {
+      const openRequiredTag = `<span class="answerRequired">`;
+      const closeRequiredTag = `</span>`;
+
+      const titlesAnswersRequired = current.answers?.map((answer) => current.options[answer-1].title);
+      const html = `${openRequiredTag}${titlesAnswersRequired.join(`${closeRequiredTag}<br>${openRequiredTag}`)}${closeRequiredTag}`;
+
+      return html;
+    };
+
+    const getAttemptsInAQuestion = (userData, i) => {
+      const goodAnswers = userData.decisionMaking?.[i]?.badAnswers?.length || 0;
+      const badAnswers = userData.decisionMaking?.[i]?.goodAnswers?.length || 0;
+      const attempts = (goodAnswers + badAnswers);
+      
+      return attempts;
+    };
+
+    const loadReportsStars = async () => {
+      const { userData, totalPointsFormated, totalGoodAnswers, totalBadAnswers, totalAttempts, maxPoints } = userParticipation();
+
+      const userName = `${userNameContainer}${userData.name}`;
+      reportHtml = reportHtml.replace(userNameContainer, userName);
+
+      const userInstitution = `${userInstitutionContainer}${userData.institution}`;
+      reportHtml = reportHtml.replace(userInstitutionContainer, userInstitution);
+
+      const userSituation = `${userSituationContainer}${userData.situation}`;
+      reportHtml = reportHtml.replace(userSituationContainer, userSituation);
+      
+      const userCourse = `${userCourseContainer}${userData.course}`;
+      reportHtml = reportHtml.replace(userCourseContainer, userCourse);
+
+      const userCourseId = `${userCourseIdContainer}${userData.courseId}`;
+      reportHtml = reportHtml.replace(userCourseIdContainer, userCourseId);
+      
+      const userUnit = `${userUnitContainer}${userData.unit}`;
+      reportHtml = reportHtml.replace(userUnitContainer, userUnit);
+
+      const date = dateToObject();
+      console.log('The new date is: ', date);
+
+      const userStartedDay = `
+        ${startedDayContainer}
+        <span class="dataPartContainer__value">${date.day[0]}</span>
+        <span class="dataPartContainer__value">${date.day[1]}</span>
+      `;
+      reportHtml = reportHtml.replace(startedDayContainer, userStartedDay);
+
+      const userStartedMonth = `
+        ${startedMonthContainer}
+        <span class="dataPartContainer__value">${date.month[0]}</span>
+        <span class="dataPartContainer__value">${date.month[1]}</span>
+      `;
+      reportHtml = reportHtml.replace(startedMonthContainer, userStartedMonth);
+      
+      const userStartedYear = `
+        ${startedYearContainer}
+        <span class="dataPartContainer__value">${date.year[0]}</span>
+        <span class="dataPartContainer__value">${date.year[1]}</span>
+        <span class="dataPartContainer__value">${date.year[2]}</span>
+        <span class="dataPartContainer__value">${date.year[3]}</span>
+      `;
+      reportHtml = reportHtml.replace(startedYearContainer, userStartedYear);
+
+      const difference = timeBetweenTwoDates(userData.ovaStarted, userData.ovaFinished);
+      const hours = `0${parseInt(difference.hours, 10)}`.slice(-2);
+      const minutes = `0${parseInt(difference.minutes, 10)}`.slice(-2);
+      const seconds = `0${parseInt(difference.seconds, 10)}`.slice(-2);
+
+      const userTotalSesionTime = `
+        ${totalSesionTimeContainer}
+        ${hours}:${minutes}:${seconds}
+      `;
+      reportHtml = reportHtml.replace(totalSesionTimeContainer, userTotalSesionTime);
+
+      const attempts = `${attemptsContainer}${totalAttempts}`;
+      reportHtml = reportHtml.replace(attemptsContainer, attempts);
+
+      const goodAnswers = `${goodAnswersContainer}${totalGoodAnswers}`;
+      reportHtml = reportHtml.replace(goodAnswersContainer, goodAnswers);
+
+      const badAnswers = `${badAnswersContainer}${totalBadAnswers}`;
+      reportHtml = reportHtml.replace(badAnswersContainer, badAnswers);
+      
+      const totalPoints = `${totalPointsContainer}${totalPointsFormated}`;
+      reportHtml = reportHtml.replace(totalPointsContainer, totalPoints);
+
+      const stars = `${startsContainer}${getStarsHtml()}`;
+      reportHtml = reportHtml.replace(startsContainer, stars);
+
+      const pointsEarnedAndTotalPoints = `${pointsEarnedAndTotalPointsContainer}${totalPoints}/${maxPoints}`;
+      reportHtml = reportHtml.replace(pointsEarnedAndTotalPointsContainer, pointsEarnedAndTotalPoints);
+
+      const questions = config.decisionMaking?.reduce((acc, current, i) => (
+        `${acc}
+          ${questionsContainer}
+            <div class="results__pdfPageBackground2"></div>
+
+            <div class="results__pdf results__pdf--questions">
+              <div class="pdf__titleQuestionContainer">
+                <h1 class="pdf__titleQuestion" style="color: #3d3ac5;">Pregunta ${i+1}</h1>
+              </div>
+
+              <div class="questionTitleContainer">
+                ${formatText(current.title?.join('<br><br>'))}<br><br>
+              </div>
+
+              <div class="questionDetailContainer">
+                ${formatText(current.detail?.join('<br><br>'))}
+              </div>
+
+              <div class="userParticipationDetail"> 
+                <div class="answerRequired">
+                  <p class="answerRequired__title">${formatText('***Respuesta correcta:***')}</p>
+
+                  <span class="answerRequired__detail">
+                    ${getAnswersRequired({ current })}
+                  </span>
+                </div>
+
+                <div class="userAttemptsDetail">
+                  <p class="userAttemptsDetail__title">${formatText('***Total Intentos:***')}</p>
+
+                  <span class="userAttemptsDetail__text">${getAttemptsInAQuestion(userData, i)}</span>
+                </div>
+              </div>
+              ${newPageHtml}
+            </div>
+          </section>
+        `
+      ), '');
+
+      reportHtml = reportHtml.replace(questionsContainer, questions);
+    };
+
+    const loadReportsData = async () => {
+      await loadReportsStars();
+    };
+
+    const loadReportBaseHtml = async () => {
+      reportHtml = await getHtmlForPdf();
+    };
+
+    const run = async () => {
+      await getConfigJson();
+      await loadReportBaseHtml();
+      await loadReportsData();
+      
+      // document.querySelector('.reportsContainer').innerHTML = reportHtml;
+      await downloadHtmlLikePdf({ html: reportHtml });
+
+      window.close();
+    };
+
+    window.addEventListener('DOMContentLoaded', run);
+  </script>
+
+</body>
+</html>

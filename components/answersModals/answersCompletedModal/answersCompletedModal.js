@@ -9,7 +9,7 @@ const getAnswersCompletedHtml = async () => {
 };
 
 const initializeAnswersCompletedConstants = () => {
-  answersCompletedButton = document.querySelector('.buttonsSection__button--completed');
+  answersCompletedButton = document.querySelector('.answersCompletedConfirmButton');
 };
 
 const initializeAnswersCompletedEvents = () => {

@@ -31,8 +31,10 @@
 
 .results__resumeContainer {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  height: 260px;
+  height: max-content;
+  /* height: 260px; */
 }
 
 .results__medalContainer {
@@ -61,7 +63,7 @@
 }
 
 .results__finalPoints, .results__checkAnswersResume {
-  width: 400px;
+  width: min(313px, 100%);
 }
 
 .results__finalPoints, .results__medalContainer, .results__checkAnswersResume {

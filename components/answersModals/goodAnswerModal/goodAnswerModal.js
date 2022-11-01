@@ -15,7 +15,7 @@ const initializeGoodAnswerModalEvents = () => {
 
 const initializeGoodAnswerModal = () => {
   goodAnswerStarsSection = document.querySelector('.customModalStarsPictureContainer');
-  goodAnswerButtonContinue = document.querySelector('.buttonsSection__button--continue');
+  goodAnswerButtonContinue = document.querySelector('.buttonsSection__button--continueButton');
 };
 
 const initializeGoodAnswerModalData = () => {

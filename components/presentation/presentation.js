@@ -112,8 +112,8 @@ const showOvaPresentationInMainContainer = () => {
 };
 
 const initializeOvaPresentationConstants = () => {
-  ovaPresentationNextButton = document.querySelector('.ovaPresentation__nextButton');
-  ovaPresentationPreviousButton = document.querySelector('.ovaPresentation__previousButton');
+  ovaPresentationNextButton = document.querySelector('.presentationNextButton');
+  ovaPresentationPreviousButton = document.querySelector('.presentationPreviousButton');
   ovaPresentationNextButtonText = document.querySelector('.nextButton__text');
   ovaPresentationPreviousButtonText = document.querySelector('.previousButton__text');
   ovaPresentationMainTitleContainer = document.querySelector('.mainContainer__mainTitleContainer');

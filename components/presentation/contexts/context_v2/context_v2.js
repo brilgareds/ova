@@ -65,9 +65,9 @@ const initializeOvaContext2Data = () => {
 
 const initializeOvaContext2Constants = () => {
   fullScreenIcon = document.querySelector('.fullScreenIcon');
-  ovaContext2PreviousButton = document.querySelector('.ovaPresentation__previousButton');
+  ovaContext2PreviousButton = document.querySelector('.context2PreviousButton');
   ovaContext2PreviousButtonText = document.querySelector('.previousButton__text');
-  ovaContext2NextButton = document.querySelector('.ovaContext2NextButton');
+  ovaContext2NextButton = document.querySelector('.context2NextButton');
   ovaContext2NextButtonText = document.querySelector('.nextButton__text');
   ovaContext2MainTitleContainer = document.querySelector('.mainContainer__mainTitleContainer');
   ovaContext2TitleContainer = document.querySelector('.generalPresentationDescripcion__mainParagraphContainer');

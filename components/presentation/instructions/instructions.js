@@ -51,9 +51,9 @@ const initializeOvaInstructionsEvents = () => {
 
 const initializeOvaInstructionsValues = () => {
   tabs = document.querySelectorAll('.tabsContainer__button');
-  buttonNext = document.querySelector('.instructions__nextButton');
+  buttonNext = document.querySelector('.instructionsNextButton');
   buttonGlosary = document.querySelector('.tabsContainer__buttonGlosary');
-  buttonPrevious = document.querySelector('.instructions__previousButton');
+  buttonPrevious = document.querySelector('.instructionsPreviousButton');
   buttonThematic = document.querySelector('.tabsContainer__buttonThematic');
   buttonObjectives = document.querySelector('.tabsContainer__buttonObjectives');
   buttonInstruction = document.querySelector('.tabsContainer__buttonInstruction');

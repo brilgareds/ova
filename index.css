@@ -15,8 +15,10 @@
 }
 
 html, body {
+  position: relative;
   margin: 0;
   padding: 0;
+  border: 0;
   width: 100%;
   min-height: 100vh;
 }
@@ -205,12 +207,48 @@ button:active {
   font-weight: 600;
 }
 
+.buttonsSection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2rem;
+  max-width: 100%;
+}
+
+.buttonsSectionContainer {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  width: min(calc(470px + 2rem), 100%);
+}
+
+.buttonsSection__button {
+  background: var(--secondary-color);
+  height: 41px;
+  display: inline-flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 1.2rem;
+  color: white;
+  width: 11rem;
+  border-radius: 1.2rem;
+}
+
+::-webkit-scrollbar {
+  cursor: pointer !important;
+}
+
+::-webkit-scrollbar:hover {
+  cursor: pointer !important;
+}
+
 .containerWithCustomScroll {
   overflow-y: scroll;
 }
 
 /* width */
 .containerWithCustomScroll::-webkit-scrollbar {
+  cursor: pointer;
   width: 20px;
 }
 
@@ -240,6 +278,41 @@ button:active {
   }
 }
 
+@media (max-width: 1080px) {
+  .buttonsSectionContainer {
+    justify-content: space-evenly;
+  }
+
+  .generalPresentationSecundarySection {
+    margin-top: 3rem;
+  }
+
+  .buttonsSection__button:not(:first-of-type) {
+    margin-left: 1rem;
+  }
+
+  .results__resumeContainer {
+    display: block !important;
+  }
+
+  .results__finalPoints, .results__checkAnswersResume {
+    width: min(320px, 100%);
+  }
+
+  .results__finalPoints, .results__checkAnswersResume, .results__medalContainer {
+    margin: 0 auto;
+  }
+
+  .buttonsSection {
+    justify-content: center !important;
+    width: 100%;
+  }
+
+  .buttonsSection__button {
+    margin-top: 1rem;
+  }
+}
+
 @media (max-width: 1023px) {
   .mainContainer__secondaryBackground {
     display: none !important;
@@ -251,7 +324,44 @@ button:active {
     margin: 0 2rem !important;
   }
 
-  button {
+  .decisionMaking2__iconSection {
+    display: none;
+  }
+
+  .decisionMaking2 {
+    flex-wrap: wrap;
+  }
+
+  .generalInstructions__sectionImageContainer {
+    margin-top: 3rem !important;
+  }
+
+  .generalPresentation--context2 {
+    padding-bottom: 6rem;
+  }
+
+  .generalPresentationSecundarySection {
+    display: block !important;
+  }
+
+  .generalPresentationImageContainer {
+    margin-top: 5rem !important;
+  }
+
+  .results__mainSection{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .results__buttonGroup, .buttonsSection__button {
+    margin-left: 0 !important;
+  }
+
+  .customModal {
+    width: 90% !important;
+  }
+
+  button, .results__buttonGroup {
     width: 100% !important;
   }
 

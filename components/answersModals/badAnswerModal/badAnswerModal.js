@@ -1,4 +1,6 @@
 let modalHtml;
+let modalBackButton;
+let modalRestartButton;
 let modalBadAnswerHtml;
 
 const getBadAnswerModal = async () => {
@@ -9,12 +11,18 @@ const getBadAnswerModal = async () => {
 };
 
 const initializeBadAnswerModalEvents = () => {
-  modalBackButton?.addEventListener('click', modalButtonContinueClick);
-  modalRestartButton?.addEventListener('click', restartOva);
+  modalBackButton?.addEventListener('click', closeModalAndLoadDecisionMaking);
+  modalRestartButton?.addEventListener('click', closeModal);
+};
+
+const initializeBadAnswerConstanst = () => {
+  modalRestartButton = document.querySelector('.badAnswerReloadButton');
+  modalBackButton = document.querySelector('.badAnswerBackButton');
 };
 
 const loadBadAnswerModal = () => {
   initializeModalConstants();
   showModal(modalBadAnswerHtml);
+  initializeBadAnswerConstanst();
   initializeBadAnswerModalEvents();
 };

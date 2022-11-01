@@ -14,27 +14,25 @@ const getResultsHtml = async () => {
 };
 
 const initializeResultConstanst = () => {
-  resultsRestartButton = document.querySelector('.buttonsSection__button--reload');
-  resultsPreviousButton = document.querySelector('.buttonsSection__button--back');
-  resultsDownloadButton = document.querySelector('.buttonsSection__button--download');
+  resultsRestartButton = document.querySelector('.buttonsSection__button--reloadButton');
+  resultsPreviousButton = document.querySelector('.buttonsSection__button--backButton');
+  resultsDownloadButton = document.querySelector('.buttonsSection__button--downloadButton');
   resultsStartContainer = document.querySelector('.detailPoints__starsCompletedContainer');
   resultsTotalPoints = document.querySelector('.detailPoints__bigNumber');
   resultsGoodAnswers = document.querySelector('.goodAnswers__bigNumber');
   resultsBadAnswers = document.querySelector('.badAnswers__bigNumber');
 };
 
-const startsContainer = '<div class="userTotalStars">';
-
 const downloadResultsPdf = async () => {
+  window.open('/reports.html', '_blank');
+  // await downloadHtmlLikePdf({ html });
+
   // const pdfElement = document.querySelector('.results__pdf');
   // pdfElement.classList.remove('hidden');
-  const newStars = `${startsContainer}${getStarsHtml()}`;
-  htmlForPdf = htmlForPdf.replace(startsContainer, newStars);
-  // pdfElement.innerHTML = htmlForPdf;
+  // pdfElement.innerHTML = html;
 
-  await downloadHtmlLikePdf({ html: htmlForPdf });
+  /* window.open('/components/results/pdf/pdf.html', '_blank'); */
   // pdfElement.classList.add('hidden');
-  getHtmlForPdf();
 };
 
 const initializeResultsEvents = () => {
@@ -49,22 +47,12 @@ const showResults = () => {
 };
 
 const initializeResultData = () => {
-  const maxPoints = 100;
-  const currentData = getUserDataWithOutUpdateRequestTime();
-  const totalQuestions = config.decisionMaking?.length || 0;
-  const totalGoodAnswers = currentData?.decisionMaking?.totalGoodAnswers || 0;
-  const validDecimals = 2;
-  const totalPoints = ((totalGoodAnswers * maxPoints) / totalQuestions)?.toString();
-  const lastDotIndex = totalPoints?.lastIndexOf('.');
-  const lastIndexToUse = (lastDotIndex !== -1) ? lastDotIndex : totalPoints.length - 1;
-  const totalPointsFormated = (!validDecimals)
-    ? Number(totalPoints.substring(0, lastIndexToUse))
-    : Number(totalPoints.substring(0, (lastIndexToUse + 1) + validDecimals));
+  const {  totalPointsFormated, totalGoodAnswers, totalBadAnswers } = userParticipation();
 
   resultsStartContainer.innerHTML = getStarsHtml();
   resultsTotalPoints.innerHTML = totalPointsFormated;
   resultsGoodAnswers.innerHTML = totalGoodAnswers;
-  resultsBadAnswers.innerHTML = totalQuestions - totalGoodAnswers;
+  resultsBadAnswers.innerHTML = totalBadAnswers;
 };
 
 const loadResult = () => {

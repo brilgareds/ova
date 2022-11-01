@@ -75,31 +75,10 @@
   width: 100%;
 }
 
-.buttonsSections {
-  display: flex;
-  justify-content: end;
-  align-items: end;
-  width: min(calc(470px + 2rem), 100%);
-}
-
-.buttonsSections__nextButtonContainer {
-  display: flex;
+.buttonsSection--presentation {
   justify-content: end;
   padding-top: 1rem;
   margin-bottom: 1rem;
-}
-
-.nextButton, .previousButton {
-  height: 41px;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  /* transition: all ease-in .5s; */
-  background: var(--secondary-color);
-  font-size: 1.2rem;
-  color: white;
-  width: 11rem;
-  border-radius: 1.2rem;
 }
 
 .nextButton__icon {
@@ -148,19 +127,17 @@
 }
 
 @media (max-width: 1080px) {
-  .generalPresentationDescripcionContainer, .challengeAlert, .buttonsSections {
+  .generalPresentationDescripcionContainer, .challengeAlert, .buttonsSectionContainer {
     width: 100%;
   }
 
   .generalPresentationImageContainer {
-    width: 80%;
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
 
   .generalPresentation {
     justify-content: center;
-  }
-
-  .buttonsSections {
-    justify-content: space-evenly;
   }
 }

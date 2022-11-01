@@ -1,25 +1,11 @@
-let config;
 let htmlForPdf;
 let mainContainer;
 
 // window.jsPDF = window.jspdf.jsPDF;
 
-const getConfigJson = async () => {
-  const url = '/config.json';
-  config = (await jsonFetch({ url })) || {};
-
-  return config;
-};
-
-const getHtmlForPdf = async () => {
-  const url = '/components/results/pdf/pdf.html';
-  htmlForPdf = await htmlFetch({ url });
-
-  return htmlForPdf;
-};
-
 const restartOva = () => {
-  window.location.href = '/';
+  deleteUserData();
+  location.reload();
 };
 
 const initializeOtherPages = async () => {
@@ -61,47 +47,21 @@ const animateMainContainer = () => {
 
 const initializeUserData = () => {
   const userData = JSON.stringify({
-    name: '',
-    lastName: '',
-    decisionMaking: []
+    name: 'The Name',
+    lastName: 'The Lastname',
+    institution: 'The Institution',
+    situation: 'The Situation',
+    course: 'The course name',
+    courseId: 777,
+    decisionMaking: [],
+    unit: 'The Unit!!',
+    ovaStarted: new Date(),
   });
 
   return userData;
 };
 
-const getUserDataWithOutUpdateRequestTime = () => {
-  const currentData = JSON.parse(localStorage.getItem('ovaUserData') || initializeUserData());
-
-  currentData.decisionMaking.totalGoodAnswers = countTrueState(currentData.decisionMaking);
-  return currentData;
-};
-
-const setUserData = (newData) => {
-  if (newData?.totalGoodAnswers !== undefined) delete newData.totalGoodAnswers;
-
-  const currentData = getUserDataWithOutUpdateRequestTime();
-  const newOvaUserData = { ...currentData, ...newData };
-  localStorage.setItem('ovaUserData', JSON.stringify(newOvaUserData));
-
-  return newOvaUserData;
-};
-
-const initializeMainConstants = async () => {
-  config = await getConfigJson();
-  mainContainer = document.querySelector('.mainContainer');
-};
-
 const initializeOvaUserData = async () => { getUserData(); };
-
-const getUserData = () => {
-  const requestTime = new Date();
-  const currentUserData = getUserDataWithOutUpdateRequestTime();
-  if (!currentUserData.timeStart) currentUserData.timeStart = requestTime;
-
-  const newUserData = setUserData({ requestTime });
-
-  return newUserData;
-};
 
 const initializeAndLoadFirstPage = async () => {
   await getWelcomeHtml();

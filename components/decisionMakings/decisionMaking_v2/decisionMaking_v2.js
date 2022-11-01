@@ -170,7 +170,7 @@ const initializeDecisionMaking2Constants = () => {
   decisionMaking2OptionsContainer = document.querySelector('.decisionMaking2__optionsContainer');
   decisionMaking2RadioButtonsContainer = document.querySelector('.decisionMaking2__radioButtonsContainer');
   decisionMaking2NextButton = document.querySelector('.decisionMaking2NextButton');
-  decisionMaking2PreviousButton = document.querySelector('.ovaPresentation__previousButton');
+  decisionMaking2PreviousButton = document.querySelector('.decisionMaking2PreviousButton');
 
   iconClass = 'decisionMaking2__optionIcon';
   textClass = 'decisionMaking2__radioButtonText';
@@ -257,18 +257,12 @@ const formatNewDecision = (data) => {
 
 const initializeDecision = () => ({ status: false, badAnswers: [], goodAnswers: []});
 
-const countTrueState = (array) => {
-  let count = 0;
-
-  array?.forEach(({ status }) => {
-    if (status) count += 1;
-  });
-
-  return count;
+const setOvaEndTime = () => {
+  
 };
 
 const getCurrentDecisionMaking = () => {
-  const decisionMaking = getUserDataWithOutUpdateRequestTime()?.decisionMaking;
+  const { decisionMaking, ovaFinished } = getUserDataWithOutUpdateRequestTime();
   const totalGoodAnswers = decisionMaking.totalGoodAnswers || 0;
   const userDecisionMakingLength = !(decisionMaking?.length) ? 0 : decisionMaking.length;
   const configDecisionMakingLength = config.decisionMaking?.length;
@@ -278,11 +272,12 @@ const getCurrentDecisionMaking = () => {
   const lastValidIndex = (userLastIndex > configLastIndex) ? configLastIndex : userLastIndex;
   const lastValidDecision = decisionMaking?.[lastValidIndex];
   const isTheLastDecision = (userLastIndex >= configLastIndex);
-  const lastDecisionCompleted = (lastValidDecision?.goodAnswers?.length || lastValidDecision?.badAnswers?.length);
-  const ovaCompleted = (isTheLastDecision); // && lastDecisionCompleted
+  const lastDecisionCompleted = (lastValidDecision?.goodAnswers?.length);
+  const ovaCompleted = (isTheLastDecision && lastDecisionCompleted);
   // const lastIndex = (isTheLastDecision) ? lastValidIndex : lastValidIndex + 1;
   const lastIndex =  (lastDecisionCompleted) ? lastValidIndex + 1 : lastValidIndex;
   if (!decisionMaking?.[lastIndex]) decisionMaking[lastIndex] = initializeDecision();
+  if (ovaCompleted && !ovaFinished) setUserData({ ovaFinished: new Date() });
 
   return { decisionMaking, lastIndex, ovaCompleted, userLastIndex, configDecisionMakingLength, totalGoodAnswers };
 };
@@ -301,7 +296,11 @@ const setNewDecision = (data) => {
   setUserData({ decisionMaking });
 };
 
+const topScroll = () => window.scrollTo(0, 0);
+
 const showResultAnswerModal = (data) => {
+  topScroll();
+
   const wasGoodAnswer = checkAnswer(data);
   if (!wasGoodAnswer) return loadBadAnswerModal();
 
@@ -324,7 +323,8 @@ const decisionFinished = () => {
 
 const initializeDecisionMaking2Events = () => {
   const optionIcons = document.querySelectorAll(`.${iconClass}`);
-  optionIcons?.forEach((icon) => icon.addEventListener('click', iconOptionClick))
+  optionIcons?.forEach((icon) => icon.addEventListener('click', iconOptionClick));
+  optionIcons?.[0]?.click();
 
   const optionButtons = document.querySelectorAll(`.${radioButtonIconClass}`);
   optionButtons?.forEach((button) => button.addEventListener('click', selectAnOption));

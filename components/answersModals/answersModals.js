@@ -1,6 +1,4 @@
 let customModals;
-let modalBackButton;
-let modalRestartButton;
 let numberModal = 0;
 
 const initializeModalConstants = () => {
@@ -9,7 +7,7 @@ const initializeModalConstants = () => {
 };
 
 const getFormatedHtmlModal = (modalHtml) => {
-  const backButtonClass = 'buttonsSection__button--back';
+  const backButtonClass = 'buttonsSection__button--backButton';
   const newModalHtml = modalHtml
     .replace('class="customModalContainer"', `class="customModalContainer customModalContainer--${numberModal}"`)
     .replace(backButtonClass, `${backButtonClass} ${backButtonClass}--${numberModal}`);
@@ -20,29 +18,6 @@ const getFormatedHtmlModal = (modalHtml) => {
 const setNewModal = (newModalHtml) => {
   customModals.innerHTML = `${newModalHtml}${customModals.innerHTML}`;
   customModals.classList.add('customModals--active');
-  modalBackButton = document.querySelector('.buttonsSection__button--back');
-  modalRestartButton = document.querySelector('.buttonsSection__button--reload');
-};
-
-const getStarsHtml = () => {
-  const userData = getUserData();
-  const { totalGoodAnswers } = userData?.decisionMaking;
-  const totalDecisionMaking = config.decisionMaking?.length;
-
-  let startsHtml = '';
-
-  for (let currentStar = 1; currentStar <= totalDecisionMaking; currentStar += 1) {
-    const isAnActiveStar = (totalGoodAnswers >= currentStar);
-    const starImageName = (isAnActiveStar) ? 'star-active.png' : 'star-inactive.png';
-
-    startsHtml += `
-      <div class="customModalStarPictureContainer">
-        <img alt="incorrectAnswerPicture" src="/assets/images/${starImageName}" class="customModalStarPicture"  />
-      </div>
-    `;
-  }
-
-  return startsHtml;
 };
 
 const showModal = (modalHtml) => {
@@ -62,6 +37,10 @@ const modalButtonContinueClick = () => {
   if (ovaCompleted) return loadAnswersCompleted();
 
   loadDecisionMaking2Html();
+};
+
+const modalButtonBackClick = () => {
+  closeModal();
 };
 
 const closeModalAndLoadDecisionMaking = () => {

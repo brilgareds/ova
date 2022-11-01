@@ -1,3 +1,4 @@
+let config;
 
 const formDataToObject = function (formData) {
   const obj = {};
@@ -58,7 +59,8 @@ const formatStrongFont = (text) => {
 };
 
 const pdfConfig = {
-  margin: 1,
+  margin: 0,
+  padding: 0,
   filename: 'documento.pdf',
   image: {
       type: 'jpeg',
@@ -67,7 +69,165 @@ const pdfConfig = {
   html2canvas: {
       scale: 3, // A mayor escala, mejores gráficos, pero más peso
       letterRendering: true,
+  },
+  jsPDF: {
+    unit: 'in', format: 'letter', orientation: 'portrait'
   }
+};
+
+const getConfigJson = async () => {
+  const url = '/config.json';
+  config = (await jsonFetch({ url })) || {};
+
+  return config;
+};
+
+const getHtmlForPdf = async () => {
+  const url = '/components/results/pdf/pdf.html';
+  htmlForPdf = await htmlFetch({ url });
+
+  return htmlForPdf;
+};
+
+const initializeMainConstants = async () => {
+  config = await getConfigJson();
+  mainContainer = document.querySelector('.mainContainer');
+};
+
+const countTrueState = (array) => {
+  let count = 0;
+
+  array?.forEach(({ status }) => {
+    if (status) count += 1;
+  });
+
+  return count;
+};
+
+const countBadState = (array) => {
+  let count = 0;
+
+  array?.forEach(({ status }) => {
+    if (!status) count += 1;
+  });
+
+  return count;
+};
+
+const setUserData = (newData) => {
+  if (newData?.totalGoodAnswers !== undefined) delete newData.totalGoodAnswers;
+
+  const currentData = getUserDataWithOutUpdateRequestTime();
+  const newOvaUserData = { ...currentData, ...newData };
+  localStorage.setItem('ovaUserData', JSON.stringify(newOvaUserData));
+
+  return newOvaUserData;
+};
+
+const deleteUserData = () => localStorage.removeItem('ovaUserData');
+
+const dateToObject = (date = new Date()) => {
+  const day = (`0${date.getDate()}`).slice(-2);
+  const month = (`0${date.getMonth() + 1}`).slice(-2);
+  const year = String(date.getFullYear());
+
+  return { day, month, year };
+};
+
+const timeBetweenTwoDates = (date1, date2) => {
+  let delta = Math.abs(date1 - date2) / 1000;
+
+  const hours = Math.floor(delta / 3600) % 24;
+  delta -= hours * 3600;
+
+  const minutes = Math.floor(delta / 60) % 60;
+  delta -= minutes * 60;
+
+  const seconds = delta % 60;
+
+  const response = {
+    hours,
+    minutes,
+    seconds,
+    delta,
+  };
+
+  return response;
+};
+
+const getUserData = () => {
+  const requestTime = new Date();
+  const currentUserData = getUserDataWithOutUpdateRequestTime();
+  if (!currentUserData.timeStart) currentUserData.timeStart = requestTime;
+
+  const newUserData = setUserData({ requestTime });
+
+  return newUserData;
+};
+
+const getUserDataWithOutUpdateRequestTime = () => {
+  const currentData = JSON.parse(localStorage.getItem('ovaUserData') || initializeUserData());
+
+  let totalAttempts = 0;
+  let totalBadAnswers = 0;
+  let totalGoodAnswers = 0;
+
+  currentData.decisionMaking?.forEach(({ goodAnswers, badAnswers }) => {
+    totalBadAnswers += badAnswers?.length || 0;
+    totalGoodAnswers += goodAnswers?.length || 0;
+  });
+
+  totalAttempts = (totalGoodAnswers + totalBadAnswers);
+
+  currentData.decisionMaking.totalGoodAnswers = totalGoodAnswers || 0;
+  currentData.decisionMaking.totalBadAnswers = totalBadAnswers || 0;
+  currentData.decisionMaking.totalAttempts = totalAttempts || 0;
+
+  currentData.ovaStarted = new Date(currentData.ovaStarted);
+  if (currentData.ovaFinished) currentData.ovaFinished = new Date(currentData.ovaFinished);
+
+  return currentData;
+};
+
+const userParticipation = () => {
+  const maxPoints = 100;
+  const userData = getUserDataWithOutUpdateRequestTime();
+  const totalQuestions = config.decisionMaking?.length || 0;
+  const totalAttempts = userData?.decisionMaking?.totalAttempts;
+  const totalBadAnswers = userData?.decisionMaking?.totalBadAnswers;
+  const totalGoodAnswers = userData?.decisionMaking?.totalGoodAnswers;
+  const validDecimals = 2;
+  const totalPoints = ((totalGoodAnswers * maxPoints) / totalAttempts)?.toString();
+  const lastDotIndex = totalPoints?.lastIndexOf('.');
+  const lastIndexToUse = (lastDotIndex !== -1) ? lastDotIndex : totalPoints.length - 1;
+  const totalPointsFormated = (!validDecimals)
+    ? Number(totalPoints.substring(0, lastIndexToUse))
+    : Number(totalPoints.substring(0, (lastIndexToUse + 1) + validDecimals));
+
+  const response = { userData, totalPointsFormated, totalGoodAnswers, totalQuestions, totalBadAnswers, maxPoints, totalAttempts };
+
+  return response;
+};
+
+const getStarsHtml = () => {
+  const userData = getUserData();
+  const { totalGoodAnswers } = userData?.decisionMaking;
+  const totalDecisionMaking = config.decisionMaking?.length;
+
+  let startsHtml = '';
+
+  for (let currentStar = 1; currentStar <= totalDecisionMaking; currentStar += 1) {
+    const isAnActiveStar = (totalGoodAnswers >= currentStar);
+    const starImageName = (isAnActiveStar) ? 'star-active.png' : 'star-inactive.png';
+
+    startsHtml += `
+      <div class="customModalStarPictureContainer">
+        <img alt="incorrectAnswerPicture" src="/assets/images/${starImageName}" class="customModalStarPicture"  />
+      </div>
+    `;
+  }
+
+  return startsHtml;
 };
 
 const downloadHtmlLikePdf = async ({ html }) => {

@@ -39,6 +39,7 @@
 }
 
 .decisionMaking2__optionsContainer {
+  min-height: 400px;
   padding-top: 1rem;
 }
 
@@ -156,8 +157,9 @@
   background-size: contain;
 }
 
-.buttonsSections--decisionMaking2 {
-  margin-top: 4rem;
+.buttonsSection--decisionMaking2 {
+  /* margin-top: 4rem; */
+  margin-top: 7.8rem;
 }
 
 .decisionMaking2__titles {
