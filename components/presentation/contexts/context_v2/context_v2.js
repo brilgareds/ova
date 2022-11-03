@@ -49,8 +49,12 @@ const initializeOvaContext2Detail = () => {
 };
 
 const initializeOvaContext2Buttons = () => {
+  const { decisionMaking, ovaCompleted } = getCurrentDecisionMaking();
+  let nextButtonText = config.general?.nextButton?.text;
+  if (ovaCompleted) nextButtonText = config.general?.nextButton?.textReport;
+  else if (decisionMaking.totalAttempts) nextButtonText = config.general?.nextButton?.textContinueOva;
+
   const previousButtonText = config.general?.previousButton?.text || '';
-  const nextButtonText = config.general?.nextButton?.text || '';
 
   ovaContext2PreviousButtonText.innerHTML = previousButtonText;
   ovaContext2NextButtonText.innerHTML = nextButtonText;
@@ -82,10 +86,12 @@ const hidePictureFullScreen = () => {
 const showPictureFullScreen = (e) => {
   htmlBeforeFullScreen = mainContainer.innerHTML;
   mainContainer.innerHTML = `
-    <img class="imageFullScreen" src="/assets/images/background7.png" >
-    <div class="backFullScreenContainer"><div class="backFullScreenIcon"></div></div>
+    <div style="position: relative; position: relative; height: 100%; width: 100%;">
+      <img class="imageFullScreen" src="/assets/images/background7.png">
+      <div class="backFullScreenContainer"><div class="backFullScreenIcon"></div></div>
+    </div>
   `;
-  mainContainer.style = 'padding: 0; background: transparent; box-shadow: none;';
+  mainContainer.style = 'height: calc(100vh - 6rem); padding: 0; background: transparent; box-shadow: none; text-align: center;';
   animateMainContainer();
 
   backFullScreenIcon = document.querySelector('.backFullScreenIcon');

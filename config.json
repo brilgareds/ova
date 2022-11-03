@@ -5,10 +5,13 @@
       "Ñ", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
     ],
     "nextButton": {
-      "text": "Siguiente"
+      "text": "Siguiente",
+      "textContinueOva": "Continuar",
+      "textReport": "Reporte"
     },
     "previousButton": {
-      "text": "Anterior"
+      "text": "Anterior",
+      "textBackContext": "Ver reto"
     }
   },
   "presentation": {
@@ -148,24 +151,31 @@
         "Al ingresar al simulador podrás ver el contexto en el cual el reto se plantea.",
         "A medida que vas avanzando en la práctica de laboratorio se te presentarán situaciones que requieren tomar una decisión adecuada.",
         "También encontrarás ejercicios de aprendizaje que te permiten reforzar conceptos y te preparan para el momento en que debas tomar la decisión",
-        "Cada vez que tomes una decisión correcta ganarás una estrella.",
+        "Cada vez que tomes una decisión correcta ***ganarás una estrella.***",
         "Al ingresar al simulador podrás ver el contexto en el cual el reto se plantea.",
         "A medida que vas avanzando en la práctica de laboratorio se te presentarán situaciones que requieren tomar una decisión adecuada.",
         "También encontrarás ejercicios de aprendizaje que te permiten reforzar conceptos y te preparan para el momento en que debas tomar la decisión",
-        "Cada vez que tomes una decisión correcta ganarás una estrella.",
+        "Cada vez que tomes una decisión correcta ***ganarás una estrella.***",
         "Al ingresar al simulador podrás ver el contexto en el cual el reto se plantea.",
         "A medida que vas avanzando en la práctica de laboratorio se te presentarán situaciones que requieren tomar una decisión adecuada.",
         "También encontrarás ejercicios de aprendizaje que te permiten reforzar conceptos y te preparan para el momento en que debas tomar la decisión",
-        "Cada vez que tomes una decisión correcta ganarás una estrella.",
+        "Cada vez que tomes una decisión correcta ***ganarás una estrella.***",
         "Al ingresar al simulador podrás ver el contexto en el cual el reto se plantea.",
         "A medida que vas avanzando en la práctica de laboratorio se te presentarán situaciones que requieren tomar una decisión adecuada.",
         "También encontrarás ejercicios de aprendizaje que te permiten reforzar conceptos y te preparan para el momento en que debas tomar la decisión",
-        "Cada vez que tomes una decisión correcta ganarás una estrella.",
+        "Cada vez que tomes una decisión correcta ***ganarás una estrella.***",
         "Al ingresar al simulador podrás ver el contexto en el cual el reto se plantea.",
         "A medida que vas avanzando en la práctica de laboratorio se te presentarán situaciones que requieren tomar una decisión adecuada.",
         "También encontrarás ejercicios de aprendizaje que te permiten reforzar conceptos y te preparan para el momento en que debas tomar la decisión",
-        "Cada vez que tomes una decisión correcta ganarás una estrella."
+        "Cada vez que tomes una decisión correcta ***ganarás una estrella.***"
       ]
+    },
+    "glosary": {
+      "iconPath": "",
+      "title": [
+        "Para que logres una comprensión completa del simulador te recomendamos leer el glosario que se te presenta al inicio del módulo."
+      ],
+      "detail": []
     }
   },
   "ovaContext": {
@@ -195,6 +205,13 @@
       "type": 2,
       "picturePath": "",
       "iconPath": "",
+      "goodAnswerText": [
+        "En este apartado se coloca un mensaje de felicitación con alguna indicación que el temático considere pertinente para seguir avanzando."
+      ],
+      "badAnswerText": [
+        "La diferencia de la pantalla tipo 4 y tipo 5 es que la pantalla tipo cuatro es de transición mientras que la pantalla tipo 5 te lleva a un final, por lo tanto, en esta pantalla debe colocarse una retroalimentación de la decisión errónea que se ha tomado.En este espacio debe colocarse la retroalimentación.",
+        "En este espacio debe colocarse la retroalimentación."
+      ],
       "title": [
         "Texto corto donde se le propone al usuario tomar una decisión de acuerdo a determinada situación."
       ],
@@ -228,6 +245,13 @@
       "type": 2,
       "picturePath": "",
       "iconPath": "",
+      "goodAnswerText": [
+        "En este apartado se coloca un mensaje de felicitación con alguna indicación que el temático considere pertinente para seguir avanzando."
+      ],
+      "badAnswerText": [
+        "La diferencia de la pantalla tipo 4 y tipo 5 es que la pantalla tipo cuatro es de transición mientras que la pantalla tipo 5 te lleva a un final, por lo tanto, en esta pantalla debe colocarse una retroalimentación de la decisión errónea que se ha tomado.En este espacio debe colocarse la retroalimentación.",
+        "En este espacio debe colocarse la retroalimentación."
+      ],
       "title": [
         "2 Texto corto donde se le propone al usuario tomar una decisión de acuerdo a determinada situación."
       ],
@@ -261,6 +285,13 @@
       "type": 2,
       "picturePath": "",
       "iconPath": "",
+      "goodAnswerText": [
+        "En este apartado se coloca un mensaje de felicitación con alguna indicación que el temático considere pertinente para seguir avanzando."
+      ],
+      "badAnswerText": [
+        "La diferencia de la pantalla tipo 4 y tipo 5 es que la pantalla tipo cuatro es de transición mientras que la pantalla tipo 5 te lleva a un final, por lo tanto, en esta pantalla debe colocarse una retroalimentación de la decisión errónea que se ha tomado.En este espacio debe colocarse la retroalimentación.",
+        "En este espacio debe colocarse la retroalimentación."
+      ],
       "title": [
         "3 Texto corto donde se le propone al usuario tomar una decisión de acuerdo a determinada situación."
       ],
@@ -294,6 +325,13 @@
       "type": 2,
       "picturePath": "",
       "iconPath": "",
+      "goodAnswerText": [
+        "En este apartado se coloca un mensaje de felicitación con alguna indicación que el temático considere pertinente para seguir avanzando."
+      ],
+      "badAnswerText": [
+        "La diferencia de la pantalla tipo 4 y tipo 5 es que la pantalla tipo cuatro es de transición mientras que la pantalla tipo 5 te lleva a un final, por lo tanto, en esta pantalla debe colocarse una retroalimentación de la decisión errónea que se ha tomado.En este espacio debe colocarse la retroalimentación.",
+        "En este espacio debe colocarse la retroalimentación."
+      ],
       "title": [
         "4 Texto corto donde se le propone al usuario tomar una decisión de acuerdo a determinada situación."
       ],
@@ -327,6 +365,13 @@
       "type": 2,
       "picturePath": "",
       "iconPath": "",
+      "goodAnswerText": [
+        "En este apartado se coloca un mensaje de felicitación con alguna indicación que el temático considere pertinente para seguir avanzando."
+      ],
+      "badAnswerText": [
+        "La diferencia de la pantalla tipo 4 y tipo 5 es que la pantalla tipo cuatro es de transición mientras que la pantalla tipo 5 te lleva a un final, por lo tanto, en esta pantalla debe colocarse una retroalimentación de la decisión errónea que se ha tomado.En este espacio debe colocarse la retroalimentación.",
+        "En este espacio debe colocarse la retroalimentación."
+      ],
       "title": [
         "5 Texto corto donde se le propone al usuario tomar una decisión de acuerdo a determinada situación."
       ],
@@ -361,6 +406,11 @@
       ]
     }
   ],
+  "results": {
+    "detail": [
+      "Lorem ipsum dolor sit amet, ***consectetuer adipiscing elit,*** sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse."
+    ]
+  },
   "glosary": {
     "iconPath": "",
     "title": [

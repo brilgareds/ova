@@ -87,7 +87,7 @@ button:active {
 
 .imageFullScreen {
   width: 100%;
-  height: max-content;
+  height: 100%;
 }
 
 @keyframes opacity-animation1 {

@@ -1,0 +1,122 @@
+body {font-family: Verdana, Geneva, sans-serif;}
+
+a{
+    outline: 0;
+}
+
+.resultado{
+	width: 70%;
+	height: 300px;
+	border-color: #000;
+	border-style: solid;
+	margin-bottom: 10px;
+	cursor: copy;
+}
+
+.textos{
+	width: 70%;
+	height: 30px;
+	border-color: #000;
+	border-style: solid;
+	margin-bottom: 10px;
+	margin-left: 0;
+}
+
+.textosCortos{
+    width: 60%;
+    height: 30px;
+    border-color: #000;
+    border-style: solid;
+    margin-bottom: 10px;
+    margin-left: 0;
+}
+
+.textosCortosSmall{
+    width: 55%;
+    height: 30px;
+    border-color: #000;
+    border-style: solid;
+    margin-bottom: 10px;
+    margin-left: 0;
+}
+
+.textosGlosario{
+    width: 40%;
+    height: 30px;
+    border-color: #000;
+    border-style: solid;
+    margin-bottom: 10px;
+    margin-left: 0;
+    margin-right: 5%;
+}
+
+.botonesCortos{
+    width: 10%;
+    height: 30px;
+    margin-left: 0;
+}
+
+.tipos{
+	width: 60%;
+}
+
+label {
+   	width: 25%;
+   	float: left;
+   	margin: 0;
+   	text-align: left;
+    font-size: 12px;
+}
+
+.radioOp {
+    float: left;
+    margin: 0;
+    text-align: left;
+    font-size: 10px;
+}
+
+.botonesGlosario{
+    width: 60%;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.botones{
+	margin-right: 10px;
+}
+
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    margin-bottom: 20px;
+}
+
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+    outline: 0;
+}
+
+.tab button:hover {
+    background-color: #ddd;
+    outline: 0;
+}
+
+.tab button.active {
+    background-color: #ccc;
+    outline: 0;
+}
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}

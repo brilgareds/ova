@@ -5,6 +5,7 @@ let resultsStartContainer;
 let resultsGoodAnswers;
 let resultsBadAnswers;
 let resultsDownloadButton;
+let resultsText;
 
 const getResultsHtml = async () => {
   const url = '/components/results/results.html';
@@ -21,6 +22,7 @@ const initializeResultConstanst = () => {
   resultsTotalPoints = document.querySelector('.detailPoints__bigNumber');
   resultsGoodAnswers = document.querySelector('.goodAnswers__bigNumber');
   resultsBadAnswers = document.querySelector('.badAnswers__bigNumber');
+  resultsText = document.querySelector('.results__finalTextContainer');
 };
 
 const downloadResultsPdf = async () => {
@@ -53,6 +55,14 @@ const initializeResultData = () => {
   resultsTotalPoints.innerHTML = totalPointsFormated;
   resultsGoodAnswers.innerHTML = totalGoodAnswers;
   resultsBadAnswers.innerHTML = totalBadAnswers;
+
+  let resultsTextHtml = '';
+
+  config.results?.detail?.forEach((text) => {
+    resultsTextHtml += `<p class="results__finalText">${formatText(text)}</p>`;
+  });
+
+  resultsText.innerHTML = resultsTextHtml;
 };
 
 const loadResult = () => {

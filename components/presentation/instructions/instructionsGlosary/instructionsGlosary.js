@@ -1,6 +1,7 @@
 let glosary;
 let glosaryHtml;
 let buttonGlosary;
+let instructionsGlosaryTitle;
 let instructionsGlosaryHtml;
 
 const getInstructionGlosaryHtml = async () => {
@@ -24,13 +25,6 @@ const loadExtraSection = () => {
 
 const loadGlosary = () => {
   document.querySelector('.glosaryAlphabetContainer__letter')?.click();
-};
-
-const initializeGlosary = (e) => {
-  updateTab(e.currentTarget);
-  loadInstructionsGlosaryHtml();
-  loadExtraSection();
-  loadGlosary();
 };
 
 const getWordsByLetter = (letter) => {
@@ -91,4 +85,31 @@ const updataTabGlosary = (e) => {
 const updateGlosary = (e) => {
   updataTabGlosary(e);
   filterGlosaryWithALetter(e.target.innerHTML);
+};
+
+const loadInstructionsGlosaryConstants = () => {
+  instructionsGlosaryTitle = document.querySelector('.ovaObjectives__descriptionsTitles');
+};
+
+const loadInstructionsGlosaryData = () => {
+  let titlesHtml = '';
+
+  config?.instructionsAndObjectives?.glosary?.title?.forEach((title) => {
+    titlesHtml += `
+      <p class="ovaObjectives__descriptionTitleContainer">
+        <span class="ovaObjectives__descriptionTitle">${formatText(title)}</span>
+      </p>
+    `;
+  });
+
+  instructionsGlosaryTitle.innerHTML = titlesHtml;
+};
+
+const initializeGlosary = (e) => {
+ updateTab(e.currentTarget);
+ loadInstructionsGlosaryHtml();
+ loadInstructionsGlosaryConstants();
+ loadInstructionsGlosaryData();
+ loadExtraSection();
+ loadGlosary();
 };

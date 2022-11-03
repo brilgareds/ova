@@ -257,10 +257,6 @@ const formatNewDecision = (data) => {
 
 const initializeDecision = () => ({ status: false, badAnswers: [], goodAnswers: []});
 
-const setOvaEndTime = () => {
-  
-};
-
 const getCurrentDecisionMaking = () => {
   const { decisionMaking, ovaFinished } = getUserDataWithOutUpdateRequestTime();
   const totalGoodAnswers = decisionMaking.totalGoodAnswers || 0;
@@ -270,6 +266,7 @@ const getCurrentDecisionMaking = () => {
   const userLastIndex = (userDecisionMakingLength) ? userDecisionMakingLength - 1 : 0;
   const configLastIndex = (configDecisionMakingLength) ? configDecisionMakingLength - 1 : 0;
   const lastValidIndex = (userLastIndex > configLastIndex) ? configLastIndex : userLastIndex;
+  const lastValidConfigDecision = config.decisionMaking?.[lastValidIndex];
   const lastValidDecision = decisionMaking?.[lastValidIndex];
   const isTheLastDecision = (userLastIndex >= configLastIndex);
   const lastDecisionCompleted = (lastValidDecision?.goodAnswers?.length);
@@ -279,7 +276,19 @@ const getCurrentDecisionMaking = () => {
   if (!decisionMaking?.[lastIndex]) decisionMaking[lastIndex] = initializeDecision();
   if (ovaCompleted && !ovaFinished) setUserData({ ovaFinished: new Date() });
 
-  return { decisionMaking, lastIndex, ovaCompleted, userLastIndex, configDecisionMakingLength, totalGoodAnswers };
+  const response = {
+    decisionMaking,
+    lastValidDecision,
+    lastValidConfigDecision,
+    lastIndex,
+    lastValidIndex,
+    ovaCompleted,
+    userLastIndex,
+    configDecisionMakingLength,
+    totalGoodAnswers
+  };
+
+  return response;
 };
 
 const setNewDecision = (data) => {

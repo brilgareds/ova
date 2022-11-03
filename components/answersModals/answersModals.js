@@ -33,10 +33,7 @@ const closeModal = () => {
 
 const modalButtonContinueClick = () => {
   closeModal();
-  const { ovaCompleted } = getCurrentDecisionMaking();
-  if (ovaCompleted) return loadAnswersCompleted();
-
-  loadDecisionMaking2Html();
+  loadAnswersCompleted();
 };
 
 const modalButtonBackClick = () => {

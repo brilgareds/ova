@@ -38,7 +38,7 @@ const initializeOvaObjectivesData = () => {
   let extraInfoDetail = '';
 
   config.instructionsAndObjectives?.objectives?.title?.forEach((text) => {
-    title += `<p class="ovaObjectives__description">${formatText(text)}</p>`;
+    title += `<p class="ovaObjectives__descriptionTitleContainer">${formatText(text)}</p>`;
   });
 
   config.instructionsAndObjectives?.objectives?.detail?.forEach((text) => {
