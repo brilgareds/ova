@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Generador OVA</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="/index.css">
+</head>
+<body>
+
+  <div class="generator">
+    <div class="tabs">
+      <button class="tab" data-name-section-related="presentation">
+        Presentación
+      </button>
+
+      <button class="tab" data-name-section-related="objectives">
+        Objetivos
+      </button>
+
+      <button class="tab" data-name-section-related="glosary">
+        Glosario
+      </button>
+
+      <button class="tab" data-name-section-related="context">
+        Contexto
+      </button>
+
+      <button class="tab" data-name-section-related="decisionMaking">
+        Toma de decisiones
+      </button>
+
+      <button class="tab" data-name-section-related="results">
+        Resultados
+      </button>
+    </div>
+
+    <form class="formGenerator">
+      <div class="formGeneratorSection formGeneratorSection__presentation" data-section-numeration="1">
+        <div class="commonInputAndLabelContainers">
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Titulo principal:</label>
+            <div class="inputsContainer" data-type-input="simple" data-form-section="presentation" data-form-prop="mainTitle"></div>
+          </div>
+  
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Titulos secundarios:</label>
+            <div class="inputsContainer" data-type-input="multiple" data-form-section="presentation" data-form-prop="secundaryTitles"></div>
+          </div>
+  
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Texto:</label>
+  
+            <div class="inputsContainer" data-type-input="multiple" data-form-section="presentation" data-form-prop="detail"></div>
+          </div>
+  
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Extra información - titulo:</label>
+            <div class="inputsContainer" data-type-input="multiple" data-form-section="presentation" data-form-prop="extraInfo" data-form-prop2="title"></div>
+          </div>
+  
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Extra información - texto:</label>
+            <div class="inputsContainer" data-type-input="multiple" data-form-section="presentation" data-form-prop="extraInfo" data-form-prop2="detail"></div>
+          </div>
+
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Imagen:</label>
+            <div class="inputsContainer" data-type-input="picture" data-form-section="presentation" data-form-prop="picture"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="formGeneratorSection formGeneratorSection__objectives">
+        <div class="commonInputAndLabelContainers">
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Objectivos - titulo:</label>
+            <div class="inputsContainer" data-type-input="multiple" data-form-section="instructionsAndObjectives" data-form-prop="objectives" data-form-prop2="title"></div>
+          </div>
+  
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Objectivos - texto:</label>
+            <div class="inputsContainer" data-type-input="multiple" data-form-section="instructionsAndObjectives" data-form-prop="objectives" data-form-prop2="detail"></div>
+          </div>
+  
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Tematica - titulo:</label>
+            <div class="inputsContainer" data-type-input="multiple" data-form-section="instructionsAndObjectives" data-form-prop="thematics" data-form-prop2="title"></div>
+          </div>
+  
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Tematicas:</label>
+            <div class="inputsContainer" data-type-input="thematics" data-type-value="object" data-form-section="instructionsAndObjectives" data-form-prop="thematics" data-form-prop2="detail"></div>
+          </div>
+  
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Instrucciones - titulo:</label>
+            <div class="inputsContainer" data-type-input="multiple" data-form-section="instructionsAndObjectives" data-form-prop="instructions" data-form-prop2="title"></div>
+          </div>
+  
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Instrucciones - texto:</label>
+            <div class="inputsContainer" data-type-input="multiple" data-form-section="instructionsAndObjectives" data-form-prop="instructions" data-form-prop2="detail"></div>
+          </div>
+  
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Extra información - titulo:</label>
+            <div class="inputsContainer" data-type-input="multiple" data-form-section="instructionsAndObjectives" data-form-prop="extraInfo" data-form-prop2="title"></div>
+          </div>
+  
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Extra información - texto:</label>
+            <div class="inputsContainer" data-type-input="multiple" data-form-section="instructionsAndObjectives" data-form-prop="extraInfo" data-form-prop2="detail"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="formGeneratorSection formGeneratorSection__glosary">
+        <div class="commonInputAndLabelContainers">
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Glosario - titulo:</label>
+            <div class="inputsContainer" data-type-input="multiple" data-form-section="instructionsAndObjectives" data-form-prop="glosary" data-form-prop2="title"></div>
+          </div>
+  
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Glosario - texto:</label>
+            <div class="inputsContainer" data-type-input="multiple" data-form-section="instructionsAndObjectives" data-form-prop="glosary" data-form-prop2="detail"></div>
+          </div>
+  
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Glosario - Palabras:</label>
+            <div class="inputsContainer" data-type-input="glosary" data-type-value="object" data-form-section="instructionsAndObjectives" data-form-prop="glosary" data-form-prop2="words"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="formGeneratorSection formGeneratorSection__context">
+        <div class="commonInputAndLabelContainers">
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Titulo principal:</label>
+            <div class="inputsContainer" data-type-input="simple" data-form-section="ovaContext" data-form-prop="bigTitle"></div>
+          </div>
+  
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Titulos secundarios:</label>
+            <div class="inputsContainer" data-type-input="multiple" data-form-section="ovaContext" data-form-prop="title"></div>
+          </div>
+  
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Texto:</label>
+            <div class="inputsContainer" data-type-input="multiple" data-form-section="ovaContext" data-form-prop="detail"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="formGeneratorSection formGeneratorSection__decisionMaking"></div>
+
+      <div class="formGeneratorSection formGeneratorSection__results">
+        <div class="commonInputAndLabelContainers">
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Texto:</label>
+            <div class="inputsContainer" data-type-input="multiple" data-form-section="results" data-form-prop="detail"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="buttonsSection">
+        <button class="button button-generate">Generar</button>
+      </div>
+    </form>
+
+  </div>
+
+  <script src="/index.js"></script>
+</body>
+</html>
