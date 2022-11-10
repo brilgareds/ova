@@ -28,7 +28,7 @@ const loadGlosary = () => {
 };
 
 const getWordsByLetter = (letter) => {
-  const { words } = config.glosary;
+  const { words } = config.instructionsAndObjectives.glosary;
   const newWordsArray = [];
 
   words.forEach((wordsObject) => {
