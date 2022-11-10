@@ -621,12 +621,10 @@ const generateOva = async (e) => {
   const images = getAllFormValues(e.target);
   console.log(images);
   
-  /*
   const response = await postFetch({ url, body });
   console.log('Response is: ', response);
 
   if (response) window.open(response);
-  */
 };
 
 const inputUpdated = (e) => {
