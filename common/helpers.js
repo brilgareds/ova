@@ -1,4 +1,5 @@
 const { join } = require('path');
+const formidable = require('formidable');
 
 class Helpers {
   static systemSeparator = () => {
@@ -16,6 +17,16 @@ class Helpers {
 
     return newUrl;
   };
+
+  static customFormidable = (req) => new Promise((resolve, reject) => {
+    const form = formidable({ multiples: true });
+
+    form.parse(req, (err, fields, files) => {
+      if (err) return reject(err);
+
+      return resolve({ fields, files });
+    });
+  });
 }
 
 module.exports = Helpers;

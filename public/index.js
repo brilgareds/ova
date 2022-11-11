@@ -36,7 +36,7 @@ const initializeGeneratorValues = () => {
     },
     presentation: {
       mainTitle: 'Presentación general del OVA',
-      picture: {},
+      picture: '',
       secundaryTitles: [
         'En esta pantalla se presenta una descripción general de lo que es el OVA, cómo está estructurado y qué componentes teóricos se muestran en el mismo. Esta pantalla es una bienvenida y una invitación para que el usuario aborde de manera adecuada el recurso.'
       ],
@@ -58,6 +58,7 @@ const initializeGeneratorValues = () => {
       },
     },
     instructionsAndObjectives: {
+      picture: '',
       extraInfo: {
         title: [''],
         detail: [
@@ -248,6 +249,7 @@ const initializeGeneratorValues = () => {
       }
     },
     ovaContext: {
+      picture: '',
       bigTitle: [
         'Contexto – Título'
       ],
@@ -616,11 +618,16 @@ const generateOva = async (e) => {
   e.preventDefault();
 
   const url = '/ova/generate';
-  const body = getCurrentGeneratorValues();
-  
   const images = getAllFormValues(e.target);
-  console.log(images);
-  
+  console.log('images: ', images);
+  const body = { ...getCurrentGeneratorValues(), images };
+  /*
+  const body = new FormData();
+
+  for(const name in data) {
+    body.append(name, data[name]);
+  }
+  */
   const response = await postFetch({ url, body });
   console.log('Response is: ', response);
 
@@ -754,7 +761,6 @@ const setTabsClickEvent = () => {
 const addDecisionButtonClicked = (e) => {
   const currentValues = getCurrentGeneratorValues();
   const decisionIndex = Number(e.target?.dataset?.decisionIndex || '0');
-  debugger;
   
   let decisionMakings = [];
   currentValues.decisionMaking?.forEach((decision, i) => {
@@ -839,10 +845,13 @@ const setAddInputButton = () => {
 
 const setInputPictureButtonClicked = () => {
   inputPictureButtons?.forEach((input) => {
-    input?.addEventListener('change', function (e) {
+    input?.addEventListener('change', (e) => {
+      initializeMainValues();
+      return true;
+
       // const file = e.target.files?.[0];
-      const { formSection, formProp } = e.target?.parentElement?.parentElement?.dataset;
-      initializeData();
+      // const { formSection, formProp } = e.target?.parentElement?.parentElement?.dataset;
+      // initializeData();
     })
   });
 };
@@ -851,7 +860,7 @@ const initializeEvents = () => {
   setFormSubmitEvent();
   setTabsClickEvent();
   setAddInputButton();
-  setInputPictureButtonClicked();
+  // setInputPictureButtonClicked();
 };
 
 const getInputSimpleHtml = (value = '') => (`
@@ -967,24 +976,23 @@ const getInputGlosary = (values) => {
   return html;
 };
 
-const getInputPictureHtml = (value = '', index = 0) => (`
+const getInputPictureHtml = (value = '', index = 0, name='') => (`
   <div class="inputContainer" style="justify-content: right">
-    <span ${(value !== '') ? 'style="color: green;font-style: normal;font-weight: 600;"': ''} class="inputPicture__name">${(value !== '') ? 'Imagen actualizada' : 'Imagen por defecto'}</span>
-
-    <label for="inputPictureButton" class="inputPictureButton custom-file-upload" class="input input--text noselect">
+    <label for="inputPictureButton__${name}" class="inputPictureButton custom-file-upload" class="input input--text noselect">
         Subir Imagen
     </label>
 
-    <input type="file" accept="image/png, image/jpeg" name="presentationPicture" id="inputPictureButton" class="inputPictureButtons" style="display: none;" value="${value}" min="1" max="20" data-index="${index}">
+    <input type="file" accept="image/png,image/jpeg" name="${name}" id="inputPictureButton__${name}" style="display: none;" class="inputPictureButtons">
   </div>
 `);
 
 const getCustomHtml = (data) => {
   let value;
-  const { formSection, formProp, formProp2, formProp3, typeInput } = data;
+  const { formSection, formProp, formProp2, formProp3, typeInput, name } = data;
   const generatorValues = getGeneratorValues();
 
-  if (formProp3) value = generatorValues?.[formSection]?.[formProp]?.[formProp2]?.[formProp3];
+  if (typeInput === 'picture') value = getAllFormValues(mainForm)?.[name]?.name || '';
+  else if (formProp3) value = generatorValues?.[formSection]?.[formProp]?.[formProp2]?.[formProp3];
   else if (formProp2) value = generatorValues?.[formSection]?.[formProp]?.[formProp2];
   else if (formProp) value = generatorValues?.[formSection]?.[formProp];
   else value = generatorValues?.[formSection];
@@ -995,10 +1003,7 @@ const getCustomHtml = (data) => {
   if (typeInput === 'glosary') return getInputGlosary(value);
   if (typeInput === 'thematics') return getInputThematics(value);
   if (typeInput === 'decisionMakingOptions') return getDecisionMakingOptions(value);
-  if (typeInput === 'picture') {
-    value = getAllFormValues(mainForm)?.presentationPicture;
-    return getInputPictureHtml(value);
-  }
+  if (typeInput === 'picture') { return getInputPictureHtml(value, 0, name); }
 
   return '';
 };
@@ -1111,6 +1116,13 @@ const initializeMainValues = () => {
   const tabIndex = (currentValues?.generator?.currentTab || 1) - 1;
 
   tabs?.[tabIndex]?.click();
+};
+
+const restartPictureInputs = () => {
+  const currentValues = getCurrentGeneratorValues();
+  currentValues.presentation.picture = '';
+  currentValues.instructionsAndObjectives.picture = '';
+  setGeneratorValues(currentValues);
 };
 
 const pageReady = () => {
