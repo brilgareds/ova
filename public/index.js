@@ -574,9 +574,6 @@ const postFetch = async ({ url, body={} }) => {
   let response;
   const options = {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
     body: JSON.stringify(body),
   };
 

@@ -1,5 +1,6 @@
 const morgan = require('morgan');
 const express = require('express');
+const fileUpload = require('express-fileupload');
 const bodyParser = require('body-parser');
 const ovaRouter = require('./routes/ova.routes');
 
@@ -26,6 +27,7 @@ class App {
 
   setMiddlewares = () => {
     this.app.use(morgan('dev'));
+    // this.app.use(fileUpload({ useTempFiles : true, tempFileDir : '/tmp/' }));
     this.app.use(bodyParser.urlencoded({ extended: false }));
     this.app.use(bodyParser.json());
   };

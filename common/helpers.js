@@ -1,5 +1,5 @@
 const { join } = require('path');
-const formidable = require('formidable');
+const Formidable = require('formidable');
 
 class Helpers {
   static systemSeparator = () => {
@@ -19,11 +19,28 @@ class Helpers {
   };
 
   static customFormidable = (req) => new Promise((resolve, reject) => {
-    const form = formidable({ multiples: true });
+    try {
+      const form = new Formidable();
 
+      form.parse(req, (err, fields, files) => {
+        if (err) throw err;
+  
+        return resolve({ fields, files });
+      });
+    } catch (e) {
+      return reject(e);
+    }
+  });
+
+  static asyncFormidable = (req) => new Promise((resolve, reject) => {
+    const form = new Formidable({
+      multiples: true,
+      maxFileSize: 800 * 1024 * 1024,
+    });
+  
     form.parse(req, (err, fields, files) => {
-      if (err) return reject(err);
-
+      if (err) return reject(new Error(err.message));
+  
       return resolve({ fields, files });
     });
   });
