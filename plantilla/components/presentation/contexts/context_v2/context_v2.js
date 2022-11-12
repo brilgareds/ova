@@ -12,7 +12,7 @@ let htmlBeforeFullScreen;
 let backFullScreenIcon;
 
 const getOvaContext2 = async () => {
-  const url = '/components/presentation/contexts/context_v2/context_v2.html';
+  const url = 'components/presentation/contexts/context_v2/context_v2.html';
   ovaContext2Html = await htmlFetch({ url });
 
   return ovaContext2Html;
@@ -87,7 +87,7 @@ const showPictureFullScreen = (e) => {
   htmlBeforeFullScreen = mainContainer.innerHTML;
   mainContainer.innerHTML = `
     <div style="position: relative; position: relative; height: 100%; width: 100%;">
-      <img class="imageFullScreen" src="/assets/images/background7.png">
+      <img class="imageFullScreen" src="assets/images/background7.png">
       <div class="backFullScreenContainer"><div class="backFullScreenIcon"></div></div>
     </div>
   `;

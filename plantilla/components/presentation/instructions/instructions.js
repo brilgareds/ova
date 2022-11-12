@@ -8,7 +8,7 @@ let buttonNext;
 let buttonPrevious;
 
 const getInstructionsHtml = async () => {
-  const url = '/components/presentation/instructions/instructions.html';
+  const url = 'components/presentation/instructions/instructions.html';
   instructionsHtml = await htmlFetch({ url });
 
   return instructionsHtml;

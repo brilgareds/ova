@@ -32,7 +32,7 @@
 }
 
 .decisionMaking2__icon {
-  background: url(/assets/images/decisionMakingIcon.png) no-repeat;
+  background: url(../../../assets/images/decisionMakingIcon.png) no-repeat;
   background-size: contain;
   height: 100%;
   width: 100%;
@@ -78,7 +78,7 @@
 .decisionMaking2__radioButtonIcon {
   width: 100%;
   height: 100%;
-  background: url(/assets/images/radioButton-default.png) no-repeat;
+  background: url(../../../assets/images/radioButton-default.png) no-repeat;
   background-size: contain;
 }
 
@@ -87,7 +87,7 @@
 }
 
 .decisionMaking2__radioButtonIcon--active {
-  background: url(/assets/images/radioButton-active.png) no-repeat;
+  background: url(../../../assets/images/radioButton-active.png) no-repeat;
   background-size: contain;
 }
 
@@ -153,7 +153,7 @@
 .decisionMaking2__optionIcon {
   width: 100%;
   height: 100%;
-  background: url(/assets/images/openDetail.png) no-repeat;
+  background: url(../../../assets/images/openDetail.png) no-repeat;
   background-size: contain;
 }
 
@@ -177,7 +177,7 @@
 }
 
 .decisionMaking2__mainPicture {
-  background: url(/assets/images/decisionMaking.png) no-repeat;
+  background: url(../../../assets/images/decisionMaking.png) no-repeat;
   background-size: contain;
   width: 100%;
   height: 100%;

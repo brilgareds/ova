@@ -3,7 +3,7 @@ let answersCompletedText;
 let answersCompletedButton;
 
 const getAnswersCompletedHtml = async () => {
-  const url = '/components/answersModals/answersCompletedModal/answersCompletedModal.html';
+  const url = 'components/answersModals/answersCompletedModal/answersCompletedModal.html';
   answersCompletedHtml = await htmlFetch({ url });
 
   return answersCompletedHtml;

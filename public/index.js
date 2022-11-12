@@ -564,35 +564,27 @@ const getAllFormValues = (form) => {
   }
 
   return obj;
-}
+};
 
-const commonFetch = () => {
+const formatFetchResponse = async (data) => {
+  let newData = await data.clone().text();
 
+  await data.clone().json().then((object) => { newData = object; }).catch(() => {});
+
+  return newData;
 };
 
 const postFetch = async ({ url, body={} }) => {
-  let response;
   const options = {
     method: 'POST',
-    body: JSON.stringify(body),
+    body,
   };
 
-  console.log('Fetch options are: ', options);
+  const response = await fetch(url, options);
+  const dataFormated = await formatFetchResponse(response);
+  if (response.status === 500) throw new Error(dataFormated);
 
-  try {
-    const data = await fetch(url, options);
-    console.log('data: ', data);
-
-    try {
-      response = await data.clone().json();
-    } catch (error) {
-      response = await data.clone().text();
-    }
-  } catch (e) {
-    console.error(e);
-  }
-
-  return response;
+  return dataFormated;
 };
 
 const getFetch = async ({ url, body={} }) => {
@@ -617,18 +609,21 @@ const generateOva = async (e) => {
   const url = '/ova/generate';
   const images = getAllFormValues(e.target);
   console.log('images: ', images);
-  const body = { ...getCurrentGeneratorValues(), images };
-  /*
-  const body = new FormData();
+  const fields = getCurrentGeneratorValues();
+  const body = new FormData(e.target);
 
-  for(const name in data) {
-    body.append(name, data[name]);
+  for (const name in fields) {
+    body.append(name, JSON.stringify(fields[name]));
   }
-  */
-  const response = await postFetch({ url, body });
-  console.log('Response is: ', response);
 
-  if (response) window.open(response);
+  try {
+    const response = await postFetch({ url, body });
+    console.log('Response is: ', response);
+  
+    if (response.url) window.open(response.url);
+  } catch (e) {
+    console.error(e);
+  }
 };
 
 const inputUpdated = (e) => {
@@ -1087,6 +1082,11 @@ const initializeDecisionMakingContainer = () => {
           <div class="inputAndLabelContainer">
             <label class="inputLabel">El usuario se equivocó (texto):</label>
             <div class="inputsContainer" data-type-input="multiple" data-form-section="decisionMaking" data-form-prop="${i}" data-form-prop2="badAnswerText"></div>
+          </div>
+
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Imagen:</label>
+            <div class="inputsContainer" data-type-input="picture" data-form-section="decisionMaking" data-form-prop="${i}" data-form-prop2="picture" data-name="decisionMakingPicture_${i+1}"></div>
           </div>
         </div>
       </div>

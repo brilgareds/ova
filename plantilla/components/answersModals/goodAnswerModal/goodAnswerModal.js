@@ -3,7 +3,7 @@ let goodAnswerStarsSection;
 let goodAnswerButtonContinue;
 
 const getGoodAnswerModal = async () => {
-  const url = '/components/answersModals/goodAnswerModal/goodAnswerModal.html';
+  const url = 'components/answersModals/goodAnswerModal/goodAnswerModal.html';
   goodAnswerHtml = await htmlFetch({ url });
 
   return goodAnswerHtml;

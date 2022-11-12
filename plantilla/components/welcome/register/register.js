@@ -2,7 +2,7 @@ let formRegisterUser;
 let userRegisterHtml;
 
 const getUserRegisterHtml = async () => {
-  const url = '/components/welcome/register/register.html';
+  const url = 'components/welcome/register/register.html';
   userRegisterHtml = await htmlFetch({ url });
 
   return userRegisterHtml;

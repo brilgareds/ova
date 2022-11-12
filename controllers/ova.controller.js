@@ -2,6 +2,7 @@ const { join } = require('path');
 const fs = require('fs-extra');
 const archiver = require('archiver');
 const { pathToUrl } = require('../common/helpers');
+const Helpers = require('../common/helpers');
 
 class OvaController {
   static compress = (newPath) => new Promise((resolve, reject) => {
@@ -20,24 +21,63 @@ class OvaController {
       archive.finalize();
   }).catch(console.error);
   
-  static copyOva = ({ newPath, data }) => {
+  static copyOva = (data) => {
+    const { newPath, fields } = data;
     const currentPath = join(__dirname, '..', 'plantilla');
   
     try {
       fs.copySync(currentPath, newPath, { overwrite: true });
-      fs.writeFileSync(`${newPath}/config.json`, JSON.stringify(data, null, 4));
+      fs.writeFileSync(`${newPath}/config.json`, JSON.stringify(fields, null, 4));
     } catch (err) {
       console.error(err);
     }
   };
-  
-  static copyOvaAndCompress = async (data) => {
+
+  static addNewPictures = async (data) => {
+    const { files={}, fields, newPath } = data;
+    const countFiles = Object.keys(files);
+    if (!countFiles) return;
+    
+    const picturesFolder = join(newPath, 'assets', 'images');
+
+    if (files.presentationPicture) {
+      const currentPath = files.presentationPicture.filepath;
+      const newPath = join(picturesFolder, 'general-presentation.png');
+      Helpers.moveFile({ currentPath, newPath });
+    }
+
+    if (files.objectivesPicture) {
+      const currentPath = files.objectivesPicture.filepath;
+      const newPath = join(picturesFolder, 'general-instructions.png');
+      Helpers.moveFile({ currentPath, newPath });
+    }
+
+    if (files.contextPicture) {
+      const currentPath = files.contextPicture.filepath;
+      const newPath = join(picturesFolder, 'background7.png');
+      Helpers.moveFile({ currentPath, newPath });
+    }
+
+    if (fields.decisionMaking) {
+      fields.decisionMaking?.forEach((decision, i) => {
+        const nameFile = `decisionMaking_${i+1}.png`;
+        const pictureProp = `decisionMakingPicture_${i+1}`;
+        const currentPath = files[pictureProp]?.filepath;
+        const newPath = join(picturesFolder, nameFile);
+        if (currentPath) Helpers.moveFile({ currentPath, newPath });
+      });
+    }
+  };
+
+  static copyOvaAndCompress = async (params) => {
+    const { fields, files } = params;
     const newPath = join(__dirname, '..', 'public', 'exports', String(new Date().getTime()), 'ova');
-  
-    this.copyOva({ newPath, data });
+
+    this.copyOva({ fields, newPath });
+    this.addNewPictures({ files, fields, newPath });
     const zipPath = await this.compress(newPath);
     const newUrl = pathToUrl(zipPath);
-  
+
     return newUrl;
   };
 }

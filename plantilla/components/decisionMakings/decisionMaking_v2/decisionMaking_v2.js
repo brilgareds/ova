@@ -15,7 +15,7 @@ let decisionMaking2DescriptionContainer;
 let decisionMaking2RadioButtonsContainer;
 
 const getDecisionMaking2Html = async () => {
-  const url = '/components/decisionMakings/decisionMaking_v2/decisionMaking_v2.html';
+  const url = 'components/decisionMakings/decisionMaking_v2/decisionMaking_v2.html';
   decisionMaking2Html = await htmlFetch({ url });
 
   return decisionMaking2Html;
@@ -229,6 +229,8 @@ const initializeDecisionMaking2Data = () => {
       </div>
     `;
   });
+
+  document.querySelector('.decisionMaking2__mainPicture').style=`background: url(assets/images/decisionMaking_${lastIndex+1}.png) no-repeat; background-size: contain;`;
 
   decisionMaking2TitlesContainer.innerHTML = title;
   decisionMaking2DescriptionContainer.innerHTML = detail;

@@ -9,11 +9,11 @@
 }
 
 .results__pdfPageBackground {
-  background: url(/assets/images/reportBackground.png) no-repeat;
+  background: url(../../../assets/images/reportBackground.png) no-repeat;
 }
 
 .results__pdfPageBackground2 {
-  background: url(/assets/images/reportBackground2.png) no-repeat;
+  background: url(../../../assets/images/reportBackground2.png) no-repeat;
 }
 
 .results__pdfPageBackground, .results__pdfPageBackground2 {

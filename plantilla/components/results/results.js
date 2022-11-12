@@ -8,7 +8,7 @@ let resultsDownloadButton;
 let resultsText;
 
 const getResultsHtml = async () => {
-  const url = '/components/results/results.html';
+  const url = 'components/results/results.html';
   resultsHtml = await htmlFetch({ url });
 
   return resultsHtml;
@@ -33,7 +33,7 @@ const downloadResultsPdf = async () => {
   // pdfElement.classList.remove('hidden');
   // pdfElement.innerHTML = html;
 
-  /* window.open('/components/results/pdf/pdf.html', '_blank'); */
+  /* window.open('components/results/pdf/pdf.html', '_blank'); */
   // pdfElement.classList.add('hidden');
 };
 

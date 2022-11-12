@@ -1,7 +1,7 @@
 .ovaContextBackground {
   display: flex;
   align-items: flex-end;
-  background: url('/assets/images/ovaContextBackground.png') no-repeat;
+  background: url('assets/images/ovaContextBackground.png') no-repeat;
   background-size: cover;
   height: 650px;
   /* height: calc(100vh - 8rem); */

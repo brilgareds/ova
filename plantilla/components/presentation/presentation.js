@@ -10,7 +10,7 @@ let extraInfoTitleContainer;
 let extraInfoDetailContainer;
 
 const getOvaPresentationHtml = async () => {
-  const url = '/components/presentation/presentation.html';
+  const url = 'components/presentation/presentation.html';
   ovaPresentationHtml = await htmlFetch({ url });
 
   return ovaPresentationHtml;

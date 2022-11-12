@@ -2,7 +2,7 @@ let welcomeHtml;
 let welcomeStartButton;
 
 const getWelcomeHtml = async () => {
-  const url = '/components/welcome/welcome.html';
+  const url = 'components/welcome/welcome.html';
   welcomeHtml = await htmlFetch({ url });
 
   return welcomeHtml;

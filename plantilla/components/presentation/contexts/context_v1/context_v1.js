@@ -2,7 +2,7 @@ let ovaContextHtml;
 let ovaContextNextButton;
 
 const getOvaContextHtml = async () => {
-  const url = '/components/presentation/contexts/context_v1/context_v1.html';
+  const url = 'components/presentation/contexts/context_v1/context_v1.html';
   ovaContextHtml = await htmlFetch({ url });
 
   return ovaContextHtml;

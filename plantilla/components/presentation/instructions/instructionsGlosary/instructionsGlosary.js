@@ -5,7 +5,7 @@ let instructionsGlosaryTitle;
 let instructionsGlosaryHtml;
 
 const getInstructionGlosaryHtml = async () => {
-  const url = '/components/presentation/instructions/instructionsGlosary/instructionsGlosary.html';
+  const url = 'components/presentation/instructions/instructionsGlosary/instructionsGlosary.html';
   instructionsGlosaryHtml = await htmlFetch({ url });
 
   return instructionsGlosaryHtml;

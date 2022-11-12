@@ -76,14 +76,14 @@ const pdfConfig = {
 };
 
 const getConfigJson = async () => {
-  const url = '/config.json';
+  const url = 'config.json';
   config = (await jsonFetch({ url })) || {};
 
   return config;
 };
 
 const getHtmlForPdf = async () => {
-  const url = '/components/results/pdf/pdf.html';
+  const url = 'components/results/pdf/pdf.html';
   htmlForPdf = await htmlFetch({ url });
 
   return htmlForPdf;
@@ -222,7 +222,7 @@ const getStarsHtml = () => {
 
     startsHtml += `
       <div class="customModalStarPictureContainer">
-        <img alt="incorrectAnswerPicture" src="/assets/images/${starImageName}" class="customModalStarPicture"  />
+        <img alt="incorrectAnswerPicture" src="assets/images/${starImageName}" class="customModalStarPicture"  />
       </div>
     `;
   }

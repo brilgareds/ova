@@ -58,14 +58,14 @@
 }
 
 .decisionMakingOptions__input {
-  background: url(/assets/images/radioButton-default.png) no-repeat;
+  background: url(assets/images/radioButton-default.png) no-repeat;
   background-size: contain;
   width: 100%;
   height: 100%;
 }
 
 .decisionMakingOptions__input--active {
-  background: url(/assets/images/radioButton-active.png) no-repeat;
+  background: url(assets/images/radioButton-active.png) no-repeat;
   background-size: contain;
 }
 

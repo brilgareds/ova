@@ -5,7 +5,7 @@ let modalBadAnswerHtml;
 let modalBadAnswerText;
 
 const getBadAnswerModal = async () => {
-  const url = '/components/answersModals/badAnswerModal/badAnswerModal.html';
+  const url = 'components/answersModals/badAnswerModal/badAnswerModal.html';
   modalBadAnswerHtml = await htmlFetch({ url });
 
   return modalBadAnswerHtml;

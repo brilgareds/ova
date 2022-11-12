@@ -5,7 +5,7 @@ let challengeAlertDetailContainer;
 let ovaObjectivesObjectivesContainer;
 
 const getObjectivesHtml = async () => {
-  const url = '/components/presentation/instructions/instructionsObjectives/instructionsObjectives.html';
+  const url = 'components/presentation/instructions/instructionsObjectives/instructionsObjectives.html';
   objectivesHtml = await htmlFetch({ url });
 
   return objectivesHtml;
@@ -45,7 +45,7 @@ const initializeOvaObjectivesData = () => {
     detail += `
       <li class="ovaObjectives__objectiveContainer">
         <div class="objetiveImageContainer">
-          <img class="objetiveImage" src="/assets/images/circle.png" alt="something" >
+          <img class="objetiveImage" src="assets/images/circle.png" alt="something" >
         </div>
 
         <div class="objectiveDescriptionContainer">

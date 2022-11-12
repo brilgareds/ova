@@ -2,7 +2,7 @@ let decisionMakingHtml;
 let decisionMakingOptions;
 
 const getDecisionMakingHtml = async () => {
-  const url = '/components/decisionMakings/decisionMaking_v1/decisionMaking_v1.html';
+  const url = 'components/decisionMakings/decisionMaking_v1/decisionMaking_v1.html';
   decisionMakingHtml = await htmlFetch({ url });
 
   return decisionMakingHtml;
