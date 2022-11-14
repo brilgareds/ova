@@ -9,7 +9,7 @@ ovaRouter.post('/generate', async (req, res) => {
     const data = await Helpers.customFormidable({ req });
     const url = await OvaController.copyOvaAndCompress(data);
 
-    res.json('something!!');
+    res.json({ url });
   } catch (e) {
     console.error(e);
     res.status(500).send(e.message);

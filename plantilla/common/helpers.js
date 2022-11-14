@@ -1,4 +1,5 @@
 let config;
+let api;
 
 const formDataToObject = function (formData) {
   const obj = {};
@@ -90,6 +91,8 @@ const getHtmlForPdf = async () => {
 };
 
 const initializeMainConstants = async () => {
+  api = getAPIHandle();
+  api.LMSInitialize('');
   config = await getConfigJson();
   mainContainer = document.querySelector('.mainContainer');
 };

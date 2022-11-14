@@ -347,6 +347,14 @@ label, .inputPicture__name {
   font-style: italic;
 }
 
+.inputPictureButtonText {
+  display: flex;
+  align-items: center;
+  margin-right: 1.5rem;
+  color: #828181;
+  font-weight: 600;
+}
+
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */

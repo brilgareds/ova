@@ -1,5 +1,6 @@
 let htmlForPdf;
 let mainContainer;
+let countOvaCompleted = 0;
 
 // window.jsPDF = window.jspdf.jsPDF;
 
@@ -47,7 +48,7 @@ const animateMainContainer = () => {
 
 const initializeUserData = () => {
   const userData = JSON.stringify({
-    name: 'The Name',
+    name: api.LMSGetValue("cmi.core.student_name"),
     lastName: 'The Lastname',
     institution: 'The Institution',
     situation: 'The Situation',
@@ -69,6 +70,10 @@ const initializeAndLoadFirstPage = async () => {
 };
 
 const pageReady = async () => {
+  deleteUserData();
+  const name = api?.LMSGetValue("cmi.core.student_name") || '';
+  if (!name) return alert('Error al obtener información desde el LMS!!');
+
   await initializeMainConstants();
   await initializeOvaUserData();
   await initializeAndLoadFirstPage();

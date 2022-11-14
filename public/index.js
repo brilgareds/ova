@@ -1,5 +1,7 @@
 let tabs;
+let countReloads = 0;
 let mainForm;
+let allPicturesFiles;
 let formGeneratorSections;
 let formGeneratorSectionDecisionMaking;
 let presentationInputsContainerMainTitle;
@@ -14,464 +16,54 @@ let removeDecisionButtons;
 const classActiveTab = 'tab--active';
 const classActiveSection = 'formGeneratorSection--active';
 
-const initializeGeneratorValues = () => {
-  const config = {
-    generator: {
-      currentTab: 1,
-    },
-    general: {
-      alphabet: [
-        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
-        'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
-      ],
-      nextButton: {
-        text: 'Siguiente',
-        textContinueOva: 'Continuar',
-        textReport: 'Reporte'
-      },
-      previousButton: {
-        text: 'Anterior',
-        textBackContext: 'Ver reto'
-      }
-    },
-    presentation: {
-      mainTitle: 'Presentación general del OVA',
-      picture: '',
-      secundaryTitles: [
-        'En esta pantalla se presenta una descripción general de lo que es el OVA, cómo está estructurado y qué componentes teóricos se muestran en el mismo. Esta pantalla es una bienvenida y una invitación para que el usuario aborde de manera adecuada el recurso.'
-      ],
-      detail: [
-        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.',
-        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.',
-        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.',
-        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.',
-        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.',
-        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.'
-      ],
-      extraInfo: {
-        title: [
-          'Reto'
-        ],
-        detail: [
-          'Se describe el reto que va a desarrollar durante el ejercicio del objeto de toma de decisiones.'
-        ]
-      },
-    },
-    instructionsAndObjectives: {
-      picture: '',
-      extraInfo: {
-        title: [''],
-        detail: [
-          'Se describe el reto que va a desarrollar durante el ejercicio del objeto de toma de decisiones.'
-        ]
-      },
-      objectives: {
-        title: [
-          '***Observación:*** Describir los objetivos según la estructura determinada para estos. Recuerde que un objetivo debe iniciar con un verbo en infinitivo y ser evaluable, para poder determinar si se cumple con el mismo.'
-        ],
-        detail: [
-          'Describir lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.',
-          'Identificar lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod.',
-          'Interpretar lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.',
-          'Describir lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.',
-          'Identificar lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod.',
-          'Interpretar lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.',
-          'Describir lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.',
-          'Identificar lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod.',
-          'Interpretar lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.',
-          'Describir lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.',
-          'Identificar lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod.',
-          'Interpretar lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.',
-          'Describir lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.',
-          'Identificar lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod.',
-          'Interpretar lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.',
-          'Describir lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.',
-          'Identificar lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod.',
-          'Interpretar lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.',
-          'Describir lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.',
-          'Identificar lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod.',
-          'Interpretar lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.'
-        ]
-      },
-      thematics: {
-        title: [
-          'Se describen las temáticas y teoría a abordar en el desarrollo del OVA.'
-        ],
-        detail: [
-          {
-            thematic: 'Tema 1',
-            descripcion: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.'
-          },
-          {
-            thematic: 'Tema 2',
-            descripcion: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.'
-          },
-          {
-            thematic: 'Tema 3',
-            descripcion: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.'
-          },
-          {
-            thematic: 'Tema 1',
-            descripcion: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.'
-          },
-          {
-            thematic: 'Tema 2',
-            descripcion: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.'
-          },
-          {
-            thematic: 'Tema 3',
-            descripcion: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.'
-          },
-          {
-            thematic: 'Tema 1',
-            descripcion: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.'
-          },
-          {
-            thematic: 'Tema 2',
-            descripcion: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.'
-          },
-          {
-            thematic: 'Tema 3',
-            descripcion: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.'
-          }
-        ]
-      },
-      instructions: {
-        title: [
-          'El siguiente texto es genérico y no debe ser modificado por el temático'
-        ],
-        detail: [
-          'Al ingresar al simulador podrás ver el contexto en el cual el reto se plantea.',
-          'A medida que vas avanzando en la práctica de laboratorio se te presentarán situaciones que requieren tomar una decisión adecuada.',
-          'También encontrarás ejercicios de aprendizaje que te permiten reforzar conceptos y te preparan para el momento en que debas tomar la decisión',
-          'Cada vez que tomes una decisión correcta ***ganarás una estrella.***',
-          'Al ingresar al simulador podrás ver el contexto en el cual el reto se plantea.',
-          'A medida que vas avanzando en la práctica de laboratorio se te presentarán situaciones que requieren tomar una decisión adecuada.',
-          'También encontrarás ejercicios de aprendizaje que te permiten reforzar conceptos y te preparan para el momento en que debas tomar la decisión',
-          'Cada vez que tomes una decisión correcta ***ganarás una estrella.***',
-          'Al ingresar al simulador podrás ver el contexto en el cual el reto se plantea.',
-          'A medida que vas avanzando en la práctica de laboratorio se te presentarán situaciones que requieren tomar una decisión adecuada.',
-          'También encontrarás ejercicios de aprendizaje que te permiten reforzar conceptos y te preparan para el momento en que debas tomar la decisión',
-          'Cada vez que tomes una decisión correcta ***ganarás una estrella.***',
-          'Al ingresar al simulador podrás ver el contexto en el cual el reto se plantea.',
-          'A medida que vas avanzando en la práctica de laboratorio se te presentarán situaciones que requieren tomar una decisión adecuada.',
-          'También encontrarás ejercicios de aprendizaje que te permiten reforzar conceptos y te preparan para el momento en que debas tomar la decisión',
-          'Cada vez que tomes una decisión correcta ***ganarás una estrella.***',
-          'Al ingresar al simulador podrás ver el contexto en el cual el reto se plantea.',
-          'A medida que vas avanzando en la práctica de laboratorio se te presentarán situaciones que requieren tomar una decisión adecuada.',
-          'También encontrarás ejercicios de aprendizaje que te permiten reforzar conceptos y te preparan para el momento en que debas tomar la decisión',
-          'Cada vez que tomes una decisión correcta ***ganarás una estrella.***'
-        ]
-      },
-      glosary: {
-        title: [
-          'Para que logres una comprensión completa del simulador te recomendamos leer el glosario que se te presenta al inicio del módulo.'
-        ],
-        detail: [],
-        words: [
-          {
-            word: 'A1',
-            description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-          },
-          {
-            word: 'A2',
-            description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-          },
-          {
-            word: 'A3',
-            description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-          },
-          {
-            word: 'A4',
-            description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-          },
-          {
-            word: 'A5',
-            description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-          },
-          {
-            word: 'A6',
-            description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-          },
-          {
-            word: 'A7',
-            description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-          },
-          {
-            word: 'A8',
-            description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-          },
-          {
-            word: 'A9',
-            description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-          },
-          {
-            word: 'A10',
-            description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-          },
-          {
-            word: 'B1',
-            description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-          },
-          {
-            word: 'B2',
-            description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-          },
-          {
-            word: 'B3',
-            description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-          },
-          {
-            word: 'B4',
-            description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-          },
-          {
-            word: 'D1',
-            description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-          },
-          {
-            word: 'D2',
-            description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-          },
-          {
-            word: 'D3',
-            description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-          },
-          {
-            word: 'Edificio',
-            description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-          },
-          {
-            word: 'Educar',
-            description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-          }
-        ]
-      }
-    },
-    ovaContext: {
-      picture: '',
-      bigTitle: [
-        'Contexto – Título'
-      ],
-      title: [
-        'En esta pantalla se presenta una descripción general de lo que es el OVA, cómo está estructurado y qué componentes teóricos se muestran en el mismo. Esta pantalla es una bienvenida y una invitación para que el usuario aborde de manera adecuada el recurso.'
-      ],
-      detail: [
-        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.',
-        'Consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat.',
-        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.',
-        'Consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat.',
-        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.',
-        'Consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat.',
-        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.',
-        'Consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat.',
-        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.',
-        'Consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat.',
-      ]
-    },
-    decisionMaking: [
-      {
-        type: 2,
-        goodAnswerText: [
-          'En este apartado se coloca un mensaje de felicitación con alguna indicación que el temático considere pertinente para seguir avanzando.'
-        ],
-        badAnswerText: [
-          'La diferencia de la pantalla tipo 4 y tipo 5 es que la pantalla tipo cuatro es de transición mientras que la pantalla tipo 5 te lleva a un final, por lo tanto, en esta pantalla debe colocarse una retroalimentación de la decisión errónea que se ha tomado.En este espacio debe colocarse la retroalimentación.',
-          'En este espacio debe colocarse la retroalimentación.'
-        ],
-        title: [
-          'Texto corto donde se le propone al usuario tomar una decisión de acuerdo a determinada situación.'
-        ],
-        detail: [
-          '***Ejemplo:*** Es hora de tomar decisiones, ¿qué vas a empezar a revisar para encontrar la falla?',
-          'Analiza cada una de las opciones y selecciona la que consideres conveniente haciendo clic en el círculo.'
-        ],
-        options: [
-          {
-            title: 'La programación del PLC',
-            detail: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore',
-          },
-          {
-            title: 'El cableado entre el sensor del caldero y el PLC',
-            detail: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore',
-          },
-          {
-            title: 'El sensor de temperatura del caldero',
-            detail: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore',
-          },
-          {
-            title: 'La energía y el voltaje',
-            detail: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore',
-          }
-        ],
-        answers: [
-          1
-        ]
-      },
-      {
-        type: 2,
-        goodAnswerText: [
-          'En este apartado se coloca un mensaje de felicitación con alguna indicación que el temático considere pertinente para seguir avanzando.'
-        ],
-        badAnswerText: [
-          'La diferencia de la pantalla tipo 4 y tipo 5 es que la pantalla tipo cuatro es de transición mientras que la pantalla tipo 5 te lleva a un final, por lo tanto, en esta pantalla debe colocarse una retroalimentación de la decisión errónea que se ha tomado.En este espacio debe colocarse la retroalimentación.',
-          'En este espacio debe colocarse la retroalimentación.'
-        ],
-        title: [
-          'Texto corto donde se le propone al usuario tomar una decisión de acuerdo a determinada situación.'
-        ],
-        detail: [
-          '***Ejemplo:*** Es hora de tomar decisiones, ¿qué vas a empezar a revisar para encontrar la falla?',
-          'Analiza cada una de las opciones y selecciona la que consideres conveniente haciendo clic en el círculo.'
-        ],
-        options: [
-          {
-            title: 'La programación del PLC',
-            detail: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore',
-          },
-          {
-            title: 'El cableado entre el sensor del caldero y el PLC',
-            detail: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore',
-          },
-          {
-            title: 'El sensor de temperatura del caldero',
-            detail: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore',
-          },
-          {
-            title: 'La energía y el voltaje',
-            detail: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore',
-          }
-        ],
-        answers: [
-          2
-        ]
-      },
-      {
-        type: 2,
-        goodAnswerText: [
-          'En este apartado se coloca un mensaje de felicitación con alguna indicación que el temático considere pertinente para seguir avanzando.'
-        ],
-        badAnswerText: [
-          'La diferencia de la pantalla tipo 4 y tipo 5 es que la pantalla tipo cuatro es de transición mientras que la pantalla tipo 5 te lleva a un final, por lo tanto, en esta pantalla debe colocarse una retroalimentación de la decisión errónea que se ha tomado.En este espacio debe colocarse la retroalimentación.',
-          'En este espacio debe colocarse la retroalimentación.'
-        ],
-        title: [
-          'Texto corto donde se le propone al usuario tomar una decisión de acuerdo a determinada situación.'
-        ],
-        detail: [
-          '***Ejemplo:*** Es hora de tomar decisiones, ¿qué vas a empezar a revisar para encontrar la falla?',
-          'Analiza cada una de las opciones y selecciona la que consideres conveniente haciendo clic en el círculo.'
-        ],
-        options: [
-          {
-            title: 'La programación del PLC',
-            detail: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore',
-          },
-          {
-            title: 'El cableado entre el sensor del caldero y el PLC',
-            detail: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore',
-          },
-          {
-            title: 'El sensor de temperatura del caldero',
-            detail: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore',
-          },
-          {
-            title: 'La energía y el voltaje',
-            detail: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore',
-          }
-        ],
-        answers: [
-          3
-        ]
-      },
-      {
-        type: 2,
-        goodAnswerText: [
-          'En este apartado se coloca un mensaje de felicitación con alguna indicación que el temático considere pertinente para seguir avanzando.'
-        ],
-        badAnswerText: [
-          'La diferencia de la pantalla tipo 4 y tipo 5 es que la pantalla tipo cuatro es de transición mientras que la pantalla tipo 5 te lleva a un final, por lo tanto, en esta pantalla debe colocarse una retroalimentación de la decisión errónea que se ha tomado.En este espacio debe colocarse la retroalimentación.',
-          'En este espacio debe colocarse la retroalimentación.'
-        ],
-        title: [
-          'Texto corto donde se le propone al usuario tomar una decisión de acuerdo a determinada situación.'
-        ],
-        detail: [
-          '***Ejemplo:*** Es hora de tomar decisiones, ¿qué vas a empezar a revisar para encontrar la falla?',
-          'Analiza cada una de las opciones y selecciona la que consideres conveniente haciendo clic en el círculo.'
-        ],
-        options: [
-          {
-            title: 'La programación del PLC',
-            detail: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore',
-          },
-          {
-            title: 'El cableado entre el sensor del caldero y el PLC',
-            detail: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore',
-          },
-          {
-            title: 'El sensor de temperatura del caldero',
-            detail: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore',
-          },
-          {
-            title: 'La energía y el voltaje',
-            detail: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore',
-          }
-        ],
-        answers: [
-          4
-        ]
-      },
-      {
-        type: 2,
-        goodAnswerText: [
-          'En este apartado se coloca un mensaje de felicitación con alguna indicación que el temático considere pertinente para seguir avanzando.'
-        ],
-        badAnswerText: [
-          'La diferencia de la pantalla tipo 4 y tipo 5 es que la pantalla tipo cuatro es de transición mientras que la pantalla tipo 5 te lleva a un final, por lo tanto, en esta pantalla debe colocarse una retroalimentación de la decisión errónea que se ha tomado.En este espacio debe colocarse la retroalimentación.',
-          'En este espacio debe colocarse la retroalimentación.'
-        ],
-        title: [
-          'Texto corto donde se le propone al usuario tomar una decisión de acuerdo a determinada situación.'
-        ],
-        detail: [
-          '***Ejemplo:*** Es hora de tomar decisiones, ¿qué vas a empezar a revisar para encontrar la falla?',
-          'Analiza cada una de las opciones y selecciona la que consideres conveniente haciendo clic en el círculo.'
-        ],
-        options: [
-          {
-            title: 'La programación del PLC',
-            detail: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore',
-          },
-          {
-            title: 'El cableado entre el sensor del caldero y el PLC',
-            detail: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore',
-          },
-          {
-            title: 'El sensor de temperatura del caldero',
-            detail: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore',
-          },
-          {
-            title: 'La energía y el voltaje',
-            detail: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore',
-          },
-          {
-            title: 'Last option La energía y el voltaje',
-            detail: 'Last option Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore.'
-          }
-        ],
-        answers: [
-          5
-        ]
-      },
-    ],
-    results: {
-      detail: [
-        'Results - Lorem ipsum dolor sit amet, ***consectetuer adipiscing elit,*** sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse.'
-      ]
-    }
+const formatFetchResponse = async (data) => {
+  let newData = await data.clone().text();
+
+  await data.clone().json().then((object) => { newData = object; }).catch(() => {});
+
+  return newData;
+};
+
+const customFetch = async ({ url, options }) => {
+  const response = await fetch(url, options);
+  const dataFormated = await formatFetchResponse(response);
+  if (response.status === 500) throw new Error(dataFormated);
+
+  return dataFormated;
+};
+
+const postFetch = async ({ url, data={} }) => {
+  const options = {
+    body: data,
+    method: 'POST',
   };
 
+  const response = await customFetch({ url, options });
+
+  return response;
+};
+
+const getFetch = async (fetchData={}) => {
+  const options = {
+    method: 'GET',
+  };
+  const params = (fetchData.data) ? `?${new URLSearchParams(fetchData.data).toString()}` : '';
+  const url = `${fetchData.url}${params}`;
+
+  const response = await customFetch({ url, options });
+
+  return response;
+};
+
+const getDefaultConfigJson = async () => {
+  const url = 'config-default.json';
+  const config = (await getFetch({ url })) || {};
+
+  return config;
+};
+
+const initializeGeneratorValues = async () => {
+  const config = await getDefaultConfigJson();
   setGeneratorValues(config);
 
   return config;
@@ -490,11 +82,11 @@ const setGeneratorValues = (newConfig={}) => {
 
 const getCurrentGeneratorValues = () => JSON.parse(localStorage.getItem('generatorValues') || '{}');
 
-const getGeneratorValues = () => {
+const getGeneratorValues = async () => {
   let currentValues = getCurrentGeneratorValues();
 
   if (!Object.keys(currentValues)?.length) {
-    initializeGeneratorValues();
+    await initializeGeneratorValues();
     currentValues = getCurrentGeneratorValues();
   }
   
@@ -502,6 +94,7 @@ const getGeneratorValues = () => {
 };
 
 const initializeGeneratorConstants = () => {
+  allPicturesFiles = {};
   tabs = document.querySelectorAll('.tab');
   mainForm = document.querySelector('.formGenerator');
   presentationInputs = document.querySelectorAll('.input');
@@ -512,6 +105,9 @@ const initializeGeneratorConstants = () => {
   presentationInputsContainerText = document.querySelector('.presentation__inputsContainer--text');
   presentationInputsContainer = document.querySelectorAll('.inputsContainer');
   inputPictureButtons = document.querySelectorAll('.inputPictureButtons');
+  inputPictureButtons?.forEach((pictureElement) => {
+    allPicturesFiles[pictureElement.dataset.name] = pictureElement.files || [];
+  });
 
   addInputButtons = document.querySelectorAll('.addInputButton');
   removeInputButtons = document.querySelectorAll('.removeInputButton');
@@ -566,58 +162,23 @@ const getAllFormValues = (form) => {
   return obj;
 };
 
-const formatFetchResponse = async (data) => {
-  let newData = await data.clone().text();
-
-  await data.clone().json().then((object) => { newData = object; }).catch(() => {});
-
-  return newData;
-};
-
-const postFetch = async ({ url, body={} }) => {
-  const options = {
-    method: 'POST',
-    body,
-  };
-
-  const response = await fetch(url, options);
-  const dataFormated = await formatFetchResponse(response);
-  if (response.status === 500) throw new Error(dataFormated);
-
-  return dataFormated;
-};
-
-const getFetch = async ({ url, body={} }) => {
-  let response;
-  const params = new URLSearchParams(body);
-
-  const newUrl = `${url}?${params}`;
-
-  try {
-    const data = await fetch(newUrl);
-    console.log('data: ', data);
-  } catch (e) {
-    console.error(e);
-  }
-
-  return response;
-};
-
 const generateOva = async (e) => {
   e.preventDefault();
 
+  const data = new FormData();
   const url = '/ova/generate';
-  const images = getAllFormValues(e.target);
-  console.log('images: ', images);
   const fields = getCurrentGeneratorValues();
-  const body = new FormData(e.target);
 
-  for (const name in fields) {
-    body.append(name, JSON.stringify(fields[name]));
+  for (const prop in allPicturesFiles) {
+    data.append(prop, allPicturesFiles[prop][0]);
+  }
+
+  for (const prop in fields) {
+    data.append(prop, JSON.stringify(fields[prop]));
   }
 
   try {
-    const response = await postFetch({ url, body });
+    const response = await postFetch({ url, data });
     console.log('Response is: ', response);
   
     if (response.url) window.open(response.url);
@@ -661,7 +222,7 @@ const inputUpdated = (e) => {
   initializeEvents();
 };
 
-const removeInputButtonClicked = (e) => {
+const removeInputButtonClicked = async (e) => {
   const currentValues = getCurrentGeneratorValues();
   const typeValue = e.currentTarget?.dataset?.typeValue;
   const isAnObjectValue = (typeValue === 'object');
@@ -695,10 +256,10 @@ const removeInputButtonClicked = (e) => {
 
   setGeneratorValues(currentValues);
 
-  initializeMainValues();
+  await initializeMainValues();
 };
 
-const addInputButtonClicked = (e) => {
+const addInputButtonClicked = async (e) => {
   const currentValues = getCurrentGeneratorValues();
   const typeValue = e.currentTarget?.dataset.typeValue;
   const isAnObjectValue = (typeValue === 'object');
@@ -741,7 +302,7 @@ const addInputButtonClicked = (e) => {
 
   setGeneratorValues(currentValues);
 
-  initializeMainValues();
+  await initializeMainValues();
 };
 
 const setFormSubmitEvent = () => mainForm?.addEventListener('submit', generateOva);
@@ -750,7 +311,7 @@ const setTabsClickEvent = () => {
   tabs?.forEach((tab) => tab?.addEventListener('click', tabClicked));
 };
 
-const addDecisionButtonClicked = (e) => {
+const addDecisionButtonClicked = async (e) => {
   const currentValues = getCurrentGeneratorValues();
   const decisionIndex = Number(e.target?.dataset?.decisionIndex || '0');
   
@@ -783,10 +344,10 @@ const addDecisionButtonClicked = (e) => {
   currentValues.decisionMaking = decisionMakings;
   setGeneratorValues(currentValues);
 
-  initializeMainValues();
+  await initializeMainValues();
 };
 
-const removeDecisionButtonClicked = (e) => {
+const removeDecisionButtonClicked = async (e) => {
   const currentValues = getCurrentGeneratorValues();
   const decisionIndex = Number(e.target?.dataset?.decisionIndex || '0');
 
@@ -822,7 +383,7 @@ const removeDecisionButtonClicked = (e) => {
   currentValues.decisionMaking = decisionMakings;
   setGeneratorValues(currentValues);
 
-  initializeMainValues();
+  await initializeMainValues();
 };
 
 const setAddInputButton = () => {
@@ -835,24 +396,29 @@ const setAddInputButton = () => {
   presentationInputs?.forEach((input) => { input.addEventListener('keyup', inputUpdated); });
 };
 
-const setInputPictureButtonClicked = () => {
-  inputPictureButtons?.forEach((input) => {
-    input?.addEventListener('change', (e) => {
-      initializeMainValues();
-      return true;
+const initializeLabelInputPictures = () => {
+  
+};
 
-      // const file = e.target.files?.[0];
-      // const { formSection, formProp } = e.target?.parentElement?.parentElement?.dataset;
-      // initializeData();
-    })
-  });
+const pictureUpdated = async (e) => {
+    allPicturesFiles[e.currentTarget.dataset.name] = e.currentTarget.files;
+    e.currentTarget.parentElement.querySelector('.inputPictureButtonText').innerHTML = e.currentTarget.files?.[0]?.name || '';
+    return true;
+
+    // const file = e.target.files?.[0];
+    // const { formSection, formProp } = e.target?.parentElement?.parentElement?.dataset;
+    // initializeData();
+};
+
+const setInputPictureButtonClicked = () => {
+  inputPictureButtons?.forEach((input) => input?.addEventListener('change', pictureUpdated));
 };
 
 const initializeEvents = () => {
   setFormSubmitEvent();
   setTabsClickEvent();
   setAddInputButton();
-  // setInputPictureButtonClicked();
+  setInputPictureButtonClicked();
 };
 
 const getInputSimpleHtml = (value = '') => (`
@@ -968,22 +534,26 @@ const getInputGlosary = (values) => {
   return html;
 };
 
-const getInputPictureHtml = (value = '', index = 0, name='') => (`
-  <div class="inputContainer" style="justify-content: right">
-    <label for="inputPictureButton__${name}" class="inputPictureButton custom-file-upload" class="input input--text noselect">
-        Subir Imagen
-    </label>
+const getInputPictureHtml = (value = '', index = 0, name='') => {
+  
+  return `
+    <div class="inputContainer" style="justify-content: right">
+      <span class="inputPictureButtonText"></span>
+      <label for="inputPictureButton__${name}" class="inputPictureButton custom-file-upload" class="input input--text noselect">
+          Subir Imagen
+      </label>
 
-    <input type="file" accept="image/png,image/jpeg" name="${name}" id="inputPictureButton__${name}" style="display: none;" class="inputPictureButtons">
-  </div>
-`);
+      <input type="file" accept="image/png,image/jpeg" data-name="${name}" value="${value}" id="inputPictureButton__${name}" style="display: none;" class="inputPictureButtons">
+    </div>
+  `
+};
 
-const getCustomHtml = (data) => {
+const getCustomHtml = async (data) => {
   let value;
   const { formSection, formProp, formProp2, formProp3, typeInput, name } = data;
-  const generatorValues = getGeneratorValues();
+  const generatorValues = await getGeneratorValues();
 
-  if (typeInput === 'picture') value = getAllFormValues(mainForm)?.[name]?.name || '';
+  if (typeInput === 'picture') value = allPicturesFiles?.[name] || '';
   else if (formProp3) value = generatorValues?.[formSection]?.[formProp]?.[formProp2]?.[formProp3];
   else if (formProp2) value = generatorValues?.[formSection]?.[formProp]?.[formProp2];
   else if (formProp) value = generatorValues?.[formSection]?.[formProp];
@@ -1000,10 +570,18 @@ const getCustomHtml = (data) => {
   return '';
 };
 
-const initializeInputsContainer = () => {
-  presentationInputsContainer?.forEach((inputContainer) => {
-    inputContainer.innerHTML = getCustomHtml(inputContainer?.dataset);
-  });
+const initializeInputsContainer = async () => {
+  countReloads += 1;
+
+  if (countReloads === 1) {
+    const promises = Array.from(presentationInputsContainer).map(async (inputContainer) => {
+      inputContainer.innerHTML = await getCustomHtml(inputContainer?.dataset);
+    });
+
+    await Promise.all(promises);
+  }
+
+  return;
 };
 
 const getDecisionMakingOptionsHtml = ({ title, detail }, index = 0) => (`
@@ -1035,9 +613,9 @@ const getDecisionMakingOptions = (values) => {
   return html;
 };
 
-const initializeDecisionMakingContainer = () => {
+const initializeDecisionMakingContainer = async () => {
   let html = '';
-  const generatorValues = getGeneratorValues();
+  const generatorValues = await getGeneratorValues();
 
   generatorValues.decisionMaking?.forEach((_decisionData, i) => {
     html += `
@@ -1052,6 +630,11 @@ const initializeDecisionMakingContainer = () => {
           <div class="inputAndLabelContainer" style="display: none;">
             <label class="inputLabel">Tipo:</label>
             <div class="inputsContainer" data-type-input="simple" data-form-section="decisionMaking" data-form-prop="${i}" data-form-prop2="type"></div>
+          </div>
+
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Imagen:</label>
+            <div class="inputsContainer" data-type-input="picture" data-form-section="decisionMaking" data-form-prop="${i}" data-form-prop2="picture" data-name="decisionMakingPicture_${i+1}"></div>
           </div>
 
           <div class="inputAndLabelContainer">
@@ -1083,11 +666,6 @@ const initializeDecisionMakingContainer = () => {
             <label class="inputLabel">El usuario se equivocó (texto):</label>
             <div class="inputsContainer" data-type-input="multiple" data-form-section="decisionMaking" data-form-prop="${i}" data-form-prop2="badAnswerText"></div>
           </div>
-
-          <div class="inputAndLabelContainer">
-            <label class="inputLabel">Imagen:</label>
-            <div class="inputsContainer" data-type-input="picture" data-form-section="decisionMaking" data-form-prop="${i}" data-form-prop2="picture" data-name="decisionMakingPicture_${i+1}"></div>
-          </div>
         </div>
       </div>
     `;
@@ -1096,18 +674,25 @@ const initializeDecisionMakingContainer = () => {
   formGeneratorSectionDecisionMaking.innerHTML = html;
 };
 
-const initializeData = () => {
-  initializeDecisionMakingContainer();
+const initializeData = async () => {
+  console.log('allPicturesFiles 1: ', allPicturesFiles);
+  await initializeDecisionMakingContainer();
+  console.log('allPicturesFiles 2: ', allPicturesFiles);
   initializeGeneratorConstants();
-  initializeInputsContainer();
+  console.log('allPicturesFiles 3: ', allPicturesFiles);
+  await initializeInputsContainer();
+  console.log('allPicturesFiles 4: ', allPicturesFiles);
 
   initializeGeneratorConstants();
+  console.log('allPicturesFiles 5: ', allPicturesFiles);
 };
 
-const initializeMainValues = () => {
+const initializeMainValues = async () => {
   initializeGeneratorConstants();
-  initializeData();
+  await initializeData();
+  initializeGeneratorConstants();
   initializeEvents();
+  initializeGeneratorConstants();
 
   const currentValues = getCurrentGeneratorValues();
   const tabIndex = (currentValues?.generator?.currentTab || 1) - 1;
@@ -1122,8 +707,8 @@ const restartPictureInputs = () => {
   setGeneratorValues(currentValues);
 };
 
-const pageReady = () => {
-  initializeMainValues();
+const pageReady = async () => {
+  await initializeMainValues();
 };
 
 document.addEventListener('DOMContentLoaded', pageReady);

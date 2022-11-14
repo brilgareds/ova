@@ -51,10 +51,19 @@ const showResults = () => {
 const initializeResultData = () => {
   const {  totalPointsFormated, totalGoodAnswers, totalBadAnswers } = userParticipation();
 
+  countOvaCompleted += 1;
   resultsStartContainer.innerHTML = getStarsHtml();
   resultsTotalPoints.innerHTML = totalPointsFormated;
   resultsGoodAnswers.innerHTML = totalGoodAnswers;
   resultsBadAnswers.innerHTML = totalBadAnswers;
+
+  if (countOvaCompleted === 1) {
+    api.LMSSetValue("cmi.core.score.min", 0);
+    api.LMSSetValue("cmi.core.score.max", 100);
+    api.LMSSetValue("cmi.core.score.raw", totalPointsFormated);
+    api.LMSSetValue("cmi.core.lesson_status", "completed");
+    api.LMSFinish("");
+  }
 
   let resultsTextHtml = '';
 
