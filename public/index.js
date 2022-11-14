@@ -7,7 +7,7 @@ let formGeneratorSectionDecisionMaking;
 let presentationInputsContainerMainTitle;
 let presentationInputsContainerSecundaryTitles;
 let presentationInputsContainerText;
-let presentationInputsContainer;
+let inputsContainer;
 let inputPictureButtons;
 let addInputButtons;
 let addDecisionButtons;
@@ -103,7 +103,7 @@ const initializeGeneratorConstants = () => {
   presentationInputsContainerMainTitle = document.querySelector('.presentation__inputsContainer--mainTitle');
   presentationInputsContainerSecundaryTitles = document.querySelector('.presentation__inputsContainer--secundaryTitles');
   presentationInputsContainerText = document.querySelector('.presentation__inputsContainer--text');
-  presentationInputsContainer = document.querySelectorAll('.inputsContainer');
+  inputsContainer = document.querySelectorAll('.inputsContainer');
   inputPictureButtons = document.querySelectorAll('.inputPictureButtons');
   inputPictureButtons?.forEach((pictureElement) => {
     allPicturesFiles[pictureElement.dataset.name] = pictureElement.files || [];
@@ -573,13 +573,11 @@ const getCustomHtml = async (data) => {
 const initializeInputsContainer = async () => {
   countReloads += 1;
 
-  if (countReloads === 1) {
-    const promises = Array.from(presentationInputsContainer).map(async (inputContainer) => {
-      inputContainer.innerHTML = await getCustomHtml(inputContainer?.dataset);
-    });
+  const promises = Array.from(inputsContainer).map(async (inputContainer) => {
+    inputContainer.innerHTML = await getCustomHtml(inputContainer?.dataset);
+  });
 
-    await Promise.all(promises);
-  }
+  await Promise.all(promises);
 
   return;
 };
@@ -675,16 +673,10 @@ const initializeDecisionMakingContainer = async () => {
 };
 
 const initializeData = async () => {
-  console.log('allPicturesFiles 1: ', allPicturesFiles);
   await initializeDecisionMakingContainer();
-  console.log('allPicturesFiles 2: ', allPicturesFiles);
   initializeGeneratorConstants();
-  console.log('allPicturesFiles 3: ', allPicturesFiles);
   await initializeInputsContainer();
-  console.log('allPicturesFiles 4: ', allPicturesFiles);
-
   initializeGeneratorConstants();
-  console.log('allPicturesFiles 5: ', allPicturesFiles);
 };
 
 const initializeMainValues = async () => {
