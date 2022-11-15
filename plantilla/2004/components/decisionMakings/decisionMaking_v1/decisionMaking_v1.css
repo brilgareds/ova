@@ -1,0 +1,81 @@
+.decisionMakingMainContainer {
+  display: flex;
+  padding-top: 1rem;
+}
+
+.decisionMakingPictureContainer {
+  height: 400px;
+  width: min(calc(470px + 2rem), 100%);
+  min-width: min(calc(470px + 2rem), 100%);
+  padding-left: 2rem;
+}
+
+.decisionMakingIconContainer {
+  height: max-content;
+  width: 75px;
+  min-width: 75px;
+  margin-right: 2rem;
+}
+
+.decisionMakingIcon {
+  width: 100%;
+  height: 100%;
+}
+
+.decisionMakingDescriptionContainer__title {
+  margin-top: 0;
+}
+
+.decisionMakingPicture {
+  width: 100%;
+  height: 100%;
+}
+
+.decisionMakingDescriptionContainer {
+  margin-right: 6rem;
+}
+
+.decisionMakingOption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #c9e5e4;
+  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  padding-left: 1.8rem;
+  padding-right: 0.5rem;
+  border-radius: 2rem;
+}
+
+.decisionMakingOption:hover {
+  cursor: pointer;
+}
+
+.decisionMakingOption:active {
+  transform: scale(.98);
+}
+
+.decisionMakingOptions__input {
+  background: url(assets/images/radioButton-default.png) no-repeat;
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.decisionMakingOptions__input--active {
+  background: url(assets/images/radioButton-active.png) no-repeat;
+  background-size: contain;
+}
+
+.decisionMakingOptions__label--active {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.decisionMakingOptions__inputImageContainer {
+  height: 40px;
+  min-height: 40px;
+  width: 40px;
+}

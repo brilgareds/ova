@@ -69,6 +69,12 @@ const initializeGeneratorValues = async () => {
   return config;
 };
 
+const deleteGeneratorValues = () => {
+  localStorage.removeItem('generatorValues');
+
+  return true;
+};
+
 const setGeneratorValues = (newConfig={}) => {
   const values = JSON.stringify({
     ...getCurrentGeneratorValues(),
@@ -181,7 +187,13 @@ const generateOva = async (e) => {
     const response = await postFetch({ url, data });
     console.log('Response is: ', response);
   
-    if (response.url) window.open(response.url);
+    if (response.url) {
+      if (Array.isArray(response.url)) response.url.forEach((url) => window.open(url));
+      else window.open(response.url);
+
+      deleteGeneratorValues();
+      location.reload();
+    }
   } catch (e) {
     console.error(e);
   }

@@ -1,0 +1,377 @@
+* {
+  box-sizing: border-box;
+  font-family: system-ui;
+}
+
+:root {
+  --primary-color: #ea00a5;
+  --secondary-color: #3d3ac5;
+  --secondary-dark-color: #2522e2;
+  --label-big-color: #00345b;
+  --label-big-font-size: 1.3rem;
+  --title-primary-font-size: 1.9rem;
+  --title-secondary-font-size: 1.9rem;
+  --button-font-size: 1.2rem;
+}
+
+html, body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 100%;
+  min-height: 100vh;
+}
+
+body {
+  position: relative;
+}
+
+:not(input):not(button *) {
+  cursor: context-menu;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  transition: all ease-in .5s;
+}
+
+header {
+  height: 4rem;
+}
+
+.primaryColor {
+  color: var(--primary-color) !important;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(.95);
+}
+
+.hidden {
+  display: none;
+}
+
+.bg-white {
+  background: white;
+}
+
+.customModalStarPictureContainer {
+  margin-right: 5px;
+  width: 59px;
+  height: max-content;
+}
+
+.customModalStarPicture {
+  width: 100%;
+  height: 100%;
+}
+
+.mainContainer {
+  opacity: 1;
+  margin: 0 4rem;
+  transition: all ease-in .5s;
+  position: relative;
+  border-radius: 1.1rem;
+  box-shadow: 1px 1px 1px 1px #dedede;
+  padding: 1.5rem 2.5rem 3rem 2.5rem;
+  min-height: 10rem;
+  min-height: 80vh;
+  min-height: max-content;
+  background: rgb(255 255 255 / 90%);
+  overflow-y: hidden;
+}
+
+.imageFullScreen {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes opacity-animation1 {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes opacity-animation2 {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.opacity1 {
+  opacity: 1;
+  animation-name: opacity-animation1;
+  animation-duration: 0.3s;
+}
+
+.opacity2 {
+  opacity: 1;
+  animation-name: opacity-animation2;
+  animation-duration: 0.3s;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.strong-font {
+  cursor: inherit;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.mainBackground {
+  position: relative;
+  position: fixed;
+  background: url(assets/images/background.png);
+  filter: brightness(0.95);
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.backFullScreenContainer {
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
+  height: 65px;
+  width: 65px;
+}
+
+.backFullScreenIcon {
+  width: 100%;
+  height: 100%;
+  background: url(assets/images/backFullScreen.png) no-repeat;
+  background-size: contain;
+}
+
+.backFullScreenIcon:hover {
+  cursor: pointer;
+}
+
+.backFullScreenIcon:active {
+  transform: scale(.95);
+}
+
+.fullScreenIcon {
+  width: 100%;
+  height: 100%;
+  background: url(assets/images/fullScreen.png) no-repeat;
+  background-size: contain;
+}
+
+.fullScreenIcon:hover {
+  cursor: pointer;
+}
+
+.fullScreenIcon:active {
+  transform: scale(.95);
+}
+
+.mainContainer__secondaryBackground {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 85%;
+  width: 27%;
+}
+
+.mainContainer__mainTitle {
+  font-size: 1.9rem;
+  color: var(--secondary-color);
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 1rem;
+  min-height: 4rem;
+}
+
+.mainContainer__mainTitle2 {
+  font-size: 1.9rem;
+  color: var(--secondary-color);
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 1rem;
+  min-height: 4rem;
+}
+
+.highlightText {
+  font-weight: 600;
+}
+
+.buttonsSection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2rem;
+  max-width: 100%;
+}
+
+.buttonsSectionContainer {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  width: min(calc(470px + 2rem), 100%);
+}
+
+.buttonsSection__button {
+  background: var(--secondary-color);
+  height: 41px;
+  display: inline-flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 1.2rem;
+  color: white;
+  width: 11rem;
+  border-radius: 1.2rem;
+}
+
+::-webkit-scrollbar {
+  cursor: pointer !important;
+}
+
+::-webkit-scrollbar:hover {
+  cursor: pointer !important;
+}
+
+.containerWithCustomScroll {
+  overflow-y: scroll;
+}
+
+/* width */
+.containerWithCustomScroll::-webkit-scrollbar {
+  cursor: pointer;
+  width: 20px;
+}
+
+/* Track */
+.containerWithCustomScroll::-webkit-scrollbar-track {
+  background: #e4e5ea;
+  border-radius: 10px;
+}
+ 
+/* Handle */
+.containerWithCustomScroll::-webkit-scrollbar-thumb {
+  background: var(--secondary-color);
+  border-radius: 10px;
+}
+
+.containerWithCustomScroll::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-dark-color);
+}
+
+.footer {
+  height: 4rem;
+}
+
+@media (max-width: 1200px) {
+  .mainContainer {
+    margin: 0 2rem !important;
+  }
+}
+
+@media (max-width: 1080px) {
+  .buttonsSectionContainer {
+    justify-content: space-evenly;
+  }
+
+  .generalPresentationSecundarySection {
+    margin-top: 3rem;
+  }
+
+  .buttonsSection__button:not(:first-of-type) {
+    margin-left: 1rem;
+  }
+
+  .results__resumeContainer {
+    display: block !important;
+  }
+
+  .results__finalPoints, .results__checkAnswersResume {
+    width: min(320px, 100%);
+  }
+
+  .results__finalPoints, .results__checkAnswersResume, .results__medalContainer {
+    margin: 0 auto;
+  }
+
+  .buttonsSection {
+    justify-content: center !important;
+    width: 100%;
+  }
+
+  .buttonsSection__button {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 1023px) {
+  .mainContainer__secondaryBackground {
+    display: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .mainContainer {
+    margin: 0 2rem !important;
+  }
+
+  .decisionMaking2__iconSection {
+    display: none;
+  }
+
+  .decisionMaking2 {
+    flex-wrap: wrap;
+  }
+
+  .generalInstructions__sectionImageContainer {
+    margin-top: 3rem !important;
+  }
+
+  .generalPresentation--context2 {
+    padding-bottom: 6rem;
+  }
+
+  .generalPresentationSecundarySection {
+    display: block !important;
+  }
+
+  .generalPresentationImageContainer {
+    margin-top: 5rem !important;
+  }
+
+  .results__mainSection{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .results__buttonGroup, .buttonsSection__button {
+    margin-left: 0 !important;
+  }
+
+  .customModal {
+    width: 90% !important;
+  }
+
+  button, .results__buttonGroup {
+    width: 100% !important;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+  }
+}
+
+@media (max-width: 394px) {
+  .mainContainer {
+    margin: 0 1rem !important;
+  }
+}

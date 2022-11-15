@@ -1,0 +1,175 @@
+
+.results__mainSection {
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+.results__titleSection {
+  width: 100%;
+}
+
+.results__mainSection {
+  width: 100%;
+}
+
+.results__buttonsSection {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.results__buttonGroup {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.results__buttonsSection {
+  margin-top: 3rem;
+}
+
+.results__resumeContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  height: max-content;
+  /* height: 260px; */
+}
+
+.results__medalContainer {
+  width: 150px;
+  height: max-content;
+}
+
+.results__medal {
+  width: 100%;
+  height: 100%;
+}
+
+.detailPoints__starsCompleted {
+  width: 100%;
+  height: 100%;
+}
+
+.goodAnswers__icon {
+  width: 100%;
+  height: 100%;
+}
+
+.badAnswers__icon {
+  width: 100%;
+  height: 100%;
+}
+
+.results__finalPoints, .results__checkAnswersResume {
+  width: min(313px, 100%);
+}
+
+.results__finalPoints, .results__medalContainer, .results__checkAnswersResume {
+  height: 100%;
+}
+
+.checkAnswersResume__titleContainer, .finalPoints__titleContainer {
+  height: 3rem;
+}
+
+.checkAnswersResume__titleContainer {
+  text-align: center;
+}
+
+.checkAnswersResume__title {
+  font-size: 600;
+}
+
+.checkAnswersResume__title {
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.finalPoints__detailPoints {
+  background: #e5e5eb;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 12px;
+  padding-bottom: 1rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+.finalPoints__detailPoints, .checkAnswersResume__totalAnswers {
+  height: calc(100% - 3rem);
+  background: #e5e5eb;
+  border-radius: 12px;
+}
+
+.checkAnswersResume__totalAnswers {
+  padding-bottom: 1rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+.detailPoints__bigNumber {
+  font-size: 5rem;
+  font-weight: 700;
+}
+
+.detailPoints__starsCompletedContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.checkAnswersResume__totalAnswers {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 2rem;
+}
+
+.totalAnswers__iconSection {
+  display: flex;
+  justify-content: center;
+}
+
+.goodAnswers__bigNumberContainer, .badAnswers__bigNumberContainer {
+  text-align: center;
+}
+
+.goodAnswers__bigNumber, .badAnswers__bigNumber {
+  font-size: 3.5rem;
+  font-weight: 600;
+}
+
+.results__finalText {
+  text-align: center;
+}
+
+.totalAnswers__iconContainer {
+  height: 40px;
+  width: max-content;
+}
+
+.goodAnswers__text, .badAnswers__text {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.detailPoints__bigNumberContainer {
+  text-align: center;
+}
+
+.finalPoints__titleContainer {
+  text-align: center;
+}
+
+.finalPoints__title {
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.results__finalTextContainer {
+  margin-top: 3rem;
+}

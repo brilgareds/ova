@@ -1,0 +1,31 @@
+
+.generalPresentationDescripcionContainer--context2, .generalPresentationSecundarySection {
+  height: calc(400px + 0.8rem + 8rem);
+}
+
+.generalPresentationSecundarySection {
+  display: inline-flex;
+  width: min(470px, 100%);
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.buttonsSectionContainer--context2 {
+  padding-top: 0;
+  margin-bottom: 0;
+}
+
+.generalPresentationImageContainer--context2 {
+  width: 100%;
+  margin-top: 0;
+  padding-left: 0;
+}
+
+.fullScreenIconContainer {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  height: 65px;
+  width: 65px;
+}

@@ -1,0 +1,60 @@
+.ovaContextBackground {
+  display: flex;
+  align-items: flex-end;
+  background: url('assets/images/ovaContextBackground.png') no-repeat;
+  background-size: cover;
+  height: 650px;
+  /* height: calc(100vh - 8rem); */
+}
+
+.ovaContextContainer {
+  margin: 0;
+  padding: 1rem 2.5rem 2rem 2.5rem;
+  background: white;
+  max-width: 60%;
+  height: 13.8rem;
+  min-height: 13.8rem;
+}
+
+.contextTitle {
+  margin-top: 0.2rem;
+  margin-bottom: 0.6rem;
+  color: #ea00a5;
+}
+
+.contextSubTitles {
+  font-size: 1.2rem;
+}
+
+.spacingOvaContextScroll {
+  height: calc(100% - 58px);
+  padding-right: 1rem;
+}
+
+.contextSubTitles:first-child {
+  margin-top: 0;
+}
+
+.companyDataList {
+  list-style: none;
+  padding-left: 0;
+}
+
+.companyDataList__item {
+  display: flex;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.companyDataList__numeration {
+  font-size: 1rem;
+  margin-top: 0.1rem;
+  height: max-content;
+  font-weight: 600;
+  padding: 0 0.5rem 0.1rem 0.5rem;
+  background: #4528a7;
+  color: white;
+  border-radius: 50%;
+  margin-left: 0rem;
+  margin-right: 0.5rem;
+}

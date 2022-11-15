@@ -11,12 +11,16 @@ class Helpers {
   };
 
   static pathToUrl = (path) => {
-    const separator = this.systemSeparator();
-    const url = path?.replaceAll(separator, '/');
-    const index = url.indexOf('public')+7;
-    const newUrl = url.substring(index);
-
-    return newUrl;
+    if (Array.isArray(path)) {
+      return path?.map((realPath) => this.pathToUrl(realPath));
+    } else {
+      const separator = this.systemSeparator();
+      const url = path?.replaceAll(separator, '/');
+      const index = url.indexOf('public')+7;
+      const newUrl = url.substring(index);
+  
+      return newUrl;
+    }
   };
 
   static formatfields = (allFields) => {
