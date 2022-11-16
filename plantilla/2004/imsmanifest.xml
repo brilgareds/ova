@@ -1,52 +1,20 @@
-<?xml version="1.0" standalone="no" ?>
-<!--
-Single SCO content packaging example. SCORM 2004 3rd Edition.
-
-Provided by Rustici Software - http://www.scorm.com
-
-This example demonstrates the simplest possible manifest, containing just one SCO and 
-no metdata or sequencing information.
--->
-
-<!-- 
-The manifest node contains a unique identifer for this course and the course's version number.
-The schema declartions are important to ensure you are delivering valid XML. For the most part
-these should remain static. Other schema prefixes are allowed, but can limit interoperabilty.
--->
-<manifest identifier="com.scorm.golfsamples.contentpackaging.singlesco.20043rd" version="1"
-          xmlns="http://www.imsglobal.org/xsd/imscp_v1p1"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_v1p3"
-          xmlns:adlseq="http://www.adlnet.org/xsd/adlseq_v1p3"
-          xmlns:adlnav="http://www.adlnet.org/xsd/adlnav_v1p3"
-          xmlns:imsss="http://www.imsglobal.org/xsd/imsss"
-          xsi:schemaLocation="http://www.imsglobal.org/xsd/imscp_v1p1 imscp_v1p1.xsd
-                              http://www.adlnet.org/xsd/adlcp_v1p3 adlcp_v1p3.xsd
-                              http://www.adlnet.org/xsd/adlseq_v1p3 adlseq_v1p3.xsd
-                              http://www.adlnet.org/xsd/adlnav_v1p3 adlnav_v1p3.xsd
-                              http://www.imsglobal.org/xsd/imsss imsss_v1p0.xsd">
-
-  <!--The metadata node simply declares which SCORM version this course operates under.-->
-  <metadata>
-    <schema>ADL SCORM</schema>
-    <schemaversion>2004 3rd Edition</schemaversion>
-  </metadata>
-  <!-- There is just one organization. The organization contains just one item.-->
-  <organizations>
-    <organization identifier="ORG-E28AA06123A951D3D829224BEFCB7C23" structure="hierarchical">
-      <title>Demo</title>
-      <item identifier="ITEM-5F0C036EAC8F2AE02F727D22B6244396" isvisible="true" identifierref="RES-FB76B2756538E8906B131C46200E447A">
-        <title>Simulador toma decisiones CloudLabs</title>
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This is a Reload version 2.5.6 SCORM 2004 Content Package document-->
+<!--Spawned from the Reload Content Package Generator - http://www.reload.ac.uk-->
+<manifest xmlns="http://www.imsglobal.org/xsd/imscp_v1p1" xmlns:imsmd="http://ltsc.ieee.org/xsd/LOM" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_v1p3" xmlns:imsss="http://www.imsglobal.org/xsd/imsss" xmlns:adlseq="http://www.adlnet.org/xsd/adlseq_v1p3" xmlns:adlnav="http://www.adlnet.org/xsd/adlnav_v1p3" identifier="MANIFEST-A25D7C11E109272AF1DBEC9478BFCBF2" xsi:schemaLocation="http://www.imsglobal.org/xsd/imscp_v1p1 imscp_v1p1.xsd http://ltsc.ieee.org/xsd/LOM lom.xsd http://www.adlnet.org/xsd/adlcp_v1p3 adlcp_v1p3.xsd http://www.imsglobal.org/xsd/imsss imsss_v1p0.xsd http://www.adlnet.org/xsd/adlseq_v1p3 adlseq_v1p3.xsd http://www.adlnet.org/xsd/adlnav_v1p3 adlnav_v1p3.xsd">
+  <organizations default="ORG-694BA18A4FFD677F88066FC4FAF907EE">
+    <organization identifier="ORG-694BA18A4FFD677F88066FC4FAF907EE" structure="hierarchical">
+      <title>Organization</title>
+      <item identifier="ITEM-03740B7D6EFB8DF4ABBA1893AF5F3750" isvisible="true">
+        <title>Demo</title>
+        <item identifier="ITEM-4CC470CC64058D1B55DD81105E7E9FE5" isvisible="true" identifierref="RES-617965A484C691EE590789A3B6F37951">
+          <title>Simulador toma decisiones CloudLabs</title>
+        </item>
       </item>
     </organization>
   </organizations>
-  <!-- 
-  There is just one resource that represents the single SCO that comprises the entirety of this course.
-  The href attribute points to the launch URL for the course and all of the files required by the course
-  are listed.
-  -->
   <resources>
-    <resource identifier="resource_1" type="webcontent" adlcp:scormType="sco" href="shared/launchpage.html">
+    <resource identifier="RES-617965A484C691EE590789A3B6F37951" adlcp:scormType="asset" type="webcontent" href="index.html">
       <file href="index.html" />
       <file href="index.css" />
       <file href="components/welcome/welcome.css" />

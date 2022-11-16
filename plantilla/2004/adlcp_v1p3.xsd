@@ -24,8 +24,6 @@
                   on the dataFromLMS
       2004-01-06  Added completionThreshold to the ADL CP namespace
       2004-23-01  Final edits in preparation for release
-      2006-02-06  Removed persistState, change type of the locationType from 
-                  xs:string to xs:anyURI
       *************************************************************************
       </xs:documentation>
    </xs:annotation>
@@ -45,8 +43,10 @@
       </xs:simpleType>
    </xs:attribute>
 
+   <xs:attribute name = "persistState" default = "false" type = "xs:boolean" />
+
    <xs:simpleType name = "locationType">
-      <xs:restriction base = "xs:anyURI"/>
+      <xs:restriction base = "xs:string"/>
    </xs:simpleType>
 
    <xs:simpleType name = "dataFromLMSType">
