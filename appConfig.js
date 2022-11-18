@@ -42,7 +42,8 @@ class App {
   run = () => {
     this.listener = this.app.listen(process.env.PORT || 3010);
 
-    console.log(`Running in port ${this.getCurrentPort()}`);
+    console.log('\n\n\nAplicacion disponible en la url:');
+    console.log(`http://localhost:${this.getCurrentPort()}/`);
   };
 }
 
