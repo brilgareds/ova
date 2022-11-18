@@ -59,23 +59,8 @@
 
       const maxCharacters = 40;
       const name = `${userData.name.substring(0, (maxCharacters-1))}${(userData.name.length > maxCharacters) ? '...' : ''}`;
-      const userName = `${userNameContainer}${name}`;
-      reportHtml = reportHtml.replace(userNameContainer, userName);
-
-      const userInstitution = `${userInstitutionContainer}${userData.institution}`;
-      reportHtml = reportHtml.replace(userInstitutionContainer, userInstitution);
-
-      const userSituation = `${userSituationContainer}${userData.situation}`;
-      reportHtml = reportHtml.replace(userSituationContainer, userSituation);
-      
-      const userCourse = `${userCourseContainer}${userData.course}`;
-      reportHtml = reportHtml.replace(userCourseContainer, userCourse);
-
-      const userCourseId = `${userCourseIdContainer}${userData.courseId}`;
-      reportHtml = reportHtml.replace(userCourseIdContainer, userCourseId);
-      
-      const userUnit = `${userUnitContainer}${userData.unit}`;
-      reportHtml = reportHtml.replace(userUnitContainer, userUnit);
+      const userName = `${userCourseIdContainer}${name}`;
+      reportHtml = reportHtml.replace(userCourseIdContainer, userName);
 
       const date = dateToObject();
       console.log('The new date is: ', date);
