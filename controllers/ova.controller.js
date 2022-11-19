@@ -81,8 +81,18 @@ class OvaController {
 
     if (files.contextPicture) {
       const currentPath = files.contextPicture.filepath;
-      const newPath1 = join(picturesFolder1, 'background7.png');
-      const newPath2 = join(picturesFolder2, 'background7.png');
+      const newPath1 = join(picturesFolder1, 'contextPicture-small.png');
+      const newPath2 = join(picturesFolder2, 'contextPicture-small.png');
+
+      fs.copySync(currentPath, newPath1);
+      fs.copySync(currentPath, newPath2);
+      rimraf.sync(currentPath);
+    }
+
+    if (files.contextPictureBig) {
+      const currentPath = files.contextPictureBig.filepath;
+      const newPath1 = join(picturesFolder1, 'contextPicture-big.png');
+      const newPath2 = join(picturesFolder2, 'contextPicture-big.png');
 
       fs.copySync(currentPath, newPath1);
       fs.copySync(currentPath, newPath2);

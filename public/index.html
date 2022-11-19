@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   <meta name="viewport" content="width=device-width">
-  <link rel="stylesheet" href="/index.css">
+  <link rel="stylesheet" href="index.css">
 </head>
 <body>
   <div class="generatorBackground"></div>
@@ -46,6 +46,14 @@
       <div class="formGeneratorSection formGeneratorSection__welcome">
         <div class="commonInputAndLabelContainers">
           <div class="inputAndLabelContainer">
+            <label class="inputLabel" style="line-height: 1rem; margin-bottom: 1rem;">Pantalla de referencia:</label>
+
+            <div style="height: calc(100% - 2rem);">
+              <img src="assets/referencia_bienvenida.jpg" alt="referencia_bienvenida" style="width: 100%; height: 100%;">
+            </div>
+          </div>
+
+          <div class="inputAndLabelContainer">
             <label class="inputLabel">Imagen:</label>
             <div class="inputsContainer" data-type-input="picture" data-form-section="welcome" data-form-prop="picture" data-name="welcomePicture"></div>
           </div>
@@ -61,7 +69,7 @@
           </div>
 
           <div class="inputAndLabelContainer">
-            <label class="inputLabel">Invitacion al OVA:</label>
+            <label class="inputLabel">Invitación al OVA:</label>
             <div class="inputsContainer" data-type-input="simple" data-form-section="welcome" data-form-prop="invitationMessage"></div>
           </div>
 
@@ -74,6 +82,14 @@
 
       <div class="formGeneratorSection formGeneratorSection__presentation" data-section-numeration="1">
         <div class="commonInputAndLabelContainers">
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel" style="line-height: 1rem; margin-bottom: 1rem;">Pantalla de referencia:</label>
+
+            <div style="height: calc(100% - 2rem);">
+              <img src="assets/referencia_presentacion.jpg" alt="referencia_presentacion" style="width: 100%; height: 100%;">
+            </div>
+          </div>
+
           <div class="inputAndLabelContainer">
             <label class="inputLabel">Imagen:</label>
             <div class="inputsContainer" data-type-input="picture" data-form-section="presentation" data-form-prop="picture" data-name="presentationPicture"></div>
@@ -110,20 +126,48 @@
       <div class="formGeneratorSection formGeneratorSection__objectives">
         <div class="commonInputAndLabelContainers">
           <div class="inputAndLabelContainer">
+            <label class="inputLabel" style="line-height: 1rem; margin-bottom: 1rem;">Pantalla de referencia:</label>
+
+            <div style="height: calc(100% - 2rem);">
+              <img src="assets/referencia_objectives.jpg" alt="referencia_objectives" style="width: 100%; height: 100%;">
+            </div>
+          </div>
+
+          <div class="inputAndLabelContainer">
             <label class="inputLabel">Imagen:</label>
             <div class="inputsContainer" data-type-input="picture" data-form-section="instructionsAndObjectives" data-form-prop="picture" data-name="objectivesPicture"></div>
           </div>
 
           <div class="inputAndLabelContainer">
-            <label class="inputLabel">Objectivos - titulo:</label>
+            <label class="inputLabel">Objetivos - titulo:</label>
             <div class="inputsContainer" data-type-input="multiple" data-form-section="instructionsAndObjectives" data-form-prop="objectives" data-form-prop2="title"></div>
           </div>
   
           <div class="inputAndLabelContainer">
-            <label class="inputLabel">Objectivos - texto:</label>
+            <label class="inputLabel">Objetivos - texto:</label>
             <div class="inputsContainer" data-type-input="multiple" data-form-section="instructionsAndObjectives" data-form-prop="objectives" data-form-prop2="detail"></div>
           </div>
+
+          <!--
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Extra información - titulo:</label>
+            <div class="inputsContainer" data-type-input="multiple" data-form-section="instructionsAndObjectives" data-form-prop="extraInfo" data-form-prop2="title"></div>
+          </div>
+          -->
   
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Extra información - texto:</label>
+            <div class="inputsContainer" data-type-input="multiple" data-form-section="instructionsAndObjectives" data-form-prop="extraInfo" data-form-prop2="detail"></div>
+          </div><br><br>
+
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel" style="line-height: 1rem; margin-bottom: 1rem;">Pantalla de referencia:</label>
+
+            <div style="height: calc(100% - 2rem);">
+              <img src="assets/referencia_thematics.jpg" alt="referencia_thematics" style="width: 100%; height: 100%;">
+            </div>
+          </div>
+
           <div class="inputAndLabelContainer">
             <label class="inputLabel">Tematica - titulo:</label>
             <div class="inputsContainer" data-type-input="multiple" data-form-section="instructionsAndObjectives" data-form-prop="thematics" data-form-prop2="title"></div>
@@ -132,8 +176,16 @@
           <div class="inputAndLabelContainer">
             <label class="inputLabel">Tematicas:</label>
             <div class="inputsContainer" data-type-input="thematics" data-type-value="object" data-form-section="instructionsAndObjectives" data-form-prop="thematics" data-form-prop2="detail"></div>
-          </div>
+          </div><br><br>
   
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel" style="line-height: 1rem; margin-bottom: 1rem;">Pantalla de referencia:</label>
+
+            <div style="height: calc(100% - 2rem);">
+              <img src="assets/referencia_instructions.jpg" alt="referencia_instructions" style="width: 100%; height: 100%;">
+            </div>
+          </div>
+
           <div class="inputAndLabelContainer">
             <label class="inputLabel">Instrucciones - titulo:</label>
             <div class="inputsContainer" data-type-input="multiple" data-form-section="instructionsAndObjectives" data-form-prop="instructions" data-form-prop2="title"></div>
@@ -143,30 +195,30 @@
             <label class="inputLabel">Instrucciones - texto:</label>
             <div class="inputsContainer" data-type-input="multiple" data-form-section="instructionsAndObjectives" data-form-prop="instructions" data-form-prop2="detail"></div>
           </div>
-  
-          <div class="inputAndLabelContainer">
-            <label class="inputLabel">Extra información - titulo:</label>
-            <div class="inputsContainer" data-type-input="multiple" data-form-section="instructionsAndObjectives" data-form-prop="extraInfo" data-form-prop2="title"></div>
-          </div>
-  
-          <div class="inputAndLabelContainer">
-            <label class="inputLabel">Extra información - texto:</label>
-            <div class="inputsContainer" data-type-input="multiple" data-form-section="instructionsAndObjectives" data-form-prop="extraInfo" data-form-prop2="detail"></div>
-          </div>
         </div>
       </div>
 
       <div class="formGeneratorSection formGeneratorSection__glosary">
         <div class="commonInputAndLabelContainers">
           <div class="inputAndLabelContainer">
+            <label class="inputLabel" style="line-height: 1rem; margin-bottom: 1rem;">Pantalla de referencia:</label>
+
+            <div style="height: calc(100% - 2rem);">
+              <img src="assets/referencia_glosary.jpg" alt="referencia_glosary" style="width: 100%; height: 100%;">
+            </div>
+          </div>
+
+          <div class="inputAndLabelContainer">
             <label class="inputLabel">Glosario - titulo:</label>
             <div class="inputsContainer" data-type-input="multiple" data-form-section="instructionsAndObjectives" data-form-prop="glosary" data-form-prop2="title"></div>
           </div>
   
+          <!--
           <div class="inputAndLabelContainer">
             <label class="inputLabel">Glosario - texto:</label>
             <div class="inputsContainer" data-type-input="multiple" data-form-section="instructionsAndObjectives" data-form-prop="glosary" data-form-prop2="detail"></div>
           </div>
+          -->
   
           <div class="inputAndLabelContainer">
             <label class="inputLabel">Glosario - Palabras:</label>
@@ -178,7 +230,15 @@
       <div class="formGeneratorSection formGeneratorSection__context">
         <div class="commonInputAndLabelContainers">
           <div class="inputAndLabelContainer">
-            <label class="inputLabel">Imagen:</label>
+            <label class="inputLabel" style="line-height: 1rem; margin-bottom: 1rem;">Pantalla de referencia:</label>
+
+            <div style="height: calc(100% - 2rem);">
+              <img src="assets/referencia_context.jpg" alt="referencia_context" style="width: 100%; height: 100%;">
+            </div>
+          </div>
+
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Imagen pequeña:</label>
             <div class="inputsContainer" data-type-input="picture" data-form-section="ovaContext" data-form-prop="picture" data-name="contextPicture"></div>
           </div>
 
@@ -195,6 +255,19 @@
           <div class="inputAndLabelContainer">
             <label class="inputLabel">Texto:</label>
             <div class="inputsContainer" data-type-input="multiple" data-form-section="ovaContext" data-form-prop="detail"></div>
+          </div><br><br>
+
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel" style="line-height: 1rem; margin-bottom: 1rem;">Pantalla de referencia:</label>
+
+            <div style="height: calc(100% - 2rem);">
+              <img src="assets/referencia_context2.jpg" alt="referencia_context2" style="width: 100%; height: 100%;">
+            </div>
+          </div>
+
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Imagen Grande:</label>
+            <div class="inputsContainer" data-type-input="picture" data-form-section="ovaContext" data-form-prop="picture" data-name="contextPictureBig"></div>
           </div>
         </div>
       </div>
@@ -202,6 +275,14 @@
       <div class="formGeneratorSection formGeneratorSection__decisionMaking"></div>
 
       <div class="formGeneratorSection formGeneratorSection__results">
+        <div class="inputAndLabelContainer">
+          <label class="inputLabel" style="line-height: 1rem; margin-bottom: 1rem;">Pantalla de referencia:</label>
+
+          <div style="height: calc(100% - 2rem);">
+            <img src="assets/referencia_results.jpg" alt="referencia_results" style="width: 100%;height: 100%;border: 1px solid #dedede;padding: 0;margin: 0;">
+          </div>
+        </div><br><br>
+
         <div class="commonInputAndLabelContainers">
           <div class="inputAndLabelContainer">
             <label class="inputLabel">OVA - No fue aprobado (texto):</label>
@@ -227,6 +308,6 @@
 
   </div>
 
-  <script src="/index.js"></script>
+  <script src="index.js"></script>
 </body>
 </html>

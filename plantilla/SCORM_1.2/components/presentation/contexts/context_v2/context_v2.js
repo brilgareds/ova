@@ -87,7 +87,7 @@ const showPictureFullScreen = (e) => {
   htmlBeforeFullScreen = mainContainer.innerHTML;
   mainContainer.innerHTML = `
     <div style="position: relative; position: relative; height: 100%; width: 100%;">
-      <img class="imageFullScreen" src="assets/images/background7.png">
+      <img class="imageFullScreen" src="assets/images/contextPicture-big.png">
       <div class="backFullScreenContainer"><div class="backFullScreenIcon"></div></div>
     </div>
   `;
