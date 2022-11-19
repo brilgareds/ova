@@ -108,8 +108,6 @@ const pageReady = async () => {
   deleteUserData();
   api = getAPIHandle();
   api?.LMSInitialize('');
-  // const name = api?.LMSGetValue("cmi.core.student_name");
-  // if (!name) return alert('Error al obtener información desde el LMS!!');
 
   await initializeMainConstants();
   await initializeOvaUserData();

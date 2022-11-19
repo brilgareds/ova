@@ -8,6 +8,23 @@
   margin-bottom: 0;
 }
 
+.enviromentName_1 {
+  color: #ea00a5;
+  font-weight: 700;
+  font-size: 1.6rem;
+  display: block;
+  text-align: center;
+}
+
+.enviromentName_2 {
+  display: block;
+  color: #4528a7;
+  font-weight: 700;
+  font-size: 3.7rem;
+  line-height: 3.2rem;
+  text-align: center;
+}
+
 .welcomePicture, .welcomeDetail__picture {
   width: 100%;
   height: 100%;

@@ -58,6 +58,19 @@ const formatStrongFont = (text) => {
   return newText;
 };
 
+const formatItalicFont = (text) => {
+  const data = {
+    text,
+    customSymbol: '---',
+    startCustomStyle: '<span class="italic-font">',
+    endCustomStyle: '</span>'
+  };
+
+  const newText = validateCustomSymbolText(data);
+
+  return newText;
+};
+
 const pdfConfig = {
   margin: 0,
   padding: 0,
@@ -235,15 +248,17 @@ const downloadHtmlLikePdf = async ({ html }) => {
   return html2pdf()
     .set(pdfConfig)
     .from(html)
-    .save('Ova results.pdf')
+    .save('Ova reporte.pdf')
     .catch(err => console.error(err));
 };
 
 const formatText = (text) => {
   if (!text) return text;
 
-  const newText = formatStrongFont(text);
-  return newText
+  let newText = formatStrongFont(text);
+  newText = formatItalicFont(newText);
+
+  return newText;
 };
 
 const formatToStrongText = (text) => formatText(`***${text}***`);

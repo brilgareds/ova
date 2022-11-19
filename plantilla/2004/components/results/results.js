@@ -26,15 +26,10 @@ const initializeResultConstanst = () => {
 };
 
 const downloadResultsPdf = async () => {
-  window.open('reports.html', '_blank');
-  // await downloadHtmlLikePdf({ html });
-
-  // const pdfElement = document.querySelector('.results__pdf');
-  // pdfElement.classList.remove('hidden');
-  // pdfElement.innerHTML = html;
-
-  /* window.open('components/results/pdf/pdf.html', '_blank'); */
-  // pdfElement.classList.add('hidden');
+  // window.open('reports.html', '_blank');
+  // window.open('reports.html', '_self');
+  window.open('reports.html', '_top');
+  //window.open('reports.html', '_parent');
 };
 
 const initializeResultsEvents = () => {
@@ -67,7 +62,11 @@ const initializeResultData = () => {
 
   let resultsTextHtml = '';
 
-  config.results?.detail?.forEach((text) => {
+  let resultsProp = 'notApproved';
+  if (totalPointsFormated === 100) resultsProp = 'excellent';
+  else if (totalPointsFormated > 60) resultsProp = 'approved';
+
+  config.results?.[resultsProp]?.forEach((text) => {
     resultsTextHtml += `<p class="results__finalText">${formatText(text)}</p>`;
   });
 
