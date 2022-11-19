@@ -135,9 +135,9 @@ class OvaController {
 
   static copyOvaAndCompress = async (params) => {
     const { fields, files } = params;
-    const version1 = '1.2';
-    const version2 = '2004';
-    const mainPath = join(__dirname, '..', 'public', 'exports', String(new Date().getTime()));
+    const version1 = 'SCORM_1.2';
+    const version2 = 'SCORM_2004';
+    const mainPath = join(__dirname, '..', 'public', 'exports', String(new Date().getTime()), 'todas_las_versiones');
     const templatesFolder = join(__dirname, '..', 'plantilla');
 
     const currentPath1 = join(templatesFolder, version1);
@@ -145,17 +145,21 @@ class OvaController {
 
     const currentPath2 = join(templatesFolder, version2);
     const newPath2 = join(mainPath, version2);
+    const newPath3 = join(mainPath);
 
     this.copyOva({ fields, currentPath1, currentPath2, newPath1, newPath2 });
     this.addNewPictures({ files, fields, newPath1, newPath2 });
 
-    const zipPath = await Promise.all([
+    await Promise.all([
       this.compress(newPath1),
       this.compress(newPath2),
     ]);
 
     rimraf.sync(newPath1);
     rimraf.sync(newPath2);
+
+    const zipPath = await this.compress(newPath3);
+    rimraf.sync(newPath3);
 
     const newUrls = Helpers.pathToUrl(zipPath);
 
