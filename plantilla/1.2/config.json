@@ -35,7 +35,7 @@
     "nextButton": {
       "text": "Siguiente",
       "textContinueOva": "Continuar",
-      "textReport": "Reporte"
+      "textReport": "Resultado"
     },
     "previousButton": {
       "text": "Anterior",
@@ -44,7 +44,6 @@
   },
   "presentation": {
     "mainTitle": "Presentación general del OVA",
-    "picture": "",
     "secundaryTitles": [
       "En esta pantalla se presenta una descripción general de lo que es el OVA, cómo está estructurado y qué componentes teóricos se muestran en el mismo. Esta pantalla es una bienvenida y una invitación para que el usuario aborde de manera adecuada el recurso."
     ],
@@ -66,7 +65,6 @@
     }
   },
   "instructionsAndObjectives": {
-    "picture": "",
     "extraInfo": {
       "title": [
         ""
@@ -259,7 +257,6 @@
     }
   },
   "ovaContext": {
-    "picture": "",
     "bigTitle": [
       "Contexto – Título"
     ],

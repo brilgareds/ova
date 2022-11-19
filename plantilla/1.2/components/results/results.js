@@ -67,7 +67,11 @@ const initializeResultData = () => {
 
   let resultsTextHtml = '';
 
-  config.results?.detail?.forEach((text) => {
+  let resultsProp = 'notApproved';
+  if (totalPointsFormated === 100) resultsProp = 'excellent';
+  else if (totalPointsFormated > 60) resultsProp = 'approved';
+
+  config.results?.[resultsProp]?.forEach((text) => {
     resultsTextHtml += `<p class="results__finalText">${formatText(text)}</p>`;
   });
 

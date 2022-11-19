@@ -10,7 +10,7 @@ const getGoodAnswerModal = async () => {
 };
 
 const initializeGoodAnswerModalEvents = () => {
-  goodAnswerButtonContinue?.addEventListener('click', modalButtonContinueClick);
+  goodAnswerButtonContinue?.addEventListener('click', closeModalAndLoadDecisionMaking);
 };
 
 const initializeGoodAnswerModal = () => {

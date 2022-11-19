@@ -12,6 +12,10 @@
 
   <div class="generator">
     <div class="tabs">
+      <button class="tab" data-name-section-related="welcome">
+        Bienvenida
+      </button>
+
       <button class="tab" data-name-section-related="presentation">
         Presentación
       </button>
@@ -38,6 +42,35 @@
     </div>
 
     <form class="formGenerator" enctype="multipart/form-data">
+      <div class="formGeneratorSection formGeneratorSection__welcome">
+        <div class="commonInputAndLabelContainers">
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Imagen:</label>
+            <div class="inputsContainer" data-type-input="picture" data-form-section="welcome" data-form-prop="picture" data-name="welcomePicture"></div>
+          </div>
+
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Titulo - Primera parte:</label>
+            <div class="inputsContainer" data-type-input="simple" data-form-section="welcome" data-form-prop="enviromentName_1"></div>
+          </div>
+
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Titulo - Segunda parte:</label>
+            <div class="inputsContainer" data-type-input="simple" data-form-section="welcome" data-form-prop="enviromentName_2"></div>
+          </div>
+
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Invitacion al OVA:</label>
+            <div class="inputsContainer" data-type-input="simple" data-form-section="welcome" data-form-prop="invitationMessage"></div>
+          </div>
+
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Texto para animar:</label>
+            <div class="inputsContainer" data-type-input="simple" data-form-section="welcome" data-form-prop="euphorycText"></div>
+          </div>
+        </div>
+      </div>
+
       <div class="formGeneratorSection formGeneratorSection__presentation" data-section-numeration="1">
         <div class="commonInputAndLabelContainers">
           <div class="inputAndLabelContainer">
@@ -170,8 +203,18 @@
       <div class="formGeneratorSection formGeneratorSection__results">
         <div class="commonInputAndLabelContainers">
           <div class="inputAndLabelContainer">
-            <label class="inputLabel">Texto:</label>
-            <div class="inputsContainer" data-type-input="multiple" data-form-section="results" data-form-prop="detail"></div>
+            <label class="inputLabel">OVA No fue aprobado (texto):</label>
+            <div class="inputsContainer" data-type-input="multiple" data-form-section="results" data-form-prop="notApproved"></div>
+          </div>
+
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">OVA Si fue aprobado (texto):</label>
+            <div class="inputsContainer" data-type-input="multiple" data-form-section="results" data-form-prop="approved"></div>
+          </div>
+
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">OVA perfecto (texto):</label>
+            <div class="inputsContainer" data-type-input="multiple" data-form-section="results" data-form-prop="excellent"></div>
           </div>
         </div>
       </div>

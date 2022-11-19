@@ -180,7 +180,7 @@ const generateOva = async (e) => {
   }
 
   for (const prop in fields) {
-    data.append(prop, JSON.stringify(fields[prop]));
+    if (prop !== 'generator' && fields[prop] !== undefined) data.append(prop, JSON.stringify(fields[prop]));
   }
 
   try {
@@ -665,11 +665,21 @@ const initializeDecisionMakingContainer = async () => {
           <div class="inputAndLabelContainer">
             <label class="inputLabel">Número de la respuesta correcta:</label>
             <div class="inputsContainer" data-type-input="multipleAnswers" data-form-section="decisionMaking" data-form-prop="${i}" data-form-prop2="answers"></div>
+          </div><br>
+
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">El usuario acertó (Imagen):</label>
+            <div class="inputsContainer" data-type-input="picture" data-form-section="decisionMaking" data-form-prop="picture" data-name="answersCompleted_${i+1}"></div>
           </div>
 
           <div class="inputAndLabelContainer" style="margin-top: 0">
             <label class="inputLabel">El usuario acertó (texto):</label>
             <div class="inputsContainer" data-type-input="multiple" data-form-section="decisionMaking" data-form-prop="${i}" data-form-prop2="goodAnswerText"></div>
+          </div><br>
+
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">El usuario se equivocó (Imagen):</label>
+            <div class="inputsContainer" data-type-input="picture" data-form-section="decisionMaking" data-form-prop="picture" data-name="incorrectAnswer_${i+1}"></div>
           </div>
 
           <div class="inputAndLabelContainer">

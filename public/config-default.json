@@ -2,6 +2,12 @@
   "generator": {
     "currentTab": 1
   },
+  "welcome": {
+    "enviromentName_1": "Entorno de",
+    "enviromentName_2": "Toma de Decisiones",
+    "invitationMessage": "Ahora que has terminado el estudio de esta unidad temática, te invitamos a que utilices todos los saberes de los que dispones para que resuelvas el reto con una solución innovadora y eficiente.",
+    "euphorycText": "!Sorprendete con lo que puedes hacer!"
+  },
   "general": {
     "alphabet": [
       "A",
@@ -35,7 +41,7 @@
     "nextButton": {
       "text": "Siguiente",
       "textContinueOva": "Continuar",
-      "textReport": "Reporte"
+      "textReport": "Resultado"
     },
     "previousButton": {
       "text": "Anterior",
@@ -44,7 +50,6 @@
   },
   "presentation": {
     "mainTitle": "Presentación general del OVA",
-    "picture": "",
     "secundaryTitles": [
       "En esta pantalla se presenta una descripción general de lo que es el OVA, cómo está estructurado y qué componentes teóricos se muestran en el mismo. Esta pantalla es una bienvenida y una invitación para que el usuario aborde de manera adecuada el recurso."
     ],
@@ -66,7 +71,6 @@
     }
   },
   "instructionsAndObjectives": {
-    "picture": "",
     "extraInfo": {
       "title": [
         ""
@@ -259,7 +263,6 @@
     }
   },
   "ovaContext": {
-    "picture": "",
     "bigTitle": [
       "Contexto – Título"
     ],
@@ -476,8 +479,14 @@
     }
   ],
   "results": {
-    "detail": [
-      "Results - Lorem ipsum dolor sit amet, ***consectetuer adipiscing elit,*** sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse."
+    "notApproved": [
+      "¡Buen intento! Te invitamos para que hagas una revisión de los temas estudiados en la Unidad."
+    ],
+    "approved": [
+      "Buen trabajo. Has comprendido la mayor parte de los conceptos estudiados en la Unidad, lo que te ha permitido solucionar la situación planteada. Te invitamos a poner en práctica, los conocimientos aprendidos, en situaciones similares."
+    ],
+    "excellent": [
+      "¡Excelente! Has comprendido de manera correcta, los conceptos estudiados en la Unidad, lo que te ha permitido dar solución de manera correcta la situación planteada. Te invitamos a poner en práctica, los conocimientos aprendidos, en situaciones similares."
     ]
   }
 }

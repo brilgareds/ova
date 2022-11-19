@@ -43,11 +43,21 @@ class OvaController {
 
   static addNewPictures = async (data) => {
     const { files={}, fields, newPath1, newPath2 } = data;
-    const countFiles = Object.keys(files);
+    const countFiles = Object.keys(files)?.length;
     if (!countFiles) return;
     
     const picturesFolder1 = join(newPath1, 'assets', 'images');
     const picturesFolder2 = join(newPath2, 'assets', 'images');
+
+    if (files.welcomePicture) {
+      const currentPath = files.welcomePicture.filepath;
+      const newPath1 = join(picturesFolder1, 'welcomePicture.png');
+      const newPath2 = join(picturesFolder2, 'welcomePicture.png');
+
+      fs.copySync(currentPath, newPath1);
+      fs.copySync(currentPath, newPath2);
+      rimraf.sync(currentPath);
+    }
 
     if (files.presentationPicture) {
       const currentPath = files.presentationPicture.filepath;
@@ -82,8 +92,16 @@ class OvaController {
     if (fields.decisionMaking) {
       fields.decisionMaking?.forEach((decision, i) => {
         const nameFile = `decisionMaking_${i+1}.png`;
+        const nameFile2 = `answersCompleted_${i+1}.png`;
+        const nameFile3 = `incorrectAnswer_${i+1}.png`;
+
         const pictureProp = `decisionMakingPicture_${i+1}`;
+        const pictureProp2 = `answersCompleted_${i+1}`;
+        const pictureProp3 = `incorrectAnswer_${i+1}`;
+
         const currentPath = files[pictureProp]?.filepath;
+        const currentPath2 = files[pictureProp2]?.filepath;
+        const currentPath3 = files[pictureProp3]?.filepath;
 
         if (currentPath) {
           const newPath1 = join(picturesFolder1, nameFile);
@@ -92,6 +110,24 @@ class OvaController {
           fs.copySync(currentPath, newPath1);
           fs.copySync(currentPath, newPath2);
           rimraf.sync(currentPath);
+        }
+
+        if (currentPath2) {
+          const newPath1 = join(picturesFolder1, nameFile2);
+          const newPath2 = join(picturesFolder2, nameFile2);
+
+          fs.copySync(currentPath2, newPath1);
+          fs.copySync(currentPath2, newPath2);
+          rimraf.sync(currentPath2);
+        }
+
+        if (currentPath3) {
+          const newPath1 = join(picturesFolder1, nameFile3);
+          const newPath2 = join(picturesFolder2, nameFile3);
+
+          fs.copySync(currentPath3, newPath1);
+          fs.copySync(currentPath3, newPath2);
+          rimraf.sync(currentPath3);
         }
       });
     }

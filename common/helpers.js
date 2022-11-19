@@ -28,6 +28,7 @@ class Helpers {
 
     Object.keys(allFields || {})?.forEach((key) => {
       let value = allFields[key];
+      if (value === 'undefined') return;
 
       try {
         value = JSON.parse(allFields[key]);

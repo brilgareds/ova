@@ -315,7 +315,7 @@ const showResultAnswerModal = (data) => {
   const wasGoodAnswer = checkAnswer(data);
   if (!wasGoodAnswer) return loadBadAnswerModal();
 
-  return loadGoodAnswerModal();
+  return modalButtonContinueClick(); // loadGoodAnswerModal();
 };
 
 const decisionFinished = () => {
