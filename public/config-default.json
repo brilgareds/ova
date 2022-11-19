@@ -54,11 +54,6 @@
       "En esta pantalla se presenta una descripción general de lo que es el OVA, cómo está estructurado y qué componentes teóricos se muestran en el mismo. Esta pantalla es una bienvenida y una invitación para que el usuario aborde de manera adecuada el recurso."
     ],
     "detail": [
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.",
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.",
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.",
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.",
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.",
       "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi."
     ],
     "extraInfo": {
@@ -86,24 +81,6 @@
       "detail": [
         "Describir lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.",
         "Identificar lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod.",
-        "Interpretar lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.",
-        "Describir lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.",
-        "Identificar lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod.",
-        "Interpretar lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.",
-        "Describir lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.",
-        "Identificar lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod.",
-        "Interpretar lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.",
-        "Describir lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.",
-        "Identificar lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod.",
-        "Interpretar lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.",
-        "Describir lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.",
-        "Identificar lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod.",
-        "Interpretar lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.",
-        "Describir lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.",
-        "Identificar lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod.",
-        "Interpretar lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.",
-        "Describir lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt.",
-        "Identificar lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod.",
         "Interpretar lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh."
       ]
     },
@@ -119,34 +96,6 @@
         {
           "thematic": "Tema 2",
           "descripcion": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt."
-        },
-        {
-          "thematic": "Tema 3",
-          "descripcion": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt."
-        },
-        {
-          "thematic": "Tema 1",
-          "descripcion": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt."
-        },
-        {
-          "thematic": "Tema 2",
-          "descripcion": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt."
-        },
-        {
-          "thematic": "Tema 3",
-          "descripcion": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt."
-        },
-        {
-          "thematic": "Tema 1",
-          "descripcion": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt."
-        },
-        {
-          "thematic": "Tema 2",
-          "descripcion": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt."
-        },
-        {
-          "thematic": "Tema 3",
-          "descripcion": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt."
         }
       ]
     },
@@ -155,22 +104,6 @@
         "El siguiente texto es genérico y no debe ser modificado por el temático"
       ],
       "detail": [
-        "Al ingresar al simulador podrás ver el contexto en el cual el reto se plantea.",
-        "A medida que vas avanzando en la práctica de laboratorio se te presentarán situaciones que requieren tomar una decisión adecuada.",
-        "También encontrarás ejercicios de aprendizaje que te permiten reforzar conceptos y te preparan para el momento en que debas tomar la decisión",
-        "Cada vez que tomes una decisión correcta ***ganarás una estrella.***",
-        "Al ingresar al simulador podrás ver el contexto en el cual el reto se plantea.",
-        "A medida que vas avanzando en la práctica de laboratorio se te presentarán situaciones que requieren tomar una decisión adecuada.",
-        "También encontrarás ejercicios de aprendizaje que te permiten reforzar conceptos y te preparan para el momento en que debas tomar la decisión",
-        "Cada vez que tomes una decisión correcta ***ganarás una estrella.***",
-        "Al ingresar al simulador podrás ver el contexto en el cual el reto se plantea.",
-        "A medida que vas avanzando en la práctica de laboratorio se te presentarán situaciones que requieren tomar una decisión adecuada.",
-        "También encontrarás ejercicios de aprendizaje que te permiten reforzar conceptos y te preparan para el momento en que debas tomar la decisión",
-        "Cada vez que tomes una decisión correcta ***ganarás una estrella.***",
-        "Al ingresar al simulador podrás ver el contexto en el cual el reto se plantea.",
-        "A medida que vas avanzando en la práctica de laboratorio se te presentarán situaciones que requieren tomar una decisión adecuada.",
-        "También encontrarás ejercicios de aprendizaje que te permiten reforzar conceptos y te preparan para el momento en que debas tomar la decisión",
-        "Cada vez que tomes una decisión correcta ***ganarás una estrella.***",
         "Al ingresar al simulador podrás ver el contexto en el cual el reto se plantea.",
         "A medida que vas avanzando en la práctica de laboratorio se te presentarán situaciones que requieren tomar una decisión adecuada.",
         "También encontrarás ejercicios de aprendizaje que te permiten reforzar conceptos y te preparan para el momento en que debas tomar la decisión",
@@ -183,74 +116,6 @@
       ],
       "detail": [],
       "words": [
-        {
-          "word": "A1",
-          "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-        },
-        {
-          "word": "A2",
-          "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-        },
-        {
-          "word": "A3",
-          "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-        },
-        {
-          "word": "A4",
-          "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-        },
-        {
-          "word": "A5",
-          "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-        },
-        {
-          "word": "A6",
-          "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-        },
-        {
-          "word": "A7",
-          "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-        },
-        {
-          "word": "A8",
-          "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-        },
-        {
-          "word": "A9",
-          "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-        },
-        {
-          "word": "A10",
-          "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-        },
-        {
-          "word": "B1",
-          "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-        },
-        {
-          "word": "B2",
-          "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-        },
-        {
-          "word": "B3",
-          "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-        },
-        {
-          "word": "B4",
-          "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-        },
-        {
-          "word": "D1",
-          "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-        },
-        {
-          "word": "D2",
-          "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-        },
-        {
-          "word": "D3",
-          "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
-        },
         {
           "word": "Edificio",
           "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam"
@@ -270,16 +135,7 @@
       "En esta pantalla se presenta una descripción general de lo que es el OVA, cómo está estructurado y qué componentes teóricos se muestran en el mismo. Esta pantalla es una bienvenida y una invitación para que el usuario aborde de manera adecuada el recurso."
     ],
     "detail": [
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.",
-      "Consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat.",
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.",
-      "Consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat.",
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.",
-      "Consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat.",
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.",
-      "Consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat.",
-      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.",
-      "Consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat."
+      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi."
     ]
   },
   "decisionMaking": [
@@ -289,7 +145,7 @@
         "En este apartado se coloca un mensaje de felicitación con alguna indicación que el temático considere pertinente para seguir avanzando."
       ],
       "badAnswerText": [
-        "La diferencia de la pantalla tipo 4 y tipo 5 es que la pantalla tipo cuatro es de transición mientras que la pantalla tipo 5 te lleva a un final, por lo tanto, en esta pantalla debe colocarse una retroalimentación de la decisión errónea que se ha tomado.En este espacio debe colocarse la retroalimentación.",
+        "La diferencia de la pantalla tipo 4 y tipo 5 es que la pantalla tipo cuatro es de transición mientras que la pantalla tipo 5 te lleva a un final, por lo tanto, en esta pantalla debe colocarse una retroalimentación de la decisión errónea que se ha tomado.",
         "En este espacio debe colocarse la retroalimentación."
       ],
       "title": [
@@ -302,179 +158,11 @@
       "options": [
         {
           "title": "La programación del PLC",
-          "detail": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore"
-        },
-        {
-          "title": "El cableado entre el sensor del caldero y el PLC",
-          "detail": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore"
-        },
-        {
-          "title": "El sensor de temperatura del caldero",
-          "detail": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore"
-        },
-        {
-          "title": "La energía y el voltaje",
           "detail": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore"
         }
       ],
       "answers": [
         1
-      ]
-    },
-    {
-      "type": 2,
-      "goodAnswerText": [
-        "En este apartado se coloca un mensaje de felicitación con alguna indicación que el temático considere pertinente para seguir avanzando."
-      ],
-      "badAnswerText": [
-        "La diferencia de la pantalla tipo 4 y tipo 5 es que la pantalla tipo cuatro es de transición mientras que la pantalla tipo 5 te lleva a un final, por lo tanto, en esta pantalla debe colocarse una retroalimentación de la decisión errónea que se ha tomado.En este espacio debe colocarse la retroalimentación.",
-        "En este espacio debe colocarse la retroalimentación."
-      ],
-      "title": [
-        "Texto corto donde se le propone al usuario tomar una decisión de acuerdo a determinada situación."
-      ],
-      "detail": [
-        "***Ejemplo:*** Es hora de tomar decisiones, ¿qué vas a empezar a revisar para encontrar la falla?",
-        "Analiza cada una de las opciones y selecciona la que consideres conveniente haciendo clic en el círculo."
-      ],
-      "options": [
-        {
-          "title": "La programación del PLC",
-          "detail": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore"
-        },
-        {
-          "title": "El cableado entre el sensor del caldero y el PLC",
-          "detail": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore"
-        },
-        {
-          "title": "El sensor de temperatura del caldero",
-          "detail": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore"
-        },
-        {
-          "title": "La energía y el voltaje",
-          "detail": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore"
-        }
-      ],
-      "answers": [
-        2
-      ]
-    },
-    {
-      "type": 2,
-      "goodAnswerText": [
-        "En este apartado se coloca un mensaje de felicitación con alguna indicación que el temático considere pertinente para seguir avanzando."
-      ],
-      "badAnswerText": [
-        "La diferencia de la pantalla tipo 4 y tipo 5 es que la pantalla tipo cuatro es de transición mientras que la pantalla tipo 5 te lleva a un final, por lo tanto, en esta pantalla debe colocarse una retroalimentación de la decisión errónea que se ha tomado.En este espacio debe colocarse la retroalimentación.",
-        "En este espacio debe colocarse la retroalimentación."
-      ],
-      "title": [
-        "Texto corto donde se le propone al usuario tomar una decisión de acuerdo a determinada situación."
-      ],
-      "detail": [
-        "***Ejemplo:*** Es hora de tomar decisiones, ¿qué vas a empezar a revisar para encontrar la falla?",
-        "Analiza cada una de las opciones y selecciona la que consideres conveniente haciendo clic en el círculo."
-      ],
-      "options": [
-        {
-          "title": "La programación del PLC",
-          "detail": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore"
-        },
-        {
-          "title": "El cableado entre el sensor del caldero y el PLC",
-          "detail": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore"
-        },
-        {
-          "title": "El sensor de temperatura del caldero",
-          "detail": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore"
-        },
-        {
-          "title": "La energía y el voltaje",
-          "detail": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore"
-        }
-      ],
-      "answers": [
-        3
-      ]
-    },
-    {
-      "type": 2,
-      "goodAnswerText": [
-        "En este apartado se coloca un mensaje de felicitación con alguna indicación que el temático considere pertinente para seguir avanzando."
-      ],
-      "badAnswerText": [
-        "La diferencia de la pantalla tipo 4 y tipo 5 es que la pantalla tipo cuatro es de transición mientras que la pantalla tipo 5 te lleva a un final, por lo tanto, en esta pantalla debe colocarse una retroalimentación de la decisión errónea que se ha tomado.En este espacio debe colocarse la retroalimentación.",
-        "En este espacio debe colocarse la retroalimentación."
-      ],
-      "title": [
-        "Texto corto donde se le propone al usuario tomar una decisión de acuerdo a determinada situación."
-      ],
-      "detail": [
-        "***Ejemplo:*** Es hora de tomar decisiones, ¿qué vas a empezar a revisar para encontrar la falla?",
-        "Analiza cada una de las opciones y selecciona la que consideres conveniente haciendo clic en el círculo."
-      ],
-      "options": [
-        {
-          "title": "La programación del PLC",
-          "detail": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore"
-        },
-        {
-          "title": "El cableado entre el sensor del caldero y el PLC",
-          "detail": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore"
-        },
-        {
-          "title": "El sensor de temperatura del caldero",
-          "detail": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore"
-        },
-        {
-          "title": "La energía y el voltaje",
-          "detail": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore"
-        }
-      ],
-      "answers": [
-        4
-      ]
-    },
-    {
-      "type": 2,
-      "goodAnswerText": [
-        "En este apartado se coloca un mensaje de felicitación con alguna indicación que el temático considere pertinente para seguir avanzando."
-      ],
-      "badAnswerText": [
-        "La diferencia de la pantalla tipo 4 y tipo 5 es que la pantalla tipo cuatro es de transición mientras que la pantalla tipo 5 te lleva a un final, por lo tanto, en esta pantalla debe colocarse una retroalimentación de la decisión errónea que se ha tomado.En este espacio debe colocarse la retroalimentación.",
-        "En este espacio debe colocarse la retroalimentación."
-      ],
-      "title": [
-        "Texto corto donde se le propone al usuario tomar una decisión de acuerdo a determinada situación."
-      ],
-      "detail": [
-        "***Ejemplo:*** Es hora de tomar decisiones, ¿qué vas a empezar a revisar para encontrar la falla?",
-        "Analiza cada una de las opciones y selecciona la que consideres conveniente haciendo clic en el círculo."
-      ],
-      "options": [
-        {
-          "title": "La programación del PLC",
-          "detail": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore"
-        },
-        {
-          "title": "El cableado entre el sensor del caldero y el PLC",
-          "detail": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore"
-        },
-        {
-          "title": "El sensor de temperatura del caldero",
-          "detail": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore"
-        },
-        {
-          "title": "La energía y el voltaje",
-          "detail": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore"
-        },
-        {
-          "title": "Last option La energía y el voltaje",
-          "detail": "Last option Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore."
-        }
-      ],
-      "answers": [
-        5
       ]
     }
   ],

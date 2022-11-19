@@ -3,14 +3,26 @@
   font-family: serif;
 }
 
+html {
+  position: relative;
+}
+
 html, body {
   margin: 0;
   padding: 0;
   font-size: 16px;
 }
 
-body {
+.generatorBackground {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background: #f1f1f1;
+  background: url(background.webp) no-repeat;
+  background-size: cover;
+  z-index: -1;
 }
 
 label, .inputPicture__name {
@@ -30,6 +42,7 @@ label, .inputPicture__name {
   display: flex;
   background: white;
   background: #ffffffe8;
+  background: #ffffffb8;
   flex-wrap: wrap;
   border-radius: 1rem;
   padding: 2rem 4rem 4rem 4rem;
@@ -312,6 +325,7 @@ label, .inputPicture__name {
 .decisionContainer {
   overflow: hidden;
   border: 1px solid #dedede;
+  border: 0;
   border-radius: 10px;
   margin-top: 1rem;
 }
