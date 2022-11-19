@@ -26,15 +26,10 @@ const initializeResultConstanst = () => {
 };
 
 const downloadResultsPdf = async () => {
-  window.open('reports.html', '_blank');
-  // await downloadHtmlLikePdf({ html });
-
-  // const pdfElement = document.querySelector('.results__pdf');
-  // pdfElement.classList.remove('hidden');
-  // pdfElement.innerHTML = html;
-
-  /* window.open('components/results/pdf/pdf.html', '_blank'); */
-  // pdfElement.classList.add('hidden');
+  // window.open('reports.html', '_blank');
+  // window.open('reports.html', '_self');
+  window.open('reports.html', '_top');
+  //window.open('reports.html', '_parent');
 };
 
 const initializeResultsEvents = () => {
