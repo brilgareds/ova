@@ -10,7 +10,6 @@ let presentationInputsContainerText;
 let inputsContainer;
 let inputPictureButtons;
 let addInputButtons;
-let addDecisionButtons;
 let removeInputButtons;
 let removeDecisionButtons;
 const classActiveTab = 'tab--active';
@@ -117,7 +116,6 @@ const initializeGeneratorConstants = () => {
 
   addInputButtons = document.querySelectorAll('.addInputButton');
   removeInputButtons = document.querySelectorAll('.removeInputButton');
-  addDecisionButtons = document.querySelectorAll('.addDecisionButton');
   removeDecisionButtons = document.querySelectorAll('.removeDecisionButton');
 };
 
@@ -201,31 +199,24 @@ const generateOva = async (e) => {
 
 const inputUpdated = (e) => {
   const { value, dataset } = e.currentTarget;
-  const { inputProp, index } = dataset;
+  const { inputProp, index, index2 } = dataset;
   const inputContainer = e.currentTarget.parentElement;
   const allInputsContainer = inputContainer.parentElement;
-  const { formSection, formProp, formProp2, typeValue } = allInputsContainer?.dataset;
-  const inputs = allInputsContainer.querySelectorAll('input');
+  const { formSection, formProp, formProp2, formProp3, formProp4 } = allInputsContainer?.dataset;
+  // const inputs = allInputsContainer.querySelectorAll('input');
   const currentValues = getCurrentGeneratorValues();
+  debugger;
 
-  if (!formProp2) {
-    const isArray = Array.isArray(currentValues[formSection][formProp]);
-
-    if (isArray) currentValues[formSection][formProp][index] = value;
-    else currentValues[formSection][formProp] = value;
-  }
-  else {
-    const isArray = Array.isArray(currentValues[formSection][formProp][formProp2]);
-
-    if (isArray) {
-      const valueIsAnObject = (typeValue === 'object');
-
-      if (!valueIsAnObject) currentValues[formSection][formProp][formProp2][index] = value;
-      else {
-        currentValues[formSection][formProp][formProp2][index][inputProp] = value;
-      }
-    }
-    else currentValues[formSection][formProp][formProp2] = value;
+  if (index) {
+    if (formProp4) currentValues[formSection][formProp][formProp2][formProp3][formProp4][index] = value;
+    else if (formProp3) currentValues[formSection][formProp][formProp2][formProp3][index] = value;
+    else if (formProp2) currentValues[formSection][formProp][formProp2][index] = value;
+    else if (formProp) currentValues[formSection][formProp][index] = value;
+  } else {
+    if (formProp4) currentValues[formSection][formProp][formProp2][formProp3][formProp4] = value;
+    else if (formProp3) currentValues[formSection][formProp][formProp2][formProp3] = value;
+    else if (formProp2) currentValues[formSection][formProp][formProp2] = value;
+    else if (formProp) currentValues[formSection][formProp] = value;
   }
   
   setGeneratorValues(currentValues);
@@ -234,36 +225,82 @@ const inputUpdated = (e) => {
   initializeEvents();
 };
 
+const verifyLastPropId = () => {
+
+};
+
+const updateInputValue = (data, current='1') => {
+  const { formSection, formProp, formProp2, formProp3, formProp4 } = data;
+
+  if (data[current] !== undefined) return updateInputValue(data, );
+};
+
+const cloneObjectWithOutValues = (obj = {}) => {
+  const newObject = {};
+
+  Object.keys(obj)?.forEach((prop) => {
+    const isTypeProp = (prop === 'type' && typeof obj[prop] !== 'object');
+    newObject[prop] = (isTypeProp) ? obj[prop] : initializeInputValue(obj[prop]);
+  });
+
+  return newObject;
+};
+
+const initializeInputValue = (value='') => {
+  if (Array.isArray(value)) return [initializeInputValue(value[0])];
+  if (typeof value === 'object' && value !== null) return cloneObjectWithOutValues(value);
+
+  return '';
+};
+
+const makeNewInputData = (data, type, index) => {
+  let newData;
+
+  if (Array.isArray(data)) {
+    newData = [];
+
+    if (type === 'add') {
+      data.forEach((value, i) => {
+        newData.push(value);
+        if (i === index) newData.push(initializeInputValue(value));
+      });
+    } else if (type === 'remove') {
+      newData = data.filter((_value, i) => (i !== index));
+      if (!newData.length) newData = [initializeInputValue(data[0])];
+    }
+  } else {
+    newData = {};
+
+    Object.keys(data)?.forEach((prop) => {
+      newData[prop] = data[prop];
+    });
+  }
+
+  return newData;
+};
+
 const removeInputButtonClicked = async (e) => {
   const currentValues = getCurrentGeneratorValues();
   const typeValue = e.currentTarget?.dataset?.typeValue;
-  const isAnObjectValue = (typeValue === 'object');
   const index = Number(e.currentTarget?.dataset?.index || 0);
-  const { formSection, formProp, formProp2 } = e.currentTarget?.parentElement?.parentElement?.parentElement?.dataset;
+  const { formSection, formProp, formProp2, formProp3, formProp4 } = e.currentTarget?.parentElement?.parentElement?.parentElement?.dataset;
+  debugger;
 
-  if (!formProp2) {
-    const newArray = currentValues[formSection]?.[formProp]?.filter((_row, i) => (i !== index));
-    if (newArray?.length) currentValues[formSection][formProp] = newArray;
-    else {
-      if (!isAnObjectValue) currentValues[formSection][formProp] = [''];
-      else {
-        const newObjectValue = {};
-        Object.keys(currentValues[formSection]?.[formProp]?.[0])?.forEach((key) => { newObjectValue[key] = ''; })
-        currentValues[formSection][formProp] = [newObjectValue];
-      }
-    }
+  if (formProp4) {
+    const value = currentValues[formSection][formProp][formProp2][formProp3][formProp4];
+    currentValues[formSection][formProp][formProp2][formProp3][formProp4] = makeNewInputData(value, 'remove', index);
+  } else if (formProp3) {
+    const value = currentValues[formSection][formProp][formProp2][formProp3];
+    currentValues[formSection][formProp][formProp2][formProp3] = makeNewInputData(value, 'remove', index);
+  } else if (formProp2) {
+    const value = currentValues[formSection][formProp][formProp2];
+    currentValues[formSection][formProp][formProp2] = makeNewInputData(value, 'remove', index);
+  } else if (formProp) {
+    const value = currentValues[formSection][formProp];
+    currentValues[formSection][formProp] = makeNewInputData(value, 'remove', index);
   } else {
-    const newArray = currentValues[formSection]?.[formProp]?.[formProp2]?.filter((_row, i) => (i !== index));
-
-    if (newArray?.length) currentValues[formSection][formProp][formProp2] = newArray;
-    else {
-      if (!isAnObjectValue) currentValues[formSection][formProp][formProp2] = [''];
-      else {
-        const newObjectValue = {};
-        Object.keys(currentValues[formSection]?.[formProp]?.[formProp2]?.[0])?.forEach((key) => { newObjectValue[key] = ''; })
-        currentValues[formSection][formProp][formProp2] = [newObjectValue];
-      }
-    }
+    const value = currentValues[formSection];
+    currentValues[formSection] = makeNewInputData(value, 'remove', index);
   }
 
   setGeneratorValues(currentValues);
@@ -272,44 +309,28 @@ const removeInputButtonClicked = async (e) => {
 };
 
 const addInputButtonClicked = async (e) => {
+
+
   const currentValues = getCurrentGeneratorValues();
-  const typeValue = e.currentTarget?.dataset.typeValue;
-  const isAnObjectValue = (typeValue === 'object');
-
   const index = Number(e.currentTarget?.dataset?.index || 0);
-  const { formSection, formProp, formProp2 } = e.currentTarget?.parentElement?.parentElement?.parentElement?.dataset;
+  const { formSection, formProp, formProp2, formProp3, formProp4 } = e.currentTarget?.parentElement?.parentElement?.parentElement?.dataset;
+  debugger;
 
-  if (!formProp2) {
-    const newArray = [];
-    currentValues[formSection]?.[formProp]?.forEach((row, i) => {
-      newArray.push(row);
-
-      if (i === index) {
-        if (!isAnObjectValue) newArray.push('');
-        else {
-          const newObject = {};
-          Object.keys(row).forEach((key) => { newObject[key] = ''; });
-          newArray.push(newObject);
-        }
-      }
-    });
-
-    currentValues[formSection][formProp] = (newArray?.length) ? newArray : [''];
+  if (formProp4) {
+    const value = currentValues[formSection][formProp][formProp2][formProp3][formProp4];
+    currentValues[formSection][formProp][formProp2][formProp3][formProp4] = makeNewInputData(value, 'add', index);
+  } else if (formProp3) {
+    const value = currentValues[formSection][formProp][formProp2][formProp3];
+    currentValues[formSection][formProp][formProp2][formProp3] = makeNewInputData(value, 'add', index);
+  } else if (formProp2) {
+    const value = currentValues[formSection][formProp][formProp2];
+    currentValues[formSection][formProp][formProp2] = makeNewInputData(value, 'add', index);
+  } else if (formProp) {
+    const value = currentValues[formSection][formProp];
+    currentValues[formSection][formProp] = makeNewInputData(value, 'add', index);
   } else {
-    const newArray = [];
-    currentValues[formSection]?.[formProp]?.[formProp2]?.forEach((row, i) => {
-      newArray.push(row);
-      if (i === index) {
-        if (!isAnObjectValue) newArray.push('');
-        else {
-          const newObject = {};
-          Object.keys(row).forEach((key) => { newObject[key] = ''; });
-          newArray.push(newObject);
-        }
-      }
-    });
-
-    currentValues[formSection][formProp][formProp2] = (newArray?.length) ? newArray : [''];
+    const value = currentValues[formSection];
+    currentValues[formSection] = makeNewInputData(value, 'add', index);
   }
 
   setGeneratorValues(currentValues);
@@ -402,9 +423,7 @@ const setAddInputButton = () => {
   addInputButtons?.forEach((addInputButton) => { addInputButton.addEventListener('click', addInputButtonClicked); });
   removeInputButtons?.forEach((removeInputButton) => { removeInputButton.addEventListener('click', removeInputButtonClicked); });
 
-  addDecisionButtons?.forEach((button) => button.addEventListener('click', addDecisionButtonClicked));
   removeDecisionButtons?.forEach((button) => button.addEventListener('click', removeDecisionButtonClicked));
-
   presentationInputs?.forEach((input) => { input.addEventListener('keyup', inputUpdated); });
 };
 
@@ -450,11 +469,11 @@ const getInputMultipleHtml = (value = '', index = 0) => (`
     <input type="text" class="input input--array" value="${value}" data-index="${index}">
 
     <div class="inputButtons">
-      <button class="removeInputButton" type="button" data-index="${index}">
+      <button class="removeInputButton removeInputButton--inInput" type="button" data-index="${index}">
         <span class="removeInputButtonText">-</span>
       </button>
 
-      <button class="addInputButton" type="button" data-index="${index}">
+      <button class="addInputButton addInputButton--inInput" type="button" data-index="${index}">
         <span class="addInputButtonText">+</span>
       </button>
     </div>
@@ -491,11 +510,11 @@ const getInputGlosaryHtml = ({ word, description }, index = 0) => (`
     <input type="text" class="input input--array" value="${description}" data-index="${index}" data-input-prop="description">
 
     <div class="inputButtons">
-      <button class="removeInputButton" type="button" data-type-value="object" data-index="${index}">
+      <button class="removeInputButton removeInputButton--inInput" type="button" data-type-value="object" data-index="${index}">
         <span class="removeInputButtonText">-</span>
       </button>
 
-      <button class="addInputButton" type="button" data-type-value="object" data-index="${index}">
+      <button class="addInputButton addInputButton--inInput" type="button" data-type-value="object" data-index="${index}">
         <span class="addInputButtonText">+</span>
       </button>
     </div>
@@ -508,11 +527,11 @@ const getInputThematicsHtml = ({ thematic, descripcion }, index = 0) => (`
     <input type="text" class="input input--array" value="${descripcion}" data-index="${index}" data-input-prop="descripcion">
 
     <div class="inputButtons">
-      <button class="removeInputButton" type="button" data-type-value="object" data-index="${index}">
+      <button class="removeInputButton removeInputButton--inInput" type="button" data-type-value="object" data-index="${index}">
         <span class="removeInputButtonText">-</span>
       </button>
 
-      <button class="addInputButton" type="button" data-type-value="object" data-index="${index}">
+      <button class="addInputButton addInputButton--inInput" type="button" data-type-value="object" data-index="${index}">
         <span class="addInputButtonText">+</span>
       </button>
     </div>
@@ -557,7 +576,7 @@ const getInputPictureHtml = (value = '', index = 0, name='') => {
 
       <input type="file" accept="image/png,image/jpeg" data-name="${name}" value="${value}" id="inputPictureButton__${name}" style="display: none;" class="inputPictureButtons">
     </div>
-  `
+  `;
 };
 
 const getCustomHtml = async (data) => {
@@ -576,7 +595,7 @@ const getCustomHtml = async (data) => {
   if (typeInput === 'multipleAnswers') return getInputMultipleAnswers(value);
   if (typeInput === 'glosary') return getInputGlosary(value);
   if (typeInput === 'thematics') return getInputThematics(value);
-  if (typeInput === 'decisionMakingOptions') return getDecisionMakingOptions(value);
+  if (typeInput === 'decisionMakingOptions') return getDecisionMakingOptions(value, formProp);
   if (typeInput === 'picture') { return getInputPictureHtml(value, 0, name); }
 
   return '';
@@ -594,31 +613,74 @@ const initializeInputsContainer = async () => {
   return;
 };
 
-const getDecisionMakingOptionsHtml = ({ title, detail }, index = 0) => (`
+const getDecisionMakingOptionsHtml = ({ title, detail, badAnswerText }, index = 0, decisionPosition = 0) => (`
+  ${(index !== 0) ? '<br><hr><br><br>' : '' }
+
   <div class="inputContainer">
-    <label style="display: flex; align-items: center; justify-content: left; margin-right: 5px; font-weight: bolder; color: black;">
+    <label style="display: flex;align-items: center;justify-content: left;margin-right: 1rem;font-weight: bolder;font-size: 1.2rem;color: black;">
       ${index+1}. 
     </label>
     <input type="text" class="input input--multiplePropValue" value="${title}" data-index="${index}" data-input-prop="title">
     <input type="text" class="input input--array" value="${detail}" data-index="${index}" data-input-prop="detail">
 
     <div class="inputButtons">
-      <button class="removeInputButton" type="button" data-type-value="object" data-index="${index}">
+      <button class="removeInputButton removeInputButton--inInput" type="button" data-type-value="object" data-index="${index}">
         <span class="removeInputButtonText">-</span>
       </button>
 
-      <button class="addInputButton" type="button" data-type-value="object" data-index="${index}">
+      <button class="addInputButton addInputButton--inInput" type="button" data-type-value="object" data-index="${index}">
         <span class="addInputButtonText">+</span>
       </button>
     </div>
   </div>
+
+  <div class="inputContainer">
+    <div class="inputAndLabelContainer" style="margin-right: 0">
+      <label class="inputLabel">Estudiante falló (Imagen):</label>
+
+      <div class="inputsContainer" data-type-input="picture" data-form-section="decisionMaking" data-form-prop="picture" data-name="incorrectAnswer_${index+1}">
+        <div class="inputContainer" style="justify-content: right">
+          <span class="inputPictureButtonText"></span>
+          <label for="inputPictureButton__answersCompleted_1" class="inputPictureButton custom-file-upload">
+              Subir Imagen
+          </label>
+
+          <input type="file" accept="image/png,image/jpeg" data-name="incorrectAnswer_${index+1}" value="" id="inputPictureButton__incorrectAnswer_${index+1}" style="display: none;" class="inputPictureButtons">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="inputContainer">
+    <div class="inputAndLabelContainer" style="margin-right: 0">
+      <label class="inputLabel">Estudiante falló (texto):</label>
+
+      <div class="inputsContainer" data-type-input="multiple" data-type-value="object" data-form-section="decisionMaking" data-form-prop="${decisionPosition}" data-form-prop2="options" data-form-prop3="${index}" data-form-prop4="badAnswerText">
+        ${badAnswerText?.map((text, i) => `
+          <div class="inputContainer">
+            <input type="text" class="input input--array" value="${text}" data-index="${i}" data-input-prop="badAnswerText">
+
+            <div class="inputButtons">
+              <button class="removeInputButton removeInputButton--inInput" type="button" data-index="${i}">
+                <span class="removeInputButtonText">-</span>
+              </button>
+        
+              <button class="addInputButton addInputButton--inInput" type="button" data-index="${i}">
+                <span class="addInputButtonText">+</span>
+              </button>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  </div>
 `);
 
-const getDecisionMakingOptions = (values) => {
+const getDecisionMakingOptions = (values, decisionPosition) => {
   let html = '';
 
   if (!values?.length) html += getDecisionMakingOptionsHtml();
-  else values.forEach((value, i) => { html += getDecisionMakingOptionsHtml(value, i); });
+  else values.forEach((value, i) => { html += getDecisionMakingOptionsHtml(value, i, decisionPosition); });
 
   return html;
 };
@@ -631,9 +693,9 @@ const initializeDecisionMakingContainer = async () => {
     html += `
       <div class="decisionContainer">
         <h3 class="decisionMainTitle">
-          <span class="addDecisionButton" data-decision-index="${i}">+</span>
+          <span class="addInputButton addInputButton--inWindow" data-index="${i}">+</span>
           Decision ${i+1}
-          <span class="removeDecisionButton" data-decision-index="${i}">-</span>
+          <span class="removeInputButton removeInputButton--inWindow" data-index="${i}">-</span>
         </h3>
 
         <div class="decisionInputAndLabelContainer">
@@ -657,9 +719,9 @@ const initializeDecisionMakingContainer = async () => {
             <div class="inputsContainer" data-type-input="multiple" data-form-section="decisionMaking" data-form-prop="${i}" data-form-prop2="detail"></div>
           </div>
 
-          <div class="inputAndLabelContainer">
+          <div class="inputAndLabelContainer" style="margin-top: 2rem">
             <label class="inputLabel">Opciones (Titulo/detalle):</label>
-            <div class="inputsContainer" data-type-input="decisionMakingOptions" data-form-section="decisionMaking" data-form-prop="${i}" data-form-prop2="options" data-type-value="object"></div>
+            <div class="inputsContainer" style="display: block;width: 90%;margin: 0 auto 0 auto;margin: 0;margin-top: 1rem;margin-bottom: 3rem;padding: 1rem 1rem 1rem 1rem;border: 1px solid #dedede;border-radius: 10px;" data-type-input="decisionMakingOptions" data-form-section="decisionMaking" data-form-prop="${i}" data-form-prop2="options" data-type-value="object"></div>
           </div>
 
           <div class="inputAndLabelContainer">
@@ -668,24 +730,14 @@ const initializeDecisionMakingContainer = async () => {
           </div><br>
 
           <div class="inputAndLabelContainer">
-            <label class="inputLabel">El usuario acertó (Imagen):</label>
+            <label class="inputLabel">El estudiante acertó (Imagen):</label>
             <div class="inputsContainer" data-type-input="picture" data-form-section="decisionMaking" data-form-prop="picture" data-name="answersCompleted_${i+1}"></div>
           </div>
 
           <div class="inputAndLabelContainer" style="margin-top: 0">
-            <label class="inputLabel">El usuario acertó (texto):</label>
+            <label class="inputLabel">El estudiante acertó (texto):</label>
             <div class="inputsContainer" data-type-input="multiple" data-form-section="decisionMaking" data-form-prop="${i}" data-form-prop2="goodAnswerText"></div>
           </div><br>
-
-          <div class="inputAndLabelContainer">
-            <label class="inputLabel">El usuario se equivocó (Imagen):</label>
-            <div class="inputsContainer" data-type-input="picture" data-form-section="decisionMaking" data-form-prop="picture" data-name="incorrectAnswer_${i+1}"></div>
-          </div>
-
-          <div class="inputAndLabelContainer">
-            <label class="inputLabel">El usuario se equivocó (texto):</label>
-            <div class="inputsContainer" data-type-input="multiple" data-form-section="decisionMaking" data-form-prop="${i}" data-form-prop2="badAnswerText"></div>
-          </div>
         </div>
       </div>
     `;

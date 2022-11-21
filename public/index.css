@@ -146,7 +146,7 @@ label, .inputPicture__name {
   gap: 2px;
 }
 
-.addInputButton, .removeInputButton {
+.addInputButton--inInput, .removeInputButton--inInput {
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -159,32 +159,32 @@ label, .inputPicture__name {
   min-width: 28px;
 }
 
-.removeInputButton {
+.removeInputButton--inInput {
   background: #9c0101;
   background: #9c0101a6;
   background-image: linear-gradient( 135deg, #F05F57 10%, #360940 100%);
   border-radius: 0 0.7rem 0 0;
 }
 
-.removeInputButton:hover {
+.removeInputButton--inInput:hover {
   background: #e81414;
 }
 
-.addInputButton {
+.addInputButton--inInput {
   background: #1c5ed6cf;
   background: #1c5ed6a6;
   background-image: linear-gradient( 135deg, #97ABFF 10%, #123597 100%);
   border-radius: 0 0 0.7rem 0;
 }
 
-.addInputButton:hover {
+.addInputButton--inInput:hover {
   cursor: pointer;
   background: #1448a6;
   background: #0047ff;
   background: #0026ff;
 }
 
-.addInputButton:active {
+.addInputButton--inInput:active {
   transform: scale(0.99);
 }
 
@@ -274,7 +274,7 @@ label, .inputPicture__name {
   margin-bottom: 0;
 }
 
-.addDecisionButton, .removeDecisionButton {
+.addInputButton--inWindow, .removeInputButton--inWindow {
   cursor: pointer;
   position: absolute;
   display: flex;
@@ -287,17 +287,17 @@ label, .inputPicture__name {
   width: 37px;
 }
 
-.addDecisionButton {
+.addInputButton--inWindow {
   left: 0;
   background-image: linear-gradient( 135deg, #123597 10%, #97ABFF 100%);
   font-size: 1.6rem;
 }
 
-.addDecisionButton:hover {
+.addInputButton--inWindow:hover {
   background: #123597;
 }
 
-.removeDecisionButton {
+.removeInputButton--inWindow {
   right: 0;
   font-size: 1.1rem;
   padding-bottom: 4px;
@@ -305,7 +305,7 @@ label, .inputPicture__name {
   background-image: linear-gradient( 135deg, #F05F57 10%, #360940 100%);
 }
 
-.removeDecisionButton:hover {
+.removeInputButton--inWindow:hover {
   background: #c50e04;
 }
 

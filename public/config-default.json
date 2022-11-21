@@ -144,10 +144,6 @@
       "goodAnswerText": [
         "En este apartado se coloca un mensaje de felicitación con alguna indicación que el temático considere pertinente para seguir avanzando."
       ],
-      "badAnswerText": [
-        "La diferencia de la pantalla tipo 4 y tipo 5 es que la pantalla tipo cuatro es de transición mientras que la pantalla tipo 5 te lleva a un final, por lo tanto, en esta pantalla debe colocarse una retroalimentación de la decisión errónea que se ha tomado.",
-        "En este espacio debe colocarse la retroalimentación."
-      ],
       "title": [
         "Texto corto donde se le propone al usuario tomar una decisión de acuerdo a determinada situación."
       ],
@@ -158,7 +154,11 @@
       "options": [
         {
           "title": "La programación del PLC",
-          "detail": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore"
+          "detail": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore",
+          "badAnswerText": [
+            "La diferencia de la pantalla tipo 4 y tipo 5 es que la pantalla tipo cuatro es de transición mientras que la pantalla tipo 5 te lleva a un final, por lo tanto, en esta pantalla debe colocarse una retroalimentación de la decisión errónea que se ha tomado.",
+            "En este espacio debe colocarse la retroalimentación."
+          ]
         }
       ],
       "answers": [
