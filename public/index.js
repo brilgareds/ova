@@ -199,14 +199,18 @@ const generateOva = async (e) => {
 
 const inputUpdated = (e) => {
   const { value, dataset } = e.currentTarget;
-  const { inputProp, index, index2 } = dataset;
+  const { index, index2 } = dataset;
   const inputContainer = e.currentTarget.parentElement;
   const allInputsContainer = inputContainer.parentElement;
   const { formSection, formProp, formProp2, formProp3, formProp4 } = allInputsContainer?.dataset;
-  // const inputs = allInputsContainer.querySelectorAll('input');
   const currentValues = getCurrentGeneratorValues();
 
-  if (index) {
+  if (index2) {
+    if (formProp4) currentValues[formSection][formProp][formProp2][formProp3][formProp4][index][index2] = value;
+    else if (formProp3) currentValues[formSection][formProp][formProp2][formProp3][index][index2] = value;
+    else if (formProp2) currentValues[formSection][formProp][formProp2][index][index2] = value;
+    else if (formProp) currentValues[formSection][formProp][index][index2] = value;
+  } else if (index) {
     if (formProp4) currentValues[formSection][formProp][formProp2][formProp3][formProp4][index] = value;
     else if (formProp3) currentValues[formSection][formProp][formProp2][formProp3][index] = value;
     else if (formProp2) currentValues[formSection][formProp][formProp2][index] = value;
@@ -282,7 +286,7 @@ const removeInputButtonClicked = async (e) => {
   const currentValues = getCurrentGeneratorValues();
   const typeValue = e.currentTarget?.dataset?.typeValue;
   const index = Number(e.currentTarget?.dataset?.index || 0);
-  const { formSection, formProp, formProp2, formProp3, formProp4 } = e.currentTarget?.parentElement?.parentElement?.parentElement?.dataset;
+  const { formSection, formProp, formProp2, formProp3, formProp4 } = e.currentTarget?.dataset;
 
   if (formProp4) {
     const value = currentValues[formSection][formProp][formProp2][formProp3][formProp4];
@@ -307,11 +311,9 @@ const removeInputButtonClicked = async (e) => {
 };
 
 const addInputButtonClicked = async (e) => {
-
-
   const currentValues = getCurrentGeneratorValues();
   const index = Number(e.currentTarget?.dataset?.index || 0);
-  const { formSection, formProp, formProp2, formProp3, formProp4 } = e.currentTarget?.parentElement?.parentElement?.parentElement?.dataset;
+  const { formSection, formProp, formProp2, formProp3, formProp4 } = e.currentTarget?.dataset;
 
   if (formProp4) {
     const value = currentValues[formSection][formProp][formProp2][formProp3][formProp4];
@@ -421,7 +423,10 @@ const setAddInputButton = () => {
   removeInputButtons?.forEach((removeInputButton) => { removeInputButton.addEventListener('click', removeInputButtonClicked); });
 
   removeDecisionButtons?.forEach((button) => button.addEventListener('click', removeDecisionButtonClicked));
-  presentationInputs?.forEach((input) => { input.addEventListener('keyup', inputUpdated); });
+  presentationInputs?.forEach((input) => {
+    input.addEventListener('keyup', inputUpdated);
+    input.addEventListener('mouseup', inputUpdated);
+  });
 };
 
 const initializeLabelInputPictures = () => {
@@ -461,27 +466,31 @@ const getInputSimple = (value) => {
   return html;
 };
 
-const getInputMultipleHtml = (value = '', index = 0) => (`
-  <div class="inputContainer">
-    <input type="text" class="input input--array" value="${value}" data-index="${index}">
+const getInputMultipleHtml = (value = '', index = 0, data) => {
+  const { formSection, formProp, formProp2, formProp3, formProp4 } = data;
+  
+  return `
+    <div class="inputContainer">
+      <input type="text" class="input input--array" value="${value}" data-index="${index}">
 
-    <div class="inputButtons">
-      <button class="removeInputButton removeInputButton--inInput" type="button" data-index="${index}">
-        <span class="removeInputButtonText">-</span>
-      </button>
+      <div class="inputButtons">
+        <button class="removeInputButton removeInputButton--inInput" type="button" ${(formSection) ? `data-form-section="${formSection}"` : '' } ${(formProp) ? `data-form-prop="${formProp}"` : ''} ${(formProp2) ? `data-form-prop2="${formProp2}"` : ''} ${(formProp3) ? `data-form-prop3="${formProp3}"` : '' } ${(formProp4) ? `data-form-prop4="${formProp4}"` : ''} ${(index) ? `data-index="${index}"` : ''} >
+          <span class="removeInputButtonText">-</span>
+        </button>
 
-      <button class="addInputButton addInputButton--inInput" type="button" data-index="${index}">
-        <span class="addInputButtonText">+</span>
-      </button>
+        <button class="addInputButton addInputButton--inInput" type="button" ${(formSection) ? `data-form-section="${formSection}"` : '' } ${(formProp) ? `data-form-prop="${formProp}"` : ''} ${(formProp2) ? `data-form-prop2="${formProp2}"` : ''} ${(formProp3) ? `data-form-prop3="${formProp3}"` : '' } ${(formProp4) ? `data-form-prop4="${formProp4}"` : ''} ${(index) ? `data-index="${index}"` : ''} >
+          <span class="addInputButtonText">+</span>
+        </button>
+      </div>
     </div>
-  </div>
-`);
+  `;
+};
 
-const getInputMultiple = (values = []) => {
+const getInputMultiple = (values = [], data) => {
   let html = '';
 
   if (!values?.length) html += getInputMultipleHtml();
-  else values.forEach((value, i) => { html += getInputMultipleHtml(value, i); });
+  else values.forEach((value, i) => { html += getInputMultipleHtml(value, i, data); });
 
   return html;
 };
@@ -501,45 +510,53 @@ const getInputMultipleAnswers = (values) => {
   return html;
 };
 
-const getInputGlosaryHtml = ({ word, description }, index = 0) => (`
-  <div class="inputContainer">
-    <input type="text" class="input input--multiplePropValue" value="${word}" data-index="${index}" data-input-prop="word" >
-    <input type="text" class="input input--array" value="${description}" data-index="${index}" data-input-prop="description">
+const getInputGlosaryHtml = ({ word, description }, index = 0, data={}) => {
+  const { formSection, formProp, formProp2, formProp3, formProp4 } = data;
+  
+  return `
+    <div class="inputContainer">
+      <input type="text" class="input input--multiplePropValue" value="${word}" data-index="${index}" data-index2="word">
+      <input type="text" class="input input--array" value="${description}" data-index="${index}" data-index2="description">
 
-    <div class="inputButtons">
-      <button class="removeInputButton removeInputButton--inInput" type="button" data-type-value="object" data-index="${index}">
-        <span class="removeInputButtonText">-</span>
-      </button>
+      <div class="inputButtons">
+        <button class="removeInputButton removeInputButton--inInput" type="button" ${(formSection) ? `data-form-section="${formSection}"` : '' } ${(formProp) ? `data-form-prop="${formProp}"` : ''} ${(formProp2) ? `data-form-prop2="${formProp2}"` : ''} ${(formProp3) ? `data-form-prop3="${formProp3}"` : '' } ${(formProp4) ? `data-form-prop4="${formProp4}"` : ''} ${(index) ? `data-index="${index}"` : ''}>
+          <span class="removeInputButtonText">-</span>
+        </button>
 
-      <button class="addInputButton addInputButton--inInput" type="button" data-type-value="object" data-index="${index}">
-        <span class="addInputButtonText">+</span>
-      </button>
+        <button class="addInputButton addInputButton--inInput" type="button" ${(formSection) ? `data-form-section="${formSection}"` : '' } ${(formProp) ? `data-form-prop="${formProp}"` : ''} ${(formProp2) ? `data-form-prop2="${formProp2}"` : ''} ${(formProp3) ? `data-form-prop3="${formProp3}"` : '' } ${(formProp4) ? `data-form-prop4="${formProp4}"` : ''} ${(index) ? `data-index="${index}"` : ''}>
+          <span class="addInputButtonText">+</span>
+        </button>
+      </div>
     </div>
-  </div>
-`);
+  `;
+};
 
-const getInputThematicsHtml = ({ thematic, descripcion }, index = 0) => (`
-  <div class="inputContainer">
-    <input type="text" class="input input--multiplePropValue" value="${thematic}" data-index="${index}" data-input-prop="thematic">
-    <input type="text" class="input input--array" value="${descripcion}" data-index="${index}" data-input-prop="descripcion">
+const getInputThematicsHtml = ({ thematic, descripcion }, index = 0, data) => {
+  const { formSection, formProp, formProp2, formProp3, formProp4 } = data;
+  
+  return `
+    <div class="inputContainer">
+      <input type="text" class="input input--multiplePropValue" value="${thematic}" data-index="${index}" data-index2="thematic">
+      <input type="text" class="input input--array" value="${descripcion}" data-index="${index}" data-index2="descripcion">
 
-    <div class="inputButtons">
-      <button class="removeInputButton removeInputButton--inInput" type="button" data-type-value="object" data-index="${index}">
-        <span class="removeInputButtonText">-</span>
-      </button>
+      <div class="inputButtons">
+        <button class="removeInputButton removeInputButton--inInput" type="button" ${(formSection) ? `data-form-section="${formSection}"` : '' } ${(formProp) ? `data-form-prop="${formProp}"` : ''} ${(formProp2) ? `data-form-prop2="${formProp2}"` : ''} ${(formProp3) ? `data-form-prop3="${formProp3}"` : '' } ${(formProp4) ? `data-form-prop4="${formProp4}"` : ''} ${(index) ? `data-index="${index}"` : ''}>
+          <span class="removeInputButtonText">-</span>
+        </button>
 
-      <button class="addInputButton addInputButton--inInput" type="button" data-type-value="object" data-index="${index}">
-        <span class="addInputButtonText">+</span>
-      </button>
+        <button class="addInputButton addInputButton--inInput" type="button" ${(formSection) ? `data-form-section="${formSection}"` : '' } ${(formProp) ? `data-form-prop="${formProp}"` : ''} ${(formProp2) ? `data-form-prop2="${formProp2}"` : ''} ${(formProp3) ? `data-form-prop3="${formProp3}"` : '' } ${(formProp4) ? `data-form-prop4="${formProp4}"` : ''} ${(index) ? `data-index="${index}"` : ''}>
+          <span class="addInputButtonText">+</span>
+        </button>
+      </div>
     </div>
-  </div>
-`);
+  `;
+};
 
-const getInputThematics = (values) => {
+const getInputThematics = (values, data) => {
   let html = '';
 
   if (!values?.length) html += getInputThematicsHtml();
-  else values.forEach((value, i) => { html += getInputThematicsHtml(value, i); });
+  else values.forEach((value, i) => { html += getInputThematicsHtml(value, i, data); });
 
   return html;
 };
@@ -553,11 +570,11 @@ const getInputsDecisionMaking = (values) => {
   return html;
 };
 
-const getInputGlosary = (values) => {
+const getInputGlosary = (values, data) => {
   let html = '';
 
   if (!values?.length) html += getInputGlosaryHtml();
-  else values.forEach((value, i) => { html += getInputGlosaryHtml(value, i); });
+  else values.forEach((value, i) => { html += getInputGlosaryHtml(value, i, data); });
 
   return html;
 };
@@ -588,10 +605,10 @@ const getCustomHtml = async (data) => {
   else value = generatorValues?.[formSection];
 
   if (typeInput === 'simple') return getInputSimple(value);
-  if (typeInput === 'multiple') return getInputMultiple(value);
+  if (typeInput === 'multiple') return getInputMultiple(value, data);
   if (typeInput === 'multipleAnswers') return getInputMultipleAnswers(value);
-  if (typeInput === 'glosary') return getInputGlosary(value);
-  if (typeInput === 'thematics') return getInputThematics(value);
+  if (typeInput === 'glosary') return getInputGlosary(value, data);
+  if (typeInput === 'thematics') return getInputThematics(value, data);
   if (typeInput === 'decisionMakingOptions') return getDecisionMakingOptions(value, formProp, data);
   if (typeInput === 'picture') { return getInputPictureHtml(value, 0, name); }
 
@@ -616,32 +633,32 @@ const getDecisionMakingOptionsHtml = ({ title, detail, badAnswerText }, index = 
   return `
     ${(index !== 0) ? '<br><hr><br><br>' : '' }
 
-    <div class="inputsContainer" data-type-input="multiple" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-form-prop3="${index}" data-form-prop4="title">
+    <div class="inputsContainer" style="width: 37%;" data-type-input="multiple" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-form-prop3="${index}" data-form-prop4="title">
       <div class="inputContainer">
         <label style="display: flex;align-items: center;justify-content: left;margin-right: 1rem;font-weight: bolder;font-size: 1.2rem;color: black;">
           ${index+1}. 
         </label>
-        <input type="text" class="input input--multiplePropValue" value="${title}" data-index="${index}">
+        <input type="text" class="input input--multiplePropValue" style="margin-top: 0.2rem;" value="${title}">
       </div>
     </div>
 
     <div class="inputsContainer" data-type-input="multiple" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-form-prop3="${index}" data-form-prop4="detail">
       <div class="inputContainer">
-        <input type="text" class="input input--array" value="${detail}" data-index="${index}">
+        <input type="text" class="input input--array" value="${detail}">
 
         <div class="inputButtons">
-          <button class="removeInputButton removeInputButton--inInput" type="button" data-type-value="object" data-index="${index}">
+          <button class="removeInputButton removeInputButton--inInput" type="button" data-type-value="object" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-index="${index}">
             <span class="removeInputButtonText">-</span>
           </button>
 
-          <button class="addInputButton addInputButton--inInput" type="button" data-type-value="object" data-index="${index}">
+          <button class="addInputButton addInputButton--inInput" type="button" data-type-value="object" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-index="${index}">
             <span class="addInputButtonText">+</span>
           </button>
         </div>
       </div>
     </div>
 
-    <div class="inputsContainer">
+    <div class="inputsContainer" style="width: 100%;">
       <div class="inputContainer">
         <div class="inputAndLabelContainer" style="margin-right: 0">
           <label class="inputLabel">Estudiante falló (Imagen):</label>
@@ -649,11 +666,11 @@ const getDecisionMakingOptionsHtml = ({ title, detail, badAnswerText }, index = 
           <div class="inputsContainer" data-type-input="picture" data-form-section="decisionMaking" data-form-prop="picture" data-name="incorrectAnswer_${index+1}">
             <div class="inputContainer" style="justify-content: right">
               <span class="inputPictureButtonText"></span>
-              <label for="inputPictureButton__answersCompleted_1" class="inputPictureButton custom-file-upload">
+              <label for="inputPictureButton__incorrectAnswer_${decisionPosition}_${index+1}" class="inputPictureButton custom-file-upload">
                   Subir Imagen
               </label>
 
-              <input type="file" accept="image/png,image/jpeg" data-name="incorrectAnswer_${index+1}" value="" id="inputPictureButton__incorrectAnswer_${index+1}" style="display: none;" class="inputPictureButtons">
+              <input type="file" accept="image/png,image/jpeg" data-name="incorrectAnswer_${Number(decisionPosition)+1}_${index+1}" value="" id="inputPictureButton__incorrectAnswer_${decisionPosition}_${index+1}" style="display: none;" class="inputPictureButtons">
             </div>
           </div>
         </div>
@@ -669,11 +686,11 @@ const getDecisionMakingOptionsHtml = ({ title, detail, badAnswerText }, index = 
                 <input type="text" class="input input--array" value="${text}" data-index="${i}" data-input-prop="badAnswerText">
 
                 <div class="inputButtons">
-                  <button class="removeInputButton removeInputButton--inInput" type="button" data-index="${i}">
+                  <button class="removeInputButton removeInputButton--inInput" type="button" data-form-section="decisionMaking" data-form-prop="${decisionPosition}" data-form-prop2="options" data-form-prop3="${index}" data-form-prop4="badAnswerText" data-index="${i}">
                     <span class="removeInputButtonText">-</span>
                   </button>
             
-                  <button class="addInputButton addInputButton--inInput" type="button" data-index="${i}">
+                  <button class="addInputButton addInputButton--inInput" type="button" data-form-section="decisionMaking" data-form-prop="${decisionPosition}" data-form-prop2="options" data-form-prop3="${index}" data-form-prop4="badAnswerText" data-index="${i}">
                     <span class="addInputButtonText">+</span>
                   </button>
                 </div>
@@ -696,16 +713,40 @@ const getDecisionMakingOptions = (values, decisionPosition, data) => {
 };
 
 const initializeDecisionMakingContainer = async () => {
-  let html = '';
+  let html = `
+    <div class="inputAndLabelContainer" style="width: 70%;margin-left: 0;margin-right: 0;">
+      <label class="inputLabel" style="line-height: 1rem; margin-bottom: 1rem;">Pantalla de referencia:</label>
+
+      <div style="height: calc(100% - 2rem);">
+        <img src="assets/referencia_decisionMaking.png" alt="referencia_decisionMaking" style="width: 100%; height: 100%;">
+      </div>
+    </div>
+
+    <div class="inputAndLabelContainer" style="width: 70%;margin-left: 0;margin-right: 0;">
+      <label class="inputLabel" style="line-height: 1rem; margin-bottom: 1rem;">Pantalla de referencia:</label>
+
+      <div style="height: calc(100% - 2rem);">
+        <img src="assets/referencia_badAnswer.jpg" alt="referencia_badAnswer" style="width: 100%; height: 100%;">
+      </div>
+    </div>
+
+    <div class="inputAndLabelContainer" style="width: 70%;margin-left: 0;margin-right: 0;">
+      <label class="inputLabel" style="line-height: 1rem; margin-bottom: 1rem;">Pantalla de referencia:</label>
+
+      <div style="height: calc(100% - 2rem);">
+        <img src="assets/referencia_goodAnswer.jpg" alt="referencia_goodAnswer" style="width: 100%; height: 100%;">
+      </div>
+    </div>
+  `;
   const generatorValues = await getGeneratorValues();
 
   generatorValues.decisionMaking?.forEach((_decisionData, i) => {
     html += `
       <div class="decisionContainer">
         <h3 class="decisionMainTitle">
-          <span class="addInputButton addInputButton--inWindow" data-index="${i}">+</span>
+          <span class="addInputButton addInputButton--inWindow" data-form-section="decisionMaking" data-index="${i}">+</span>
           Decision ${i+1}
-          <span class="removeInputButton removeInputButton--inWindow" data-index="${i}">-</span>
+          <span class="removeInputButton removeInputButton--inWindow" data-form-section="decisionMaking" data-index="${i}">-</span>
         </h3>
 
         <div class="decisionInputAndLabelContainer">

@@ -28,13 +28,13 @@ const initializeBadAnswerData = () => {
 
   if (modalBadAnswerPictureContainer) {
     modalBadAnswerPictureContainer.innerHTML = `
-      <img alt="incorrectAnswerPicture" src="assets/images/incorrectAnswer_${lastValidIndex+1}.png" class="customModalPicture" />
+      <img alt="incorrectAnswerPicture" src="assets/images/incorrectAnswer_${lastValidIndex+1}_${currentOptionSelected}.png" class="customModalPicture" />
     `;
   }
 
   let badAnswertextHtml = '';
 
-  config?.decisionMaking?.[lastValidIndex]?.badAnswerText?.forEach((text) => {
+  config?.decisionMaking?.[lastValidIndex]?.options?.[currentOptionSelected-1]?.badAnswerText?.forEach((text) => {
     badAnswertextHtml += `<p class="customModalContent">${formatText(text)}</p>`;
   });
 
