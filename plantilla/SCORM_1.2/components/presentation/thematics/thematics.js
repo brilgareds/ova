@@ -44,7 +44,7 @@ const loadDetailThematicsData = () => {
 
         <div class="objectiveDescriptionContainer">
           <span class="objectiveDescription">
-            <span class="ovaObjectives__descriptionTitle">${formatText(thematic)}:</span>
+            <span class="ovaObjectives__descriptionTitle">${(thematic) ? `${formatText(thematic)}:` : ''}</span>
             ${formatText(descripcion)}
           </span>
         </div>

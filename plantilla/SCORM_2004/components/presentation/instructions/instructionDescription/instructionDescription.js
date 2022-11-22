@@ -24,7 +24,7 @@ const loadInstructionDescriptionTitleData = () => {
   config?.instructionsAndObjectives?.instructions?.title?.forEach((title) => {
     instructionsTitleHtml += `
       <p class="ovaObjectives__descriptionTitleContainer">
-        <span class="ovaObjectives__descriptionTitle">${formatText(title)}:</span>
+        <span class="ovaObjectives__descriptionTitle">${(title) ? `${formatText(title)}:` : ''}</span>
       </p>
     `;
   });
