@@ -244,7 +244,7 @@ const checkAnswer = ({ optionSelected, decisionMakingIndex }) => {
   const isSimpleAnswer = (decisionMaking?.type === 2);
 
   if (isSimpleAnswer) {
-    wasGoodAnswer = (decisionMaking?.answers?.[0] === optionSelected);
+    wasGoodAnswer = (decisionMaking?.answers?.[0] == optionSelected);
   }
 
   return wasGoodAnswer;
