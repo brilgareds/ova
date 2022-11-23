@@ -207,7 +207,7 @@ const initializeDecisionMaking2Data = () => {
 
     options += `
       <div class="${optionContainerClass} ${optionContainerClass}--${i+1}">
-        <div class="decisionMaking2__optionLetterContainer">${letter}.</div>
+        <div class="decisionMaking2__optionLetterContainer">${formatText(letter)}.</div>
         <div class="${optionTextContainerClass}">
           ${formatText(title)}<span class="${optionDetailClass}">: ${formatText(detail)}</span>
         </div>
@@ -220,7 +220,7 @@ const initializeDecisionMaking2Data = () => {
     optionsButtons += `
       <div class="${radioButtonContainerClass} ${radioButtonContainerClass}--${i+1}">
         <div class="decisionMaking2__radioButtonTextContainer">
-          <span class="noselect decisionMaking2__radioButtonText decisionMaking2__radioButtonText--${i+1}">${letter}</span>
+          <span class="noselect decisionMaking2__radioButtonText decisionMaking2__radioButtonText--${i+1}">${formatText(letter)}</span>
         </div>
 
         <div class="decisionMaking2__radioButtonIconContainer">

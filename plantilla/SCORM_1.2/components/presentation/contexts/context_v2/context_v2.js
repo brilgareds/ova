@@ -22,7 +22,7 @@ const initializeOvaContext2BigTitle = () => {
   let bigTitle = '';
 
   config.ovaContext?.bigTitle?.forEach((text) => {
-    bigTitle += `<h1 class="mainContainer__mainTitle primaryColor">${text}</h1>`;
+    bigTitle += `<h1 class="mainContainer__mainTitle primaryColor">${formatText(text)}</h1>`;
   });
 
   ovaContext2MainTitleContainer.innerHTML = bigTitle;
@@ -32,7 +32,7 @@ const initializeOvaContext2Title = () => {
   let title = '';
 
   config.ovaContext?.title?.forEach((text) => {
-    title += `<p class="generalPresentationDescripcion__mainParagraph">${text}</p>`;
+    title += `<p class="generalPresentationDescripcion__mainParagraph">${formatText(text)}</p>`;
   });
 
   ovaContext2TitleContainer.innerHTML = title;
@@ -42,7 +42,7 @@ const initializeOvaContext2Detail = () => {
   let detail = '';
 
   config.ovaContext?.detail?.forEach((text) => {
-    detail += `<p class="generalPresentationDescripcion__completeInformation">${text}</p>`;
+    detail += `<p class="generalPresentationDescripcion__completeInformation">${formatText(text)}</p>`;
   });
 
   ovaContext2DetailContainer.innerHTML = detail;

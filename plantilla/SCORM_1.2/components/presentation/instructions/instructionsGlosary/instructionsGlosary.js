@@ -33,16 +33,18 @@ const getWordsByLetter = (letter) => {
 
   words.forEach((wordsObject) => {
     const { word, description } = wordsObject;
-    const firstLetterOfWord = word?.[0]?.toLowerCase();
-    const firstLetterOfDescription = description?.[0]?.toLowerCase();
+    const indexFirstWordLetter = /[a-zA-Z]/.exec(word)?.index || 0;
+    const firstLetterOfWord = (word[indexFirstWordLetter] || '').toLowerCase();
+    const indexFirstDescriptionLetter = /[a-zA-Z]/.exec(description)?.index || 0;
+    const firstLetterOfDescription = (description?.[indexFirstDescriptionLetter] || '').toLowerCase();
     const startWithTheLetterRequired = (firstLetterOfWord === letter?.toLowerCase());
-
+    
     if (startWithTheLetterRequired) {
       const newData = {
-        word: `${firstLetterOfWord.toUpperCase()}${word.toLowerCase().substring(1)}`,
-        description: `${firstLetterOfDescription.toUpperCase()}${description.toLowerCase().substring(1)}`,
+        word: `${word.substring(0, indexFirstWordLetter)}${firstLetterOfWord.toUpperCase()}${word.toLowerCase().substring(indexFirstWordLetter+1)}`,
+        description: `${description.substring(0, indexFirstDescriptionLetter)}${firstLetterOfDescription.toUpperCase()}${description.toLowerCase().substring(indexFirstDescriptionLetter+1)}`,
       };
-
+    
       newWordsArray.push(newData);
     }
   });
@@ -59,7 +61,7 @@ const filterGlosaryWithALetter = (letter) => {
       <li class="ovaObjectives__objectiveContainer" style="padding-bottom: 1rem">
         <div class="objectiveDescriptionContainer">
           <span class="objectiveDescription">
-            <span class="ovaObjectives__descriptionTitle">${word}:</span> ${formatText(description)}
+            <span class="ovaObjectives__descriptionTitle">${(word) ? `${formatText(word)}:` : ''}</span> ${formatText(description)}
           </span>
         </div>
       </li>
