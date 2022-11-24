@@ -34,15 +34,15 @@ const getWordsByLetter = (letter) => {
   words.forEach((wordsObject) => {
     const { word, description } = wordsObject;
     const indexFirstWordLetter = /[a-zA-Z]/.exec(word)?.index || 0;
-    const firstLetterOfWord = (word[indexFirstWordLetter] || '').toLowerCase();
+    const firstLetterOfWord = (word[indexFirstWordLetter] || '');
     const indexFirstDescriptionLetter = /[a-zA-Z]/.exec(description)?.index || 0;
-    const firstLetterOfDescription = (description?.[indexFirstDescriptionLetter] || '').toLowerCase();
-    const startWithTheLetterRequired = (firstLetterOfWord === letter?.toLowerCase());
+    const firstLetterOfDescription = (description?.[indexFirstDescriptionLetter] || '');
+    const startWithTheLetterRequired = (firstLetterOfWord?.toLowerCase() === letter?.toLowerCase());
     
     if (startWithTheLetterRequired) {
       const newData = {
-        word: `${word.substring(0, indexFirstWordLetter)}${firstLetterOfWord.toUpperCase()}${word.toLowerCase().substring(indexFirstWordLetter+1)}`,
-        description: `${description.substring(0, indexFirstDescriptionLetter)}${firstLetterOfDescription.toUpperCase()}${description.toLowerCase().substring(indexFirstDescriptionLetter+1)}`,
+        word: `${word?.substring(0, indexFirstWordLetter)?.trim()}${firstLetterOfWord}${word.substring(indexFirstWordLetter+1)}`,
+        description: `${description.substring(0, indexFirstDescriptionLetter)}${firstLetterOfDescription}${description.substring(indexFirstDescriptionLetter+1)}`,
       };
     
       newWordsArray.push(newData);
