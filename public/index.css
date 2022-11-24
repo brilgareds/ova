@@ -63,6 +63,7 @@ label, .inputPicture__name {
 .tabs {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
 }
 
 .tab {
@@ -215,6 +216,7 @@ label, .inputPicture__name {
 
 .input--multiplePropValue {
   width: 150px;
+  width: min(150px, 100%);
 }
 
 .addInputButtonText, .removeInputButtonText {
@@ -310,6 +312,10 @@ label, .inputPicture__name {
 
 .commonInputAndLabelContainers, .decisionContainer {
   width: 70%;
+}
+
+.decisionContainer {
+  /* width: 100%; */
 }
 
 .decisionInputAndLabelContainer {

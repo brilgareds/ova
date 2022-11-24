@@ -12,6 +12,7 @@ let inputPictureButtons;
 let addInputButtons;
 let removeInputButtons;
 let removeDecisionButtons;
+let typeModalButtons;
 const classActiveTab = 'tab--active';
 const classActiveSection = 'formGeneratorSection--active';
 
@@ -114,6 +115,7 @@ const initializeGeneratorConstants = () => {
     allPicturesFiles[pictureElement.dataset.name] = pictureElement.files || [];
   });
 
+  typeModalButtons = document.querySelectorAll('.incorrectAnswer__typeModalButton');
   addInputButtons = document.querySelectorAll('.addInputButton');
   removeInputButtons = document.querySelectorAll('.removeInputButton');
   removeDecisionButtons = document.querySelectorAll('.removeDecisionButton');
@@ -418,9 +420,19 @@ const removeDecisionButtonClicked = async (e) => {
   await initializeMainValues();
 };
 
+const showBadOptionInputs = (e) => {
+  const type = e.current?.dataset?.type || '';
+
+  typeModalButtons.forEach((button) => {
+    
+  });
+  document.querySelector(`.inputsContainer--${type}`);
+};
+
 const setAddInputButton = () => {
   addInputButtons?.forEach((addInputButton) => { addInputButton.addEventListener('click', addInputButtonClicked); });
   removeInputButtons?.forEach((removeInputButton) => { removeInputButton.addEventListener('click', removeInputButtonClicked); });
+  typeModalButtons?.forEach((button) => button?.addEventListener('click', showBadOptionInputs));
 
   removeDecisionButtons?.forEach((button) => button.addEventListener('click', removeDecisionButtonClicked));
   presentationInputs?.forEach((input) => {
@@ -659,6 +671,19 @@ const getDecisionMakingOptionsHtml = ({ title, detail, badAnswerText }, index = 
     </div>
 
     <div class="inputsContainer" style="width: 100%;">
+      <div class="inputContainer" style="flex-wrap: wrap;">
+        <button class="incorrectAnswer__typeModalButton" data-type="feedback">Retroalimentación</button>
+        <button class="incorrectAnswer__typeModalButton" data-type="newDecision">Nueva Decision</button>
+      </div>
+    </div>
+
+    <div class="inputsContainer inputsContainer--newDecision" style="width: 100%;">
+      <div class="inputContainer">
+        TEST
+      </div>
+    </div>
+
+    <div class="inputsContainer inputsContainer--feedback" style="width: 100%;">
       <div class="inputContainer">
         <div class="inputAndLabelContainer" style="margin-right: 0">
           <label class="inputLabel">Estudiante falló (Imagen):</label>
