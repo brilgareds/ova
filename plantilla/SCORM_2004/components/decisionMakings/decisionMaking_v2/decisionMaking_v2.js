@@ -188,15 +188,21 @@ const initializeDecisionMaking2Data = () => {
   let options = '';
   let optionsButtons = '';
 
-  config.decisionMaking?.[lastIndex]?.title?.forEach((text) => {
+  const value = config.decisionMaking?.[lastIndex];
+
+  const decision = (nestedDecisionOptionSelected)
+    ? value?.options?.[currentOptionSelected-1]?.newDecision
+    : value;
+
+  decision?.title?.forEach((text) => {
     title += `<p class="decisionMaking2__titles">${formatText(text)}</p>`;
   });
 
-  config.decisionMaking?.[lastIndex]?.detail?.forEach((text) => {
+  decision?.detail?.forEach((text) => {
     detail += `<p class="decisionMaking2__description">${formatText(text)}</p>`;
   });
 
-  config.decisionMaking?.[lastIndex]?.options?.forEach(({ title, detail }, i) => {
+  decision?.options?.forEach(({ title, detail }, i) => {
     const letter = formatToStrongText(getALetterOfAlphabet(i));
     let buttonState = '';
 
@@ -230,7 +236,7 @@ const initializeDecisionMaking2Data = () => {
     `;
   });
 
-  document.querySelector('.decisionMaking2__mainPicture').style=`background: url(assets/images/decisionMaking_${lastIndex+1}.png) no-repeat; background-size: contain;`;
+  document.querySelector('.decisionMaking2__mainPicture').style=`background: url(assets/images/decisionMaking_${lastIndex+1}.png) 0% 0% / 100% 100% no-repeat;`;
 
   decisionMaking2TitlesContainer.innerHTML = title;
   decisionMaking2DescriptionContainer.innerHTML = detail;
@@ -241,10 +247,12 @@ const initializeDecisionMaking2Data = () => {
 const checkAnswer = ({ optionSelected, decisionMakingIndex }) => {
   let wasGoodAnswer = false;
   const decisionMaking = config.decisionMaking?.[decisionMakingIndex];
-  const isSimpleAnswer = (decisionMaking?.type === 2);
+  const isSimpleAnswer = (decisionMaking?.type == 2);
 
   if (isSimpleAnswer) {
-    wasGoodAnswer = (decisionMaking?.answers?.[0] == optionSelected);
+    wasGoodAnswer = (nestedDecisionOptionSelected)
+      ? (decisionMaking?.options[currentOptionSelected-1]?.newDecision?.answers?.[0] == optionSelected)
+      : (decisionMaking?.answers?.[0] == optionSelected);
   }
 
   return wasGoodAnswer;
@@ -275,11 +283,13 @@ const getCurrentDecisionMaking = () => {
   const ovaCompleted = (isTheLastDecision && lastDecisionCompleted);
   // const lastIndex = (isTheLastDecision) ? lastValidIndex : lastValidIndex + 1;
   const lastIndex =  (lastDecisionCompleted) ? lastValidIndex + 1 : lastValidIndex;
-  if (!decisionMaking?.[lastIndex]) decisionMaking[lastIndex] = initializeDecision();
   if (ovaCompleted && !ovaFinished) setUserData({ ovaFinished: new Date() });
+  if (!decisionMaking?.[lastIndex]) decisionMaking[lastIndex] = initializeDecision();
+  const currentDecision = decisionMaking[lastIndex];
 
   const response = {
     decisionMaking,
+    currentDecision,
     lastValidDecision,
     lastValidConfigDecision,
     lastIndex,
@@ -298,13 +308,26 @@ const setNewDecision = (data) => {
   const newDecision = formatNewDecision(data);
   const { decisionMaking, lastIndex } = getCurrentDecisionMaking();
 
-  if (!wasGoodAnswer) decisionMaking[lastIndex].badAnswers?.push(newDecision);
-  else {
-    decisionMaking[lastIndex].status = true;
-    decisionMaking[lastIndex].goodAnswers?.push(newDecision);
+  if (!data.openNewDesicion) {
+    if (!wasGoodAnswer) {
+      decisionMaking[lastIndex].badAnswers?.push(newDecision);
+    } else {
+      decisionMaking[lastIndex].status = true;
+      decisionMaking[lastIndex].goodAnswers?.push(newDecision);
+    }
+  }
+
+  decisionMaking[lastIndex].openNewDesicion = data.openNewDesicion;
+
+  if (nestedDecisionOptionSelected) {
+    decisionMaking[lastIndex].openNewDesicion = true;
   }
 
   setUserData({ decisionMaking });
+};
+
+const loadPageNewDecision = () => {
+  loadDecisionMaking2Html();
 };
 
 const topScroll = () => window.scrollTo(0, 0);
@@ -313,18 +336,32 @@ const showResultAnswerModal = (data) => {
   topScroll();
 
   const wasGoodAnswer = checkAnswer(data);
-  if (!wasGoodAnswer) return loadBadAnswerModal();
+  if (!wasGoodAnswer) {
+    if (data.openNewDesicion) {
+      nestedDecisionOptionSelected = currentOptionSelected;
 
+      return loadPageNewDecision();
+    }
+    
+    return loadBadAnswerModal();
+  }
+
+  nestedDecisionOptionSelected = undefined;
   return modalButtonContinueClick(); // loadGoodAnswerModal();
 };
 
 const decisionFinished = () => {
   const { ovaCompleted, lastIndex } = getCurrentDecisionMaking();
 
+  const option = (nestedDecisionOptionSelected)
+    ? config.decisionMaking[lastIndex].options[nestedDecisionOptionSelected-1]?.newDecision?.options?.[currentOptionSelected-1]
+    : config.decisionMaking[lastIndex].options[currentOptionSelected-1];
+
   if (!ovaCompleted) {
     const data = {
       decisionMakingIndex: lastIndex,
       optionSelected: currentOptionSelected,
+      openNewDesicion: (option?.typeResponse === 2)
     };
 
     setNewDecision(data);
@@ -344,7 +381,10 @@ const initializeDecisionMaking2Events = () => {
   optionLabelButtons.forEach((label) => label.addEventListener('click', selectAnLabelOption));
 
   decisionMaking2NextButton?.addEventListener('click', decisionFinished);
-  decisionMaking2PreviousButton?.addEventListener('click', loadOvaContext2Html);
+  decisionMaking2PreviousButton?.addEventListener('click', (e) => {
+    nestedDecisionOptionSelected = undefined;
+    loadOvaContext2Html(e);
+  });
 };
 
 const validIsAllOvaWasCompleted = () => {

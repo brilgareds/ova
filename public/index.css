@@ -175,7 +175,14 @@ label, .inputPicture__name {
   background: #1c5ed6cf;
   background: #1c5ed6a6;
   background-image: linear-gradient( 135deg, #97ABFF 10%, #123597 100%);
+  background-image: linear-gradient( 135deg, #7086d8 10%, #123597 100%);
   border-radius: 0 0 0.7rem 0;
+}
+
+.reference_pictures {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
 }
 
 .addInputButton--inInput:hover {
@@ -185,8 +192,12 @@ label, .inputPicture__name {
   background: #0026ff;
 }
 
-.addInputButton--inInput:active {
-  transform: scale(0.99);
+.addInputButton--inInput:active, .removeInputButton--inInput:active {
+  transform: scale(0.97);
+}
+
+.addInputButton--inWindow:active, .removeInputButton--inWindow:active {
+  transform: scale(0.95);
 }
 
 .inputLabel {
@@ -225,13 +236,19 @@ label, .inputPicture__name {
 }
 
 .addInputButtonText {
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin-bottom: 0.5px;
+  color: white;
+  font-weight: bolder;
 }
 
 .removeInputButtonText {
   font-size: 1.5rem;
   margin-bottom: 5px;
+}
+
+.removeInputButtonText--inWindow {
+  font-size: 1.8rem;
 }
 
 .buttonsSection {
@@ -286,12 +303,14 @@ label, .inputPicture__name {
   top: 0;
   bottom: 0;
   width: 37px;
+  border: 0;
 }
 
 .addInputButton--inWindow {
   left: 0;
-  background-image: linear-gradient( 135deg, #123597 10%, #97ABFF 100%);
+  background: #7086d8;
   font-size: 1.6rem;
+  border-right: 1px solid white;
 }
 
 .addInputButton--inWindow:hover {
@@ -300,10 +319,12 @@ label, .inputPicture__name {
 
 .removeInputButton--inWindow {
   right: 0;
-  font-size: 1.1rem;
   padding-bottom: 4px;
-  font-size: 1.8rem;
+  font-size: 2rem;
+  border-left: 1px solid white;
   background-image: linear-gradient( 135deg, #F05F57 10%, #360940 100%);
+  background: #dc938f;
+  background: #bc6863;
 }
 
 .removeInputButton--inWindow:hover {
@@ -316,6 +337,37 @@ label, .inputPicture__name {
 
 .decisionContainer {
   /* width: 100%; */
+}
+
+.decisionMaking__option {
+  border: 1px solid #dedede;
+  border-radius: 10px;
+}
+
+.option__body {
+  padding: 1rem 1rem 1rem 1rem;
+}
+
+.option__headerTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bolder;
+  font-size: 1.2rem;
+  margin: 0;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  color: #3e73a2;
+}
+
+.headerWithButtons {
+  justify-content: center;
+  position: relative;
+  border-bottom: 1px solid #dedede;
+  border-radius: 7px 7px 0 0;
+  background: #dcdcdc;
+  background: #e7e7e7;
+  overflow: hidden;
 }
 
 .decisionInputAndLabelContainer {
@@ -347,6 +399,26 @@ label, .inputPicture__name {
   background-image: linear-gradient( 135deg, #97ABFF 10%, #123597 100%);
   border-radius: 0.5rem;
   font-size: 0.9rem;
+}
+
+.incorrectAnswer__typeModalButton {
+  color: #595959;
+  border: 1px solid;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.incorrectAnswer__typeModalButton--active {
+  color: white;
+  background: #2350e7;
+}
+
+.incorrectAnswer__typeModalButton:not(:first-of-type) {
+  margin-left: 0.5rem;
+}
+
+.incorrectAnswer__typeModalButton:hover {
+  cursor: pointer;
 }
 
 .inputPictureButton:hover {

@@ -204,21 +204,30 @@ const inputUpdated = (e) => {
   const { index, index2 } = dataset;
   const inputContainer = e.currentTarget.parentElement;
   const allInputsContainer = inputContainer.parentElement;
-  const { formSection, formProp, formProp2, formProp3, formProp4 } = allInputsContainer?.dataset;
+  const { formSection, formProp, formProp2, formProp3, formProp4, formProp5, formProp6, formProp7 } = allInputsContainer?.dataset;
   const currentValues = getCurrentGeneratorValues();
 
   if (index2) {
-    if (formProp4) currentValues[formSection][formProp][formProp2][formProp3][formProp4][index][index2] = value;
+    if (formProp7) currentValues[formSection][formProp][formProp2][formProp3][formProp4][formProp5][formProp6][formProp7][index][index2] = value;
+    else if (formProp6) currentValues[formSection][formProp][formProp2][formProp3][formProp4][formProp5][formProp6][index][index2] = value;
+    else if (formProp5) currentValues[formSection][formProp][formProp2][formProp3][formProp4][formProp5][index][index2] = value;
+    else if (formProp4) currentValues[formSection][formProp][formProp2][formProp3][formProp4][index][index2] = value;
     else if (formProp3) currentValues[formSection][formProp][formProp2][formProp3][index][index2] = value;
     else if (formProp2) currentValues[formSection][formProp][formProp2][index][index2] = value;
     else if (formProp) currentValues[formSection][formProp][index][index2] = value;
   } else if (index) {
-    if (formProp4) currentValues[formSection][formProp][formProp2][formProp3][formProp4][index] = value;
+    if (formProp7) currentValues[formSection][formProp][formProp2][formProp3][formProp4][formProp5][formProp6][formProp7][index] = value;
+    else if (formProp6) currentValues[formSection][formProp][formProp2][formProp3][formProp4][formProp5][formProp6][index] = value;
+    else if (formProp5) currentValues[formSection][formProp][formProp2][formProp3][formProp4][formProp5][index] = value;
+    else if (formProp4) currentValues[formSection][formProp][formProp2][formProp3][formProp4][index] = value;
     else if (formProp3) currentValues[formSection][formProp][formProp2][formProp3][index] = value;
     else if (formProp2) currentValues[formSection][formProp][formProp2][index] = value;
     else if (formProp) currentValues[formSection][formProp][index] = value;
   } else {
-    if (formProp4) currentValues[formSection][formProp][formProp2][formProp3][formProp4] = value;
+    if (formProp7) currentValues[formSection][formProp][formProp2][formProp3][formProp4][formProp5][formProp6][formProp7] = value;
+    else if (formProp6) currentValues[formSection][formProp][formProp2][formProp3][formProp4][formProp5][formProp6] = value;
+    else if (formProp5) currentValues[formSection][formProp][formProp2][formProp3][formProp4][formProp5] = value;
+    else if (formProp4) currentValues[formSection][formProp][formProp2][formProp3][formProp4] = value;
     else if (formProp3) currentValues[formSection][formProp][formProp2][formProp3] = value;
     else if (formProp2) currentValues[formSection][formProp][formProp2] = value;
     else if (formProp) currentValues[formSection][formProp] = value;
@@ -235,8 +244,6 @@ const verifyLastPropId = () => {
 };
 
 const updateInputValue = (data, current='1') => {
-  const { formSection, formProp, formProp2, formProp3, formProp4 } = data;
-
   if (data[current] !== undefined) return updateInputValue(data, );
 };
 
@@ -286,11 +293,19 @@ const makeNewInputData = (data, type, index) => {
 
 const removeInputButtonClicked = async (e) => {
   const currentValues = getCurrentGeneratorValues();
-  const typeValue = e.currentTarget?.dataset?.typeValue;
   const index = Number(e.currentTarget?.dataset?.index || 0);
-  const { formSection, formProp, formProp2, formProp3, formProp4 } = e.currentTarget?.dataset;
+  const { formSection, formProp, formProp2, formProp3, formProp4, formProp5, formProp6, formProp7 } = e.currentTarget?.dataset;
 
-  if (formProp4) {
+  if (formProp7) {
+    const value = currentValues[formSection][formProp][formProp2][formProp3][formProp4][formProp5][formProp6][formProp7];
+    currentValues[formSection][formProp][formProp2][formProp3][formProp4][formProp5][formProp6][formProp7] = makeNewInputData(value, 'remove', index);
+  } else if (formProp6) {
+    const value = currentValues[formSection][formProp][formProp2][formProp3][formProp4][formProp5][formProp6];
+    currentValues[formSection][formProp][formProp2][formProp3][formProp4][formProp5][formProp6] = makeNewInputData(value, 'remove', index);
+  } else if (formProp5) {
+    const value = currentValues[formSection][formProp][formProp2][formProp3][formProp4][formProp5];
+    currentValues[formSection][formProp][formProp2][formProp3][formProp4][formProp5] = makeNewInputData(value, 'remove', index);
+  } else if (formProp4) {
     const value = currentValues[formSection][formProp][formProp2][formProp3][formProp4];
     currentValues[formSection][formProp][formProp2][formProp3][formProp4] = makeNewInputData(value, 'remove', index);
   } else if (formProp3) {
@@ -315,9 +330,18 @@ const removeInputButtonClicked = async (e) => {
 const addInputButtonClicked = async (e) => {
   const currentValues = getCurrentGeneratorValues();
   const index = Number(e.currentTarget?.dataset?.index || 0);
-  const { formSection, formProp, formProp2, formProp3, formProp4 } = e.currentTarget?.dataset;
+  const { formSection, formProp, formProp2, formProp3, formProp4, formProp5, formProp6, formProp7 } = e.currentTarget?.dataset;
 
-  if (formProp4) {
+  if (formProp7) {
+    const value = currentValues[formSection][formProp][formProp2][formProp3][formProp4][formProp5][formProp6][formProp7];
+    currentValues[formSection][formProp][formProp2][formProp3][formProp4][formProp5][formProp6][formProp7] = makeNewInputData(value, 'add', index);
+  } else if (formProp6) {
+    const value = currentValues[formSection][formProp][formProp2][formProp3][formProp4][formProp5][formProp6];
+    currentValues[formSection][formProp][formProp2][formProp3][formProp4][formProp5][formProp6] = makeNewInputData(value, 'add', index);
+  } else if (formProp5) {
+    const value = currentValues[formSection][formProp][formProp2][formProp3][formProp4][formProp5];
+    currentValues[formSection][formProp][formProp2][formProp3][formProp4][formProp5] = makeNewInputData(value, 'add', index);
+  } else if (formProp4) {
     const value = currentValues[formSection][formProp][formProp2][formProp3][formProp4];
     currentValues[formSection][formProp][formProp2][formProp3][formProp4] = makeNewInputData(value, 'add', index);
   } else if (formProp3) {
@@ -421,12 +445,25 @@ const removeDecisionButtonClicked = async (e) => {
 };
 
 const showBadOptionInputs = (e) => {
-  const type = e.current?.dataset?.type || '';
+  const { type='', decision, option } = e.currentTarget?.dataset;
+  const currentValues = getCurrentGeneratorValues();
+  currentValues.decisionMaking[decision-1].options[option-1].typeResponse = (type === 'feedback') ? 1 : 2;
+  setGeneratorValues(currentValues);
 
-  typeModalButtons.forEach((button) => {
-    
+  typeModalButtons?.forEach((button) => {
+    const currentType = button.dataset.type;
+    const isCurrentOption = button.classList.value?.includes(`incorrectAnswer__typeModalButton--${decision}_${option}`);
+
+    if (isCurrentOption) {
+      if (currentType !== type) {
+        button.classList.remove(`incorrectAnswer__typeModalButton--active`);
+        document.querySelector(`.inputsContainer--${decision}_${option}_${currentType}`).style.display = 'none';
+      } else {
+        button.classList.add('incorrectAnswer__typeModalButton--active');
+        document.querySelector(`.inputsContainer--${decision}_${option}_${currentType}`).style.display = 'block';
+      }
+    }
   });
-  document.querySelector(`.inputsContainer--${type}`);
 };
 
 const setAddInputButton = () => {
@@ -439,6 +476,15 @@ const setAddInputButton = () => {
     input.addEventListener('keyup', inputUpdated);
     input.addEventListener('mouseup', inputUpdated);
   });
+
+  const currentValues = getCurrentGeneratorValues();
+  currentValues.decisionMaking.forEach((currentDecision, indexDecision) => {
+    currentDecision.options.forEach(({ typeResponse }, indexOption) => {
+      const type = (typeResponse == 1) ? 'feedback' : 'newDecision';
+      const selector = `.incorrectAnswer__typeModalButton--${indexDecision+1}_${indexOption+1}_${type}`;
+      document.querySelector(selector)?.click();
+    });
+  })
 };
 
 const initializeLabelInputPictures = () => {
@@ -509,7 +555,7 @@ const getInputMultiple = (values = [], data) => {
 
 const getInputMultipleAnswersHtml = (value = '', index = 0) => (`
   <div class="inputContainer">
-    <input type="number" class="input input--text" style="width: auto; color: black; font-style: normal; font-size: 1rem; font-weight: bolder;" value="${value}" min="1" max="20" data-index="${index}">
+    <input type="number" class="input input--text" style="width: auto; color: black; font-style: normal; font-size: 1rem; font-weight: bolder;" value="${value}" min="0" max="20" data-index="${index}">
   </div>
 `);
 
@@ -639,93 +685,317 @@ const initializeInputsContainer = async () => {
   return;
 };
 
-const getDecisionMakingOptionsHtml = ({ title, detail, badAnswerText }, index = 0, decisionPosition = 0, data) => {
+const getDecisionMakingOptionsHtml = ({ title, detail, badAnswerText, newDecision, typeResponse }, index = 0, decisionPosition = 0, data) => {
   const { formSection, formProp, formProp2 } = data;
 
-  return `
-    ${(index !== 0) ? '<br><hr><br><br>' : '' }
+  const html = `
+    <div class="decisionMaking__option" style="${(index !== 0) ? 'margin-top: 1.5rem;' : ''}">
+      <div class="option__header">
+        <div class="inputsContainer" style="width: 100%; margin: 0;">
+          <div class="inputContainer headerWithButtons">
+            <h3 class="option__headerTitle">
+              <button class="addInputButton addInputButton--inWindow" type="button" data-type-value="object" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-index="${index}">
+                <span class="addInputButtonText">+</span>
+              </button>
 
-    <div class="inputsContainer" style="width: 37%;" data-type-input="multiple" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-form-prop3="${index}" data-form-prop4="title">
-      <div class="inputContainer">
-        <label style="display: flex;align-items: center;justify-content: left;margin-right: 1rem;font-weight: bolder;font-size: 1.2rem;color: black;">
-          ${index+1}. 
-        </label>
-        <input type="text" class="input input--multiplePropValue" style="margin-top: 0.2rem;" value="${title}">
-      </div>
-    </div>
+              Opción ${index+1}
 
-    <div class="inputsContainer" data-type-input="multiple" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-form-prop3="${index}" data-form-prop4="detail">
-      <div class="inputContainer">
-        <input type="text" class="input input--array" value="${detail}">
-
-        <div class="inputButtons">
-          <button class="removeInputButton removeInputButton--inInput" type="button" data-type-value="object" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-index="${index}">
-            <span class="removeInputButtonText">-</span>
-          </button>
-
-          <button class="addInputButton addInputButton--inInput" type="button" data-type-value="object" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-index="${index}">
-            <span class="addInputButtonText">+</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <div class="inputsContainer" style="width: 100%;">
-      <div class="inputContainer" style="flex-wrap: wrap;">
-        <button class="incorrectAnswer__typeModalButton" data-type="feedback">Retroalimentación</button>
-        <button class="incorrectAnswer__typeModalButton" data-type="newDecision">Nueva Decision</button>
-      </div>
-    </div>
-
-    <div class="inputsContainer inputsContainer--newDecision" style="width: 100%;">
-      <div class="inputContainer">
-        TEST
-      </div>
-    </div>
-
-    <div class="inputsContainer inputsContainer--feedback" style="width: 100%;">
-      <div class="inputContainer">
-        <div class="inputAndLabelContainer" style="margin-right: 0">
-          <label class="inputLabel">Estudiante falló (Imagen):</label>
-
-          <div class="inputsContainer" data-type-input="picture" data-form-section="decisionMaking" data-form-prop="picture" data-name="incorrectAnswer_${index+1}">
-            <div class="inputContainer" style="justify-content: right">
-              <span class="inputPictureButtonText"></span>
-              <label for="inputPictureButton__incorrectAnswer_${decisionPosition}_${index+1}" class="inputPictureButton custom-file-upload">
-                  Subir Imagen
-              </label>
-
-              <input type="file" accept="image/png,image/jpeg" data-name="incorrectAnswer_${Number(decisionPosition)+1}_${index+1}" value="" id="inputPictureButton__incorrectAnswer_${decisionPosition}_${index+1}" style="display: none;" class="inputPictureButtons">
-            </div>
+              <button class="removeInputButton removeInputButton--inWindow" type="button" data-type-value="object" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-index="${index}">
+                <span class="removeInputButtonText removeInputButtonText--inWindow">-</span>
+              </button>
+            </h3>
           </div>
         </div>
       </div>
 
-      <div class="inputContainer">
-        <div class="inputAndLabelContainer" style="margin-right: 0">
-          <label class="inputLabel">Estudiante falló (texto):</label>
+      <div class="option__body">
+        <div class="inputsContainer" style="width: 100%;">
+          <div class="inputContainer" style="margin-bottom: 0;">
+            <label style="display: flex;align-items: center;justify-content: center;margin-right: 1rem;">
+              Título/detalle:
+            </label>
+          </div>
+        </div>
 
-          <div class="inputsContainer" data-type-input="multiple" data-type-value="object" data-form-section="decisionMaking" data-form-prop="${decisionPosition}" data-form-prop2="options" data-form-prop3="${index}" data-form-prop4="badAnswerText">
-            ${badAnswerText?.map((text, i) => `
-              <div class="inputContainer">
-                <input type="text" class="input input--array" value="${text}" data-index="${i}" data-input-prop="badAnswerText">
+        <div class="inputsContainer" style="width: 37%;" data-type-input="multiple" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-form-prop3="${index}" data-form-prop4="title">
+          <div class="inputContainer">
+            <input type="text" class="input input--text" style="width: 100%; margin-top: 0.2rem;" value="${title}">
+          </div>
+        </div>
 
-                <div class="inputButtons">
-                  <button class="removeInputButton removeInputButton--inInput" type="button" data-form-section="decisionMaking" data-form-prop="${decisionPosition}" data-form-prop2="options" data-form-prop3="${index}" data-form-prop4="badAnswerText" data-index="${i}">
-                    <span class="removeInputButtonText">-</span>
-                  </button>
-            
-                  <button class="addInputButton addInputButton--inInput" type="button" data-form-section="decisionMaking" data-form-prop="${decisionPosition}" data-form-prop2="options" data-form-prop3="${index}" data-form-prop4="badAnswerText" data-index="${i}">
-                    <span class="addInputButtonText">+</span>
-                  </button>
+        <div class="inputsContainer" data-type-input="multiple" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-form-prop3="${index}" data-form-prop4="detail">
+          <div class="inputContainer">
+            <input type="text" class="input input--text" value="${detail}">
+          </div>
+        </div>
+
+        <div class="inputsContainer" style="width: 100%;flex-wrap: wrap;margin-top: 1.5rem;margin-bottom: 1rem;">
+          <div class="inputContainer" style="flex-wrap: wrap;justify-content: center;">
+            <button class="incorrectAnswer__typeModalButton incorrectAnswer__typeModalButton--${Number(decisionPosition)+1}_${index+1}_feedback incorrectAnswer__typeModalButton--${index+1}" data-decision="${Number(decisionPosition)+1}" data-option="${Number(index)+1}" data-type="feedback" type="button">Retroalimentación</button>
+            <button class="incorrectAnswer__typeModalButton incorrectAnswer__typeModalButton--${Number(decisionPosition)+1}_${index+1}_newDecision incorrectAnswer__typeModalButton--${index+1}" data-decision="${Number(decisionPosition)+1}" data-option="${Number(index)+1}" data-type="newDecision" type="button">Nueva Decisión</button>
+          </div>
+        </div>
+
+        <div class="inputsContainer inputsContainer--${Number(decisionPosition)+1}_${index+1}_newDecision" style="width: 100%;/* display: none; */">
+          <div class="inputContainer">
+            <div class="decisionInputAndLabelContainer" style="border-radius: 0.5rem;border-color: #2350e75e;">
+              <div class="inputAndLabelContainer" style="display: none;">
+                <label class="inputLabel" style="color: #041e74;">Tipo:</label>
+
+                <div class="inputsContainer" data-type-input="simple" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-form-prop3="${index}" data-form-prop4="newDecision" data-form-prop5="type">
+                  <div class="inputContainer">
+                    <input type="number" class="input input--text" value="${newDecision.type}" min="1" max="20">
+                  </div>
                 </div>
               </div>
-            `).join('')}
+
+              <div class="inputAndLabelContainer">
+                <label class="inputLabel" style="color: #041e74;">Imagen:</label>
+
+                <div class="inputsContainer" data-name="decisionMakingPicture_${decisionPosition+1}_${index+1}">
+                  <div class="inputContainer" style="justify-content: right">
+                    <span class="inputPictureButtonText"></span>
+                    <label for="inputPictureButton__incorrectAnswer_${decisionPosition}_${index+1}" class="inputPictureButton custom-file-upload">
+                        Subir Imagen
+                    </label>
+
+                    <input type="file" accept="image/png,image/jpeg" data-name="incorrectAnswer_${Number(decisionPosition)+1}_${index+1}" value="" id="inputPictureButton__incorrectAnswer_${decisionPosition}_${index+1}" style="display: none;" class="inputPictureButtons">
+                  </div>
+                </div>
+              </div>
+
+              <div class="inputAndLabelContainer">
+                <label class="inputLabel" style="color: #041e74;">Título:</label>
+
+                <div class="inputsContainer" data-type-input="multiple" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-form-prop3="${index}" data-form-prop4="newDecision" data-form-prop5='title'>
+                  ${newDecision?.title?.map((title, i) => `
+                    <div class="inputContainer">
+                      <input type="text" class="input input--array" data-index="${i}" value="${title}">
+
+                      <div class="inputButtons">
+                        <button class="removeInputButton removeInputButton--inInput" type="button" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-form-prop3="${index}" data-form-prop4="newDecision" data-form-prop5='title' data-index="${i}">
+                          <span class="removeInputButtonText">-</span>
+                        </button>
+                  
+                        <button class="addInputButton addInputButton--inInput" type="button" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-form-prop3="${index}" data-form-prop4="newDecision" data-form-prop5='title' data-index="${i}">
+                          <span class="addInputButtonText">+</span>
+                        </button>
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+
+              <div class="inputAndLabelContainer">
+                <label class="inputLabel" style="color: #041e74;">Descripción:</label>
+
+                <div class="inputsContainer" data-type-input="multiple" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-form-prop3="${index}" data-form-prop4="newDecision" data-form-prop5='detail'>
+                  ${newDecision?.detail?.map((title, i) => `
+                    <div class="inputContainer">
+                      <input type="text" class="input input--array" data-index="${i}" value="${title}">
+
+                      <div class="inputButtons">
+                        <button class="removeInputButton removeInputButton--inInput" type="button" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-form-prop3="${index}" data-form-prop4="newDecision" data-form-prop5='detail' data-index="${i}">
+                          <span class="removeInputButtonText">-</span>
+                        </button>
+                  
+                        <button class="addInputButton addInputButton--inInput" type="button" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-form-prop3="${index}" data-form-prop4="newDecision" data-form-prop5='detail' data-index="${i}">
+                          <span class="addInputButtonText">+</span>
+                        </button>
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+
+              <div class="inputAndLabelContainer" style="display: none;">
+                <label class="inputLabel" style="color: #041e74;">Estudiante acertó (Img):</label>
+
+                <div class="inputsContainer" data-name="decisionMakingPicture_${decisionPosition+1}_${index+1}">
+                  <div class="inputContainer" style="justify-content: right">
+                    <span class="inputPictureButtonText"></span>
+                    <label for="inputPictureButton__answersCompleted_${decisionPosition}_${index+1}" class="inputPictureButton custom-file-upload">
+                        Subir Imagen
+                    </label>
+
+                    <input type="file" accept="image/png,image/jpeg" data-name="answersCompleted_${Number(decisionPosition)+1}_${index+1}" value="" id="inputPictureButton__answersCompleted_${decisionPosition}_${index+1}" style="display: none;" class="inputPictureButtons">
+                  </div>
+                </div>
+              </div>
+
+              <div class="inputAndLabelContainer" style="display: none; margin-top: 0;">
+                <label class="inputLabel" style="color: #041e74;">Estudiante acertó (texto):</label>
+
+                <div class="inputsContainer" data-type-input="multiple" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-form-prop3="${index}" data-form-prop4="newDecision" data-form-prop5="goodAnswerText">
+                  ${newDecision?.goodAnswerText?.map((text, i) => `
+                    <div class="inputContainer">
+                      <input type="text" class="input input--array" data-index="${i}" value="${text}">
+
+                      <div class="inputButtons">
+                        <button class="removeInputButton removeInputButton--inInput" type="button" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-form-prop3="${index}" data-form-prop4="newDecision" data-form-prop5="goodAnswerText" data-index="${i}">
+                          <span class="removeInputButtonText">-</span>
+                        </button>
+                  
+                        <button class="addInputButton addInputButton--inInput" type="button" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-form-prop3="${index}" data-form-prop4="newDecision" data-form-prop5="goodAnswerText" data-index="${i}">
+                          <span class="addInputButtonText">+</span>
+                        </button>
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+
+              <div class="inputAndLabelContainer" style="display: none;">
+                <label class="inputLabel" style="color: #041e74;">Opción correcta:</label>
+
+                <div class="inputsContainer" data-type-input="multipleAnswers" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-form-prop3="${index}" data-form-prop4="newDecision" data-form-prop5="answers">
+                  ${getInputMultipleAnswersHtml(newDecision?.answers?.[0], 0)}
+                </div>
+              </div>
+
+              <div class="inputAndLabelContainer" style="margin-top: 2rem">
+                <label class="inputLabel" style="color: #041e74;">Opciones:</label>
+
+                ${newDecision?.options?.map(({ title, detail, badAnswerText }, optionIndex) => `
+                  <div class="inputsContainer" style="display: block;width: 90%;margin: 1rem auto 3rem auto;" data-type-input="decisionMakingOptions" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-form-prop4="newDecision" data-form-prop5="options" data-form-prop6="${optionIndex}" data-type-value="object">
+                    <div class="decisionMaking__option" style="${(optionIndex !== 0) ? 'margin-top: 1.5rem;' : ''} border-right-color: rgba(35, 80, 231, 0.37);border-bottom-color: rgba(35, 80, 231, 0.37);border-left-color: rgba(35, 80, 231, 0.37);">
+                      <div class="option__header">
+                        <div class="inputsContainer" style="width: 100%; margin: 0;">
+                          <div class="inputContainer headerWithButtons">
+                            <h3 class="option__headerTitle">
+                              <button class="addInputButton addInputButton--inWindow" type="button" data-type-value="object" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-form-prop3="${index}" data-form-prop4="newDecision" data-form-prop5="options" data-index="${optionIndex}">
+                                <span class="addInputButtonText">+</span>
+                              </button>
+                
+                              Opción ${optionIndex+1}
+                
+                              <button class="removeInputButton removeInputButton--inWindow" type="button" data-type-value="object" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-form-prop3="${index}" data-form-prop4="newDecision" data-form-prop5="options" data-index="${optionIndex}">
+                                <span class="removeInputButtonText removeInputButtonText--inWindow">-</span>
+                              </button>
+                            </h3>
+                          </div>
+                        </div>
+                      </div>
+                
+                      <div class="option__body">
+                        <div class="inputsContainer" style="width: 100%;">
+                          <div class="inputContainer" style="margin-bottom: 0;">
+                            <label style="display: flex;align-items: center;justify-content: center;margin-right: 1rem;color: #041e74;">
+                              Título/detalle:
+                            </label>
+                          </div>
+                        </div>
+                
+                        <div class="inputsContainer" style="width: 37%;" data-type-input="multiple" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-form-prop3="${index}" data-form-prop4="newDecision" data-form-prop5="options" data-form-prop6="${optionIndex}" data-form-prop7="title">
+                          <div class="inputContainer">
+                            <input type="text" class="input input--text" style="width: 100%; margin-top: 0.2rem;" value="${title}">
+                          </div>
+                        </div>
+                
+                        <div class="inputsContainer" data-type-input="multiple" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-form-prop3="${index}" data-form-prop4="newDecision" data-form-prop5="options" data-form-prop6="${optionIndex}" data-form-prop7="detail">
+                          <div class="inputContainer">
+                            <input type="text" class="input input--text" value="${detail}">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="inputsContainer" style="width: 100%;">
+                        <div class="inputContainer">
+                          <div class="inputAndLabelContainer" style="margin-right: 0;display: flex;align-items: center;margin-bottom: 0;">
+                            <label class="inputLabel" style="color: #041e74;">Estudiante falló (Img):</label>
+
+                            <div class="inputsContainer" data-type-input="picture" data-form-section="${formSection}" data-form-prop="picture" data-name="incorrectAnswer_${index+1}">
+                              <div class="inputContainer" style="justify-content: right">
+                                <span class="inputPictureButtonText"></span>
+                                <label for="inputPictureButton__incorrectAnswer_${decisionPosition}_${index+1}" class="inputPictureButton custom-file-upload">
+                                    Subir Imagen
+                                </label>
+
+                                <input type="file" accept="image/png,image/jpeg" data-name="incorrectAnswer_${Number(decisionPosition)+1}_${index+1}" value="" id="inputPictureButton__incorrectAnswer_${decisionPosition}_${index+1}" style="display: none;" class="inputPictureButtons">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="inputContainer">
+                          <div class="inputAndLabelContainer" style="margin-right: 0">
+                            <label class="inputLabel" style="color: #041e74;">Estudiante falló (texto):</label>
+
+                            <div class="inputsContainer" data-type-input="multiple" data-type-value="object" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-form-prop3="${index}" data-form-prop4="newDecision" data-form-prop5="options" data-form-prop6="${optionIndex}" data-form-prop7="badAnswerText">
+                              ${badAnswerText?.map((text, i) => `
+                                <div class="inputContainer">
+                                  <input type="text" class="input input--array" value="${text}" data-index="${i}" data-input-prop="badAnswerText">
+
+                                  <div class="inputButtons">
+                                    <button class="removeInputButton removeInputButton--inInput" type="button" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-form-prop3="${index}" data-form-prop4="newDecision" data-form-prop5="options" data-form-prop6="${optionIndex}" data-form-prop7="badAnswerText" data-index="${i}">
+                                      <span class="removeInputButtonText">-</span>
+                                    </button>
+                              
+                                    <button class="addInputButton addInputButton--inInput" type="button" data-form-section="${formSection}" data-form-prop="${formProp}" data-form-prop2="${formProp2}" data-form-prop3="${index}" data-form-prop4="newDecision" data-form-prop5="options" data-form-prop6="${optionIndex}" data-form-prop7="badAnswerText" data-index="${i}">
+                                      <span class="addInputButtonText">+</span>
+                                    </button>
+                                  </div>
+                                </div>
+                              `).join('')}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                `).join('')}
+              </div><br>
+            </div>
+          </div>
+        </div>
+
+        <div class="inputsContainer inputsContainer--${Number(decisionPosition)+1}_${index+1}_feedback" style="width: 100%;">
+          <div class="inputContainer">
+            <div class="inputAndLabelContainer" style="margin-right: 0;display: flex;align-items: center;margin-bottom: 0;">
+              <label class="inputLabel">Estudiante falló (Imagen):</label>
+
+              <div class="inputsContainer" data-type-input="picture" data-form-section="decisionMaking" data-form-prop="picture" data-name="incorrectAnswer_${index+1}">
+                <div class="inputContainer" style="justify-content: right">
+                  <span class="inputPictureButtonText"></span>
+                  <label for="inputPictureButton__incorrectAnswer_${decisionPosition}_${index+1}" class="inputPictureButton custom-file-upload">
+                      Subir Imagen
+                  </label>
+
+                  <input type="file" accept="image/png,image/jpeg" data-name="incorrectAnswer_${Number(decisionPosition)+1}_${index+1}" value="" id="inputPictureButton__incorrectAnswer_${decisionPosition}_${index+1}" style="display: none;" class="inputPictureButtons">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="inputContainer">
+            <div class="inputAndLabelContainer" style="margin-right: 0">
+              <label class="inputLabel">Estudiante falló (texto):</label>
+
+              <div class="inputsContainer" data-type-input="multiple" data-type-value="object" data-form-section="decisionMaking" data-form-prop="${decisionPosition}" data-form-prop2="options" data-form-prop3="${index}" data-form-prop4="badAnswerText">
+                ${badAnswerText?.map((text, i) => `
+                  <div class="inputContainer">
+                    <input type="text" class="input input--array" value="${text}" data-index="${i}" data-input-prop="badAnswerText">
+
+                    <div class="inputButtons">
+                      <button class="removeInputButton removeInputButton--inInput" type="button" data-form-section="decisionMaking" data-form-prop="${decisionPosition}" data-form-prop2="options" data-form-prop3="${index}" data-form-prop4="badAnswerText" data-index="${i}">
+                        <span class="removeInputButtonText">-</span>
+                      </button>
+                
+                      <button class="addInputButton addInputButton--inInput" type="button" data-form-section="decisionMaking" data-form-prop="${decisionPosition}" data-form-prop2="options" data-form-prop3="${index}" data-form-prop4="badAnswerText" data-index="${i}">
+                        <span class="addInputButtonText">+</span>
+                      </button>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   `;
+
+  return html;
 };
 
 const getDecisionMakingOptions = (values, decisionPosition, data) => {
@@ -740,26 +1010,22 @@ const getDecisionMakingOptions = (values, decisionPosition, data) => {
 const initializeDecisionMakingContainer = async () => {
   let html = `
     <div class="inputAndLabelContainer" style="width: 70%;margin-left: 0;margin-right: 0;">
-      <label class="inputLabel" style="line-height: 1rem; margin-bottom: 1rem;">Pantalla de referencia:</label>
+      <label class="inputLabel" style="line-height: 1rem; margin-bottom: 1rem;">Pantallas de referencia:</label>
 
       <div style="height: calc(100% - 2rem);">
-        <img src="assets/referencia_decisionMaking.png" alt="referencia_decisionMaking" style="width: 100%; height: 100%;">
+        <img src="assets/referencia_decisionMaking.png" alt="referencia_decisionMaking" class="reference_pictures">
       </div>
     </div>
 
     <div class="inputAndLabelContainer" style="width: 70%;margin-left: 0;margin-right: 0;">
-      <label class="inputLabel" style="line-height: 1rem; margin-bottom: 1rem;">Pantalla de referencia:</label>
-
       <div style="height: calc(100% - 2rem);">
-        <img src="assets/referencia_badAnswer.jpg" alt="referencia_badAnswer" style="width: 100%; height: 100%;">
+        <img src="assets/referencia_badAnswer.jpg" alt="referencia_badAnswer" class="reference_pictures">
       </div>
     </div>
 
     <div class="inputAndLabelContainer" style="width: 70%;margin-left: 0;margin-right: 0;">
-      <label class="inputLabel" style="line-height: 1rem; margin-bottom: 1rem;">Pantalla de referencia:</label>
-
       <div style="height: calc(100% - 2rem);">
-        <img src="assets/referencia_goodAnswer.jpg" alt="referencia_goodAnswer" style="width: 100%; height: 100%;">
+        <img src="assets/referencia_goodAnswer.jpg" alt="referencia_goodAnswer" class="reference_pictures">
       </div>
     </div>
   `;
@@ -770,7 +1036,7 @@ const initializeDecisionMakingContainer = async () => {
       <div class="decisionContainer">
         <h3 class="decisionMainTitle">
           <span class="addInputButton addInputButton--inWindow" data-form-section="decisionMaking" data-index="${i}">+</span>
-          Decision ${i+1}
+          <span>Decisión ${i+1}</span>
           <span class="removeInputButton removeInputButton--inWindow" data-form-section="decisionMaking" data-index="${i}">-</span>
         </h3>
 
@@ -795,16 +1061,6 @@ const initializeDecisionMakingContainer = async () => {
             <div class="inputsContainer" data-type-input="multiple" data-form-section="decisionMaking" data-form-prop="${i}" data-form-prop2="detail"></div>
           </div>
 
-          <div class="inputAndLabelContainer" style="margin-top: 2rem">
-            <label class="inputLabel">Opciones (Titulo/detalle):</label>
-            <div class="inputsContainer" style="display: block;width: 90%;margin: 0 auto 0 auto;margin: 0;margin-top: 1rem;margin-bottom: 3rem;padding: 1rem 1rem 1rem 1rem;border: 1px solid #dedede;border-radius: 10px;" data-type-input="decisionMakingOptions" data-form-section="decisionMaking" data-form-prop="${i}" data-form-prop2="options" data-type-value="object"></div>
-          </div>
-
-          <div class="inputAndLabelContainer">
-            <label class="inputLabel">Número de la respuesta correcta:</label>
-            <div class="inputsContainer" data-type-input="multipleAnswers" data-form-section="decisionMaking" data-form-prop="${i}" data-form-prop2="answers"></div>
-          </div><br>
-
           <div class="inputAndLabelContainer">
             <label class="inputLabel">El estudiante acertó (Imagen):</label>
             <div class="inputsContainer" data-type-input="picture" data-form-section="decisionMaking" data-form-prop="picture" data-name="answersCompleted_${i+1}"></div>
@@ -813,6 +1069,16 @@ const initializeDecisionMakingContainer = async () => {
           <div class="inputAndLabelContainer" style="margin-top: 0">
             <label class="inputLabel">El estudiante acertó (texto):</label>
             <div class="inputsContainer" data-type-input="multiple" data-form-section="decisionMaking" data-form-prop="${i}" data-form-prop2="goodAnswerText"></div>
+          </div>
+
+          <div class="inputAndLabelContainer">
+            <label class="inputLabel">Número de la opción correcta:</label>
+            <div class="inputsContainer" data-type-input="multipleAnswers" data-form-section="decisionMaking" data-form-prop="${i}" data-form-prop2="answers"></div>
+          </div>
+
+          <div class="inputAndLabelContainer" style="margin-top: 2rem">
+            <label class="inputLabel">Opciones:</label>
+            <div class="inputsContainer" style="display: block;width: 90%;margin: 1rem auto 3rem auto;" data-type-input="decisionMakingOptions" data-form-section="decisionMaking" data-form-prop="${i}" data-form-prop2="options" data-type-value="object"></div>
           </div><br>
         </div>
       </div>

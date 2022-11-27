@@ -3,6 +3,7 @@ let modalBackButton;
 let modalRestartButton;
 let modalBadAnswerHtml;
 let modalBadAnswerText;
+let scapeSymbolInModel;
 
 const getBadAnswerModal = async () => {
   const url = 'components/answersModals/badAnswerModal/badAnswerModal.html';
@@ -12,8 +13,12 @@ const getBadAnswerModal = async () => {
 };
 
 const initializeBadAnswerModalEvents = () => {
-  modalBackButton?.addEventListener('click', closeModalAndLoadDecisionMaking);
+  modalBackButton?.addEventListener('click', (e) => {
+    nestedDecisionOptionSelected = undefined;
+    closeModalAndLoadDecisionMaking(e);
+  });
   modalRestartButton?.addEventListener('click', restartOva);
+  scapeSymbolInModel?.addEventListener('click', () => closeModal());
 };
 
 const initializeBadAnswerConstanst = () => {
@@ -21,6 +26,7 @@ const initializeBadAnswerConstanst = () => {
   modalBackButton = document.querySelector('.badAnswerBackButton');
   modalBadAnswerText = document.querySelector('.customModalContentContainer');
   modalBadAnswerPictureContainer = document.querySelector('.customModalPictureContainer');
+  scapeSymbolInModel = document.querySelector('.customModal__x');
 };
 
 const initializeBadAnswerData = () => {
@@ -34,11 +40,19 @@ const initializeBadAnswerData = () => {
 
   let badAnswertextHtml = '';
 
-  config?.decisionMaking?.[lastValidIndex]?.options?.[currentOptionSelected-1]?.badAnswerText?.forEach((text) => {
+  const value = (nestedDecisionOptionSelected)
+    ? config?.decisionMaking?.[lastValidIndex]?.options?.[nestedDecisionOptionSelected-1]?.newDecision?.options?.[currentOptionSelected-1]?.badAnswerText
+    : config?.decisionMaking?.[lastValidIndex]?.options?.[currentOptionSelected-1]?.badAnswerText;
+
+  value?.forEach((text) => {
     badAnswertextHtml += `<p class="customModalContent">${formatText(text)}</p>`;
   });
 
   modalBadAnswerText.innerHTML = badAnswertextHtml;
+
+  if (scapeSymbolInModel) {
+    scapeSymbolInModel.style='display: block;';
+  }
 };
 
 const loadBadAnswerModal = () => {

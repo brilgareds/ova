@@ -28,7 +28,7 @@
 }
 
 .decisionMaking2__mainSection {
-  min-width: 45%;
+  width: 45%;
   margin-right: 4rem;
 }
 
@@ -160,7 +160,8 @@
 
 .buttonsSection--decisionMaking2 {
   /* margin-top: 4rem; */
-  margin-top: 7.8rem;
+  /* margin-top: 7.8rem; */
+  margin-top: 4.5rem;
 }
 
 .decisionMaking2__titles {

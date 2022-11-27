@@ -144,9 +144,34 @@
         {
           "title": "",
           "detail": "",
+          "typeResponse": "1",
           "badAnswerText": [
             ""
-          ]
+          ],
+          "newDecision": {
+            "type": 2,
+            "goodAnswerText": [
+              ""
+            ],
+            "title": [
+              ""
+            ],
+            "detail": [
+              ""
+            ],
+            "options": [
+              {
+                "title": "",
+                "detail": "",
+                "badAnswerText": [
+                  ""
+                ]
+              }
+            ],
+            "answers": [
+              0
+            ]
+          }
         }
       ],
       "answers": [

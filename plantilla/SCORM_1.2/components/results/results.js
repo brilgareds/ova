@@ -28,8 +28,11 @@ const initializeResultConstanst = () => {
 const downloadResultsPdf = async () => {
   // window.open('reports.html', '_blank');
   // window.open('reports.html', '_self');
-  window.open('reports.html', '_top');
-  //window.open('reports.html', '_parent');
+  // window.open('reports.html', '_parent');
+  // window.open('reports.html', '_top');
+
+  if (api) window.open('reports.html', '_top');
+  else window.open('reports.html', '_blank');
 };
 
 const initializeResultsEvents = () => {

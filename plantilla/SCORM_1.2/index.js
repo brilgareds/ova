@@ -1,10 +1,9 @@
 let api;
 let htmlForPdf;
 let mainContainer;
+let nestedDecisionOptionSelected;
 let apiHandle = null;
 let countOvaCompleted = 0;
-
-// window.jsPDF = window.jspdf.jsPDF;
 
 const restartOva = () => {
   deleteUserData();
@@ -93,7 +92,7 @@ const getAPI = () => {
     alert("Error al obtener información desde el LMS!!");
   }
 
-  return theAPI
+  return theAPI;
 };
 
 const getAPIHandle = () => {
