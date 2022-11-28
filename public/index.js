@@ -755,11 +755,12 @@ const getDecisionMakingOptionsHtml = ({ title, detail, badAnswerText, newDecisio
                 <div class="inputsContainer" data-name="decisionMakingPicture_${decisionPosition+1}_${index+1}">
                   <div class="inputContainer" style="justify-content: right">
                     <span class="inputPictureButtonText"></span>
-                    <label for="inputPictureButton__incorrectAnswer_${decisionPosition}_${index+1}" class="inputPictureButton custom-file-upload">
+
+                    <label for="inputPictureButton__decisionMakingPicture_${Number(decisionPosition)+1}_${index+1}" class="inputPictureButton custom-file-upload">
                         Subir Imagen
                     </label>
 
-                    <input type="file" accept="image/png,image/jpeg" data-name="incorrectAnswer_${Number(decisionPosition)+1}_${index+1}" value="" id="inputPictureButton__incorrectAnswer_${decisionPosition}_${index+1}" style="display: none;" class="inputPictureButtons">
+                    <input type="file" accept="image/png,image/jpeg" data-name="decisionMakingPicture_${Number(decisionPosition)+1}_${index+1}" value="" id="inputPictureButton__decisionMakingPicture_${Number(decisionPosition)+1}_${index+1}" style="display: none;" class="inputPictureButtons">
                   </div>
                 </div>
               </div>
@@ -907,11 +908,11 @@ const getDecisionMakingOptionsHtml = ({ title, detail, badAnswerText, newDecisio
                             <div class="inputsContainer" data-type-input="picture" data-form-section="${formSection}" data-form-prop="picture" data-name="incorrectAnswer_${index+1}">
                               <div class="inputContainer" style="justify-content: right">
                                 <span class="inputPictureButtonText"></span>
-                                <label for="inputPictureButton__incorrectAnswer_${decisionPosition}_${index+1}" class="inputPictureButton custom-file-upload">
+                                <label for="inputPictureButton__newDecision_incorrectAnswer_${Number(decisionPosition)+1}_${index+1}_${optionIndex+1}" class="inputPictureButton custom-file-upload">
                                     Subir Imagen
                                 </label>
 
-                                <input type="file" accept="image/png,image/jpeg" data-name="incorrectAnswer_${Number(decisionPosition)+1}_${index+1}" value="" id="inputPictureButton__incorrectAnswer_${decisionPosition}_${index+1}" style="display: none;" class="inputPictureButtons">
+                                <input type="file" accept="image/png,image/jpeg" data-name="newDecision_incorrectAnswer_${Number(decisionPosition)+1}_${index+1}_${optionIndex+1}" value="" id="inputPictureButton__newDecision_incorrectAnswer_${Number(decisionPosition)+1}_${index+1}_${optionIndex+1}" style="display: none;" class="inputPictureButtons">
                               </div>
                             </div>
                           </div>

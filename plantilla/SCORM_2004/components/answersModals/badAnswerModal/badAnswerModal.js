@@ -33,8 +33,12 @@ const initializeBadAnswerData = () => {
   const { lastValidIndex } = getCurrentDecisionMaking();
 
   if (modalBadAnswerPictureContainer) {
+    const pictureName = (nestedDecisionOptionSelected)
+      ? `newDecision_incorrectAnswer_${lastValidIndex+1}_${nestedDecisionOptionSelected}_${currentOptionSelected}`
+      : `incorrectAnswer_${lastValidIndex+1}_${currentOptionSelected}`;
+
     modalBadAnswerPictureContainer.innerHTML = `
-      <img alt="incorrectAnswerPicture" src="assets/images/incorrectAnswer_${lastValidIndex+1}_${currentOptionSelected}.png" class="customModalPicture" />
+      <img alt="incorrectAnswerPicture" src="assets/images/${pictureName}.png" class="customModalPicture" />
     `;
   }
 

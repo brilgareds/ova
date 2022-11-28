@@ -236,7 +236,11 @@ const initializeDecisionMaking2Data = () => {
     `;
   });
 
-  document.querySelector('.decisionMaking2__mainPicture').style=`background: url(assets/images/decisionMaking_${lastIndex+1}.png) 0% 0% / 100% 100% no-repeat;`;
+  const pictureName = (nestedDecisionOptionSelected)
+    ? `decisionMakingPicture_${lastIndex+1}_${nestedDecisionOptionSelected}`
+    : `decisionMaking_${lastIndex+1}`;
+
+  document.querySelector('.decisionMaking2__mainPicture').style=`background: url(assets/images/${pictureName}.png) 0% 0% / 100% 100% no-repeat;`;
 
   decisionMaking2TitlesContainer.innerHTML = title;
   decisionMaking2DescriptionContainer.innerHTML = detail;

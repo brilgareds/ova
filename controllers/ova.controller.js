@@ -128,11 +128,13 @@ class OvaController {
           rimraf.sync(currentPath2);
         }
 
-        decision.options?.forEach((_v, j) => {
-          const nameFile3 = `incorrectAnswer_${i+1}_${j+1}.png`;
+        decision.options?.forEach((option, j) => {
           const pictureProp3 = `incorrectAnswer_${i+1}_${j+1}`;
-          // incorrectAnswer_2_2
+          const pictureProp4 = `decisionMakingPicture_${i+1}_${j+1}`;
+          const nameFile3 = `${pictureProp3}.png`;
+          const nameFile4 = `${pictureProp4}.png`;
           const currentPath3 = files[pictureProp3]?.filepath;
+          const currentPath4 = files[pictureProp4]?.filepath;
   
           if (currentPath3) {
             const newPath1 = join(picturesFolder1, nameFile3);
@@ -142,6 +144,30 @@ class OvaController {
             fs.copySync(currentPath3, newPath2);
             rimraf.sync(currentPath3);
           }
+
+          if (currentPath4) {
+            const newPath1 = join(picturesFolder1, nameFile4);
+            const newPath2 = join(picturesFolder2, nameFile4);
+
+            fs.copySync(currentPath4, newPath1);
+            fs.copySync(currentPath4, newPath2);
+            rimraf.sync(currentPath4);
+          }
+
+          option?.newDecision?.options?.forEach((_option2, k) => {
+            const newDecisionProp = `newDecision_incorrectAnswer_${i+1}_${j+1}_${k+1}`;
+            const newDecisionName = `${newDecisionProp}.png`;
+            const currentNewDecisionPath = files[newDecisionProp]?.filepath;
+
+            if (currentNewDecisionPath) {
+              const newNewDecisionPath1 = join(picturesFolder1, newDecisionName);
+              const newNewDecisionPath2 = join(picturesFolder2, newDecisionName);
+    
+              fs.copySync(currentNewDecisionPath, newNewDecisionPath1);
+              fs.copySync(currentNewDecisionPath, newNewDecisionPath2);
+              rimraf.sync(currentNewDecisionPath);
+            }
+          });
         });
       });
     }
